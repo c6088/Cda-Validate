@@ -41,6 +41,8 @@ import java.util.regex.Pattern;
 public class XsdValidateRegexApplication {
 
     private static HashMap<String, HealthElementDirectory> DE_CODE_DICT = new HashMap<>();
+    private static HashMap<String, HashMap<String, String>> CDA_DICT = new HashMap<>();
+
     private static SimpleDateFormat format_str_dt15 = new SimpleDateFormat("yyyyMMddHHmmss");
     private static SimpleDateFormat format_str_dt8 = new SimpleDateFormat("yyyyMMdd");
     private static SimpleDateFormat format_date_dt14 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -59,8 +61,13 @@ public class XsdValidateRegexApplication {
         }
 
         String cdadatasetPath = "config/数据集-2016版.xlsx";
-        patternNumber = Pattern.compile("[0-9]*");
         loadExcel(cdadatasetPath);
+
+        String cdaDictPath = "config/CDA字典信息.xlsx";
+        loadCDADICTExcel(cdaDictPath);
+
+        patternNumber = Pattern.compile("[0-9]*");
+
 
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         File file = new File("config/sdschemas/SDA.xsd");
@@ -193,8 +200,10 @@ public class XsdValidateRegexApplication {
 
         HealthElementDirectory healthElementDirectory = DE_CODE_DICT.get(de_code);
         String deName = healthElementDirectory.getDeName();
-        if ("引用型".equals(healthElementDirectory.getDeDataValuetype()) ||
-                "枚举型".equals(healthElementDirectory.getDeDataValuetype())) {
+        if (
+//                "引用型".equals(healthElementDirectory.getDeDataValuetype()) ||
+                "枚举型".equals(healthElementDirectory.getDeDataValuetype())
+        ) {
             //printLog("数据元【" + de_code + "】【" + deName + "】暂不进行字典验证!");
             return;
         }
@@ -203,18 +212,13 @@ public class XsdValidateRegexApplication {
             case "D":
                 if (value != null && value.length() == 8) {
                     try {
-                        Date date = format_date_dt8.parse(value);
+                        Date date = format_str_dt8.parse(value);
                     } catch (ParseException e) {
                         printLog("数据元【" + de_code + "】【" + deName + "】日期格式错误!【" + value + "】");
                         return;
                     }
                 } else {
-                    try {
-                        Date date = format_date_dt14.parse(value);
-                    } catch (ParseException e) {
-                        printLog("数据元【" + de_code + "】【" + deName + "】日期格式【" + healthElementDirectory.getDeDatatypeDescription() + "】不是标准的日期!【" + value + "】");
-                        return;
-                    }
+                    printLog("数据元【" + de_code + "】【" + deName + "】日期格式【" + healthElementDirectory.getDeDatatypeDescription() + "】不是标准的日期!【" + value + "】");
                 }
                 break;
             case "DT":
@@ -332,6 +336,24 @@ public class XsdValidateRegexApplication {
                 break;
             case "S3":
                 //引用型数据
+                String dictcode = healthElementDirectory.getDeDataValues();
+                if (!CDA_DICT.containsKey(dictcode)) {
+                    printLog("数据元【" + de_code + "】【" + deName + "】无对应字典信息【" + dictcode + "】");
+                    return;
+                }
+
+                if (!CDA_DICT.get(dictcode).containsKey(value)) {
+                    printLog("数据元【" + de_code + "】【" + deName + "】字典【" + dictcode + "】中无此编码信息【" + value + "】");
+                    return;
+                }
+
+
+                if (!CDA_DICT.get(dictcode).get(value).equals(displayName)) {
+                    printLog("数据元【" + de_code + "】【" + deName + "】字典【" + dictcode + "】中编码【" + value + "】对应值应为【" + CDA_DICT.get(dictcode).get(value) + "】 实际值为【" + displayName + "】");
+                    return;
+                }
+
+
                 break;
         }
 
@@ -355,11 +377,43 @@ public class XsdValidateRegexApplication {
             healthElementDirectory.setDeDatatype(row.getCell(4).getStringCellValue());
             healthElementDirectory.setDeDatatypeDescription(row.getCell(5).getStringCellValue());
             healthElementDirectory.setDeDataValuetype(row.getCell(6).getStringCellValue());
+            healthElementDirectory.setDeDataValues(row.getCell(7).getStringCellValue());
 
             if (!DE_CODE_DICT.containsKey(healthElementDirectory.getDeCode())) {
                 DE_CODE_DICT.put(healthElementDirectory.getDeCode(), healthElementDirectory);
             }
         }
+        sheets.close();
+    }
+
+    private static void loadCDADICTExcel(String cdaDictPath) throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(cdaDictPath);
+        XSSFWorkbook sheets = new XSSFWorkbook(fileInputStream);
+        XSSFSheet sheet = sheets.getSheet("CDA字典");
+        int lastRowNum = sheet.getLastRowNum();
+        XSSFRow row;
+        XSSFCell cell;
+        String dict_name = "";
+        String dict_code = "";
+        String code = "";
+        String value = "";
+
+        for (int i = 1; i < lastRowNum; i++) {
+            row = sheet.getRow(i);
+            dict_code = row.getCell(0).getStringCellValue();
+            dict_name = row.getCell(1).getStringCellValue();
+            code = row.getCell(2).getStringCellValue();
+            value = row.getCell(3).getStringCellValue();
+
+            if (!CDA_DICT.containsKey(dict_code)) {
+                CDA_DICT.put(dict_code, new HashMap<>());
+            }
+
+            if (!CDA_DICT.get(dict_code).containsKey(code)) {
+                CDA_DICT.get(dict_code).put(code, value);
+            }
+        }
+        sheets.close();
     }
 
     private static Map<String, Integer> getTypeLength(String deDatatypeDescription) {
@@ -390,6 +444,8 @@ public class XsdValidateRegexApplication {
                 maxLength = Integer.parseInt(split[0]);
                 minLength = maxLength;
                 decimalLength = Integer.parseInt(split[1]);
+            } else {
+                maxLength = Integer.parseInt(deDatatypeDescription);
             }
         }
 

@@ -1,0 +1,278 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.54"/>
+    <id extension="0999950321C0009" root="2.16.156.10011.1.1"/>
+    <code code="C0009" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>一般手术记录</title>
+    <effectiveTime value="20211130091134"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="09999503" root="2.16.156.10011.1.11"/>
+            <id extension="09999503_2" root="2.16.156.10011.1.12"/>
+            <id extension="0999950321" root="2.16.156.10011.1.24"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="37120219961103404X" root="2.16.156.10011.1.3"/>
+                <name>卓庆玲</name>
+                <administrativeGenderCode code="2" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="女性"/>
+                <age unit="岁" value="26"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211114080000"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="1069" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>黄宪霞</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <authenticator>
+        <time value="20211114091839"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="1069" root="2.16.156.10011.1.4"/>
+            <code displayName="手术者"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>黄宪霞</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime value="20211112095850"/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="2" root="2.16.156.10011.1.22"/>
+                                <name>2</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="2" root="2.16.156.10011.1.21"/>
+                                        <name>2</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id root="2.16.156.10011.1.26"/>
+                                                <name>产二科病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id root="2.16.156.10011.1.27"/>
+                                                        <name>产二科病区</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="11348-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PAST ILLNESS"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.062.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术史标志"/>
+                            <value value="false" xsi:type="BL"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10218-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical operation note postoperative Dx"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="术后诊断编码"/>
+                            <value code="O80.000" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="40+6周妊娠G1P0 LOA" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical operation note preoperative Dx"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="术前诊断编码"/>
+                            <value code="O82.900" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="经剖宫产术分娩" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PROCEDURES"/>
+                    <text/>
+                    <entry>
+                        <procedure classCode="PROC" moodCode="EVN">
+                            <code code="74.1x01" codeSystem="2.16.156.10011.2.3.3.12" codeSystemName="手术(操作)代码表(ICD-9-CM)" displayName="剖宫产术，子宫下段横切口"/>
+                            <effectiveTime>
+                                <low value="2021-11-14 08:00:00.0"/>
+                                <high value="2021-11-14 09:18:39.0"/>
+                            </effectiveTime>
+                            <performer typeCode="PRF">
+                                <assignedEntity>
+                                    <id extension="1069" root="2.16.156.10011.1.4"/>
+                                    <assignedPerson>
+                                        <name>黄宪霞</name>
+                                    </assignedPerson>
+                                </assignedEntity>
+                            </performer>
+                            <participant typeCode="ATND">
+                                <participantRole classCode="ASSIGNED">
+                                    <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+                                    <code displayName="Ⅰ助"/>
+                                    <playingEntity classCode="PSN" determinerCode="INSTANCE">
+                                        <name>何宁</name>
+                                    </playingEntity>
+                                </participantRole>
+                            </participant>
+                            <participant typeCode="ATND">
+                                <participantRole classCode="ASSIGNED">
+                                    <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+                                    <code displayName="器械护士"/>
+                                    <playingEntity classCode="PSN" determinerCode="INSTANCE">
+                                        <name>何宁</name>
+                                    </playingEntity>
+                                </participantRole>
+                            </participant>
+                            <participant typeCode="ATND">
+                                <participantRole classCode="ASSIGNED">
+                                    <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+                                    <code displayName="巡台护士"/>
+                                    <playingEntity classCode="PSN" determinerCode="INSTANCE">
+                                        <name>何宁</name>
+                                    </playingEntity>
+                                </participantRole>
+                            </participant>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.094.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术（操作）名称"/>
+                                    <value xsi:type="ST">剖宫产术，子宫下段横切口</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.256.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="患者实施手术所在的手术室编号"/>
+                                    <value xsi:type="ST">01</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.255.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术级别"/>
+                                    <value code="4" codeSystem="2.16.156.10011.2.3.1.258" codeSystemName="手术级别代码表" displayName="四级手术" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </procedure>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10213-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical operation note anesthesia"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.073.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="麻醉方式代码"/>
+                            <value code="2" codeSystem="2.16.156.10011.2.3.1.159" codeSystemName="麻醉方法代码表" displayName="椎管内麻醉" xsi:type="CD"/>
+                            <performer>
+                                <assignedEntity>
+                                    <id/>
+                                    <assignedPerson>
+                                        <name>何顺成</name>
+                                    </assignedPerson>
+                                </assignedEntity>
+                            </performer>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="8724-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical operation note description"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.063.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术过程描述"/>
+                            <value xsi:type="ST">逐层切开皮下组织、腹直肌前鞘，钝性分离腹直肌，打开腹膜，进入腹腔，洗手探查：子宫大小符合月份，下段形成好，宫体无明显右旋。决定行子宫下段剖宫产术。    于子宫下段膀胱子宫反折腹膜处做一约2cm横切口，钝性弧形扩大至约10cm，刺破羊膜，吸净羊水，以LOA位娩出一男婴，清理呼吸道，断脐后交台下处理。艾利斯钳夹子宫切缘，宫体注射催产素20u，胎盘、胎膜自行完整娩出、干纱布擦净宫腔，1-0可吸收线连续缝合子宫肌层全层，查无出血，原线返回连续缝合反折腹膜，查无出血及血肿形成。卡贝缩宫素一支宫壁注射加强宫缩，清理腹腔，探查宫体及双侧附件未见明显异常，温盐水冲洗腹腔，清点纱布、器械无误，常规逐层关腹。2-0可吸收线连续缝合皮下组织，无线缝合器粘合皮肤，手术结束。</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.187.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术目标部位名称"/>
+                                    <value xsi:type="ST">未说明的目标部位</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.037.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="介入物名称"/>
+                                    <value xsi:type="ST">无</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.260.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术体位代码"/>
+                                    <value code="9" codeSystem="2.16.156.10011.2.3.1.262" codeSystemName="手术体位代码表" displayName="其他" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.057.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="皮肤消毒描述"/>
+                                    <value xsi:type="ST">常规消毒手术野皮肤，铺无菌巾、单、被，护皮。</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.321.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术切口描述"/>
+                                    <value xsi:type="ST">Ⅱ类</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.165.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="引流标志"/>
+                                    <value value="false" xsi:type="BL"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

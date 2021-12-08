@@ -1,0 +1,200 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../sdschemas/SDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.49"/>
+    <id extension="10024053129C0029" root="2.16.156.10011.1.1"/>
+    <code code="C0029" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>特殊检查及特殊治疗同意书</title>
+    <effectiveTime value="20211123130253"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole>
+            <id extension="10024053" root="2.16.156.10011.1.11"/>
+            <id extension="10024053_1" root="2.16.156.10011.1.12"/>
+            <id extension="1" root="2.16.156.10011.1.34"/>
+            <patient>
+                <id extension="370919195310313228" root="2.16.156.10011.1.3"/>
+                <name>李文军</name>
+                <administrativeGenderCode code="2" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="女性"/>
+                <birthTime value="19531031"/>
+                <age unit="岁" value="68"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211123130253"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="1" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>杨顺法</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator typeCode="LA">
+        <time value="20211123130253"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="01175" root="2.16.156.10011.1.4"/>
+            <assignedPerson>
+                <name>张秀芳</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211123130253"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="10024053" root="2.16.156.10011.1.4"/>
+            <code displayName="患者"/>
+            <assignedPerson>
+                <name>李文军</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211123130253"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="-" root="2.16.156.10011.1.3"/>
+            <code code="1" codeSystem="2.16.156.10011.2.3.3.8" codeSystemName="家庭关系代码表(GB/T 4761)" displayName="配偶"/>
+            <assignedPerson>
+                <name>杨顺法</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="7" root="2.16.156.10011.1.22"/>
+                                <name>7床</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="7" root="2.16.156.10011.1.21"/>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="2102" root="2.16.156.10011.1.26"/>
+                                                <name>肿瘤一科病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <name>肿瘤一科病区</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="疾病诊断编码"/>
+                            <value code="K74.100" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="肝硬化" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="59772-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Planned procedure"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.306.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="特殊检查及特殊治疗项目名称"/>
+                            <value xsi:type="ST">特殊检查</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.305.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="特殊检查及特殊治疗目的"/>
+                                    <value xsi:type="ST">无</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.301.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="替代方案"/>
+                            <value xsi:type="ST">二、替代方案：手术、放疗、化疗及对症支持等治疗。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="操作风险"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE05.01.075.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="特殊检查及特殊治疗可能引起的并发症及风险"/>
+                            <value xsi:type="ST">一、分子靶向治疗是治疗恶性肿瘤的一种新方法。该药物可引起局部或全身的毒副作用，甚至导致严重并发症，特此向患者或代理人说明靶向治疗可能存在的下列风险：   1.皮肤反应如皮疹、瘙痒、皮肤干燥、指甲异常、痤疮及脓疱性皮疹，过敏反应 如血管性水肿和荨麻疹，极罕见如中毒性表皮坏死松解症和多形红斑；   2.消化道症状如恶心、呕吐、厌食、腹泻、口腔黏膜炎及继发的脱水口腔溃疡， 偶可见胰腺炎；   3.全身反应常见乏力、脱发、体重下降、外周性水肿；   4.肝损害；   5.眼科常见结膜炎和睑缘炎、弱视，少见可逆性角膜糜烂，有时伴睫毛生长异常， 极罕见角膜脱落、眼部缺血/出血；6.出血；    7.呼吸系统常见呼吸困难，少见间质性肺病，严重者可危及生命甚至导致死亡；   8.药物过敏反应；   9.治疗无效。    10.其他未可预知风险。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="意见章节"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.018.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医疗机构的意见">
+                                <qualifier>
+                                    <name displayName="医疗机构意见"/>
+                                </qualifier>
+                            </code>
+                            <value xsi:type="ST">    我已经告知患者靶向治疗中可能发生的并发症和风险、可能存在的其他治疗方法并且解答了患者靶向药物治疗的相关问题。一旦发生上述风险和意外，医生会采取积极应对措施。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.018.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录">
+                                <qualifier>
+                                    <name displayName="患者意见"/>
+                                </qualifier>
+                            </code>
+                            <value xsi:type="ST">同意</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

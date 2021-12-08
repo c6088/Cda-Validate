@@ -1,0 +1,178 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../sdschemas/SDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.51"/>
+    <id extension="497679812C0031" root="2.16.156.10011.1.1"/>
+    <code code="C0031" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>其他知情同意书</title>
+    <effectiveTime value="20211111183111"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole>
+            <id extension="497679" root="2.16.156.10011.1.11"/>
+            <id extension="497679_8" root="2.16.156.10011.1.12"/>
+            <id extension="497679812C0031" root="2.16.156.10011.1.34"/>
+            <patient>
+                <id extension="37091919580319006X" root="2.16.156.10011.1.3"/>
+                <name>高秀芹</name>
+                <administrativeGenderCode code="2" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="女性"/>
+                <birthTime value="19580319"/>
+                <age unit="岁" value="64"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211111183111"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="MNWMQR" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>孟庆荣</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+                <telecom value=""/>
+                <addr/>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator typeCode="LA">
+        <time value="20211111183111"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="MNWMQR" root="2.16.156.10011.1.4"/>
+            <assignedPerson>
+                <name>孟庆荣</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211111183111"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="13561710796" root="2.16.156.10011.1.3"/>
+            <code code="8" codeSystem="2.16.156.10011.2.3.3.8" codeSystemName="家庭关系代码表(GB/T 4761)" displayName="其他"/>
+            <assignedPerson>
+                <name>谷体胜</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211111183111"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="497679" root="2.16.156.10011.1.3"/>
+            <assignedPerson>
+                <name>高秀芹</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="8" root="2.16.156.10011.1.22"/>
+                                <name>8</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="8" root="2.16.156.10011.1.21"/>
+                                        <name>8</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="31010202" root="2.16.156.10011.1.26"/>
+                                                <name>泌尿外科二组</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="31010202" root="2.16.156.10011.1.27"/>
+                                                        <name>泌尿外科二组</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <title/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="疾病诊断编码"/>
+                            <value code="Q85.903" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="左肾错构瘤" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="34895-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="EDUCATION NOTE"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE09.00.117.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="知情同意书名称"/>
+                            <value xsi:type="ST">其他知情同意书子集-患者签名</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE09.00.116.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="知情同意内容"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="意见章节"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.018.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医疗机构的意见"/>
+                            <value xsi:type="ST">一、医生已告知我患有急性脑梗塞，需要进行急性脑梗塞静脉溶栓治疗。并且已除外以下禁忌症：    1.颅内出血；2.既往有颅内出血史；3.近3个月有重大头颅外伤或卒中史；4.颅内肿瘤、巨大颅内动脉瘤；5.近期（3个月）有颅内或椎管内手术；6.近2周内有大型外科手术；7.近3周内有胃肠或泌尿系统出血；8.活动性内脏出血；9.主动脉弓夹层；10.近l周内有在不易压迫止血部位的动脉穿刺；11.血压升高：收缩压 ≥180mmHg，或舒张压 ≥100mmHg；12.急性出血倾向，包括血小板计数低于100×109/L或其他情况；13.24小时内接受过低分子肝素治疗；14.口服抗凝剂且INR&gt;1.7或PT&gt;15秒；15.48小时内使用凝血酶抑制剂或Ⅹa因子抑制剂，或各种实验室检查异常（如APTT、INR、血小板计数、ECT；TT或Ⅹa因子活性测定等）；16.血糖 &lt;2.8mmol/L或&gt;22.22mmol/L；17.头CT或MRI提示大面积脑梗死（梗死面积&gt;1/3大脑中动脉供血区）。    相对禁忌症：1.轻型非致残性卒中；2.症状迅速改善的卒中；3.惊厥发作后出现的神经功能损害（与此次卒中发生相关）；</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.018.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="患者的意见"/>
+                            <value xsi:type="ST">同意</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

@@ -1,0 +1,663 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../coreschemas/CDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.25"/>
+    <id extension="1002383910023839311C0005" root="2.16.156.10011.1.1"/>
+    <code code="C0005" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>中药处方</title>
+    <effectiveTime value="20211031103634"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10023839" root="2.16.156.10011.1.11"/>
+            <id extension="311" root="2.16.156.10011.1.20"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="370919195909181815" root="2.16.156.10011.1.3"/>
+                <name>李增祥</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <birthTime value="19590918"/>
+                <age unit="岁" value="63"/>
+            </patient>
+            <providerOrganization>
+                <id root="2.16.156.10011.1.26"/>
+                <name>1</name>
+                <asOrganizationPartOf>
+                    <wholeOrganization>
+                        <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                        <name>济南市人民医院</name>
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </providerOrganization>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211030150827"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="Y15QXL" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>亓晓丽</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211030150827"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y15QXL" root="2.16.156.10011.1.4"/>
+            <code displayName="处方开立医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>亓晓丽</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211031103634"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="MZYFWXM" root="2.16.156.10011.1.4"/>
+            <code displayName="处方审核药剂师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>温雪梅</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211031103634"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="SJNQXL" root="2.16.156.10011.1.4"/>
+            <code displayName="处方调配药剂师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>亓晓丽</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211031103634"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="MZYFWXM" root="2.16.156.10011.1.4"/>
+            <code displayName="处方核对药剂师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>温雪梅</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211031103634"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="MZYFWXM" root="2.16.156.10011.1.4"/>
+            <code displayName="处方发药药剂师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>温雪梅</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <component xmlns="">
+        <structuredBody>
+            <component xmlns="urn:hl7-org:v3">
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="西医诊断编码"/>
+                            <value code="I63.900" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="脑梗死" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.130.00" codeSystem="2.16.15.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中医诊断病名代码">
+                                <qualifier>
+                                    <name displayName="中医诊断病名代码"/>
+                                </qualifier>
+                            </code>
+                            <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.130.00" codeSystem="2.16.15.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中医证候代码">
+                                <qualifier>
+                                    <name displayName="中医证候代码"/>
+                                </qualifier>
+                            </code>
+                            <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF MEDICATION USE"/>
+                    <text/>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="40.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*地黄</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="40.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*山萸肉</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*山药</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*麦冬</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="24.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*石斛</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="24.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*牛膝</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="30.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*盐巴戟天</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="30.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*石菖蒲</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*远志</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="60.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*黄芪</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="60.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="12.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*川芎</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="12.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="6.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*全蝎</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="6.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="20.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*肉苁蓉</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="20.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                            <text/>
+                            <routeCode code="1" codeSystem="2.16.156.10011.2.3.1.158" codeSystemName="用药途径代码表" displayName="口服"/>
+                            <doseQuantity unit="g" value="6.00"/>
+                            <rateQuantity unit="1/日">
+                                <translation code="99" displayName="其它"/>
+                            </rateQuantity>
+                            <administrationUnitCode code="99" codeSystem="2.16.156.10011.2.3.1.211" codeSystemName="药物剂型代码表" displayName="其他剂型(空心胶囊,绷带,纱布,胶布)"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <manufacturedLabeledDrug>
+                                        <code/>
+                                        <name>*肉桂</name>
+                                    </manufacturedLabeledDrug>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.043.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物规格"/>
+                                    <value xsi:type="ST">1g</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="药物使用总剂量"/>
+                                    <value unit="g" value="6.00" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.294.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="处方有效天数"/>
+                            <value unit="天" value="0.5" xsi:type="PQ"/>
+                        </observation>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.50.056.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="处方药品组号"/>
+                            <value value="1" xsi:type="INT"/>
+                        </observation>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.50.049.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中药饮片处方"/>
+                            <value xsi:type="ST">无</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.050.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中药饮片剂数"/>
+                                    <value unit="g" value="1" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE08.50.047.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中药煎煮法"/>
+                                    <value xsi:type="ST">水煎服</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.136.00" codeSystem="2.16.156.10011.2.2.1" displayName="中药用药法"/>
+                                    <value xsi:type="ST">口服</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry xmlns="urn:hl7-org:v3">
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.50.032.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="处方类别代码"/>
+                            <value code="1" codeSystem="2.16.156.10011.2.3.2.40" codeSystemName="处方类别代码表" displayName="中药饮片处方" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component xmlns="urn:hl7-org:v3">
+                <section>
+                    <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PAYMENT SOURCES"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE07.00.004.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="处方药品金额"/>
+                            <value currency="元" value="135.9932" xsi:type="MO"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component xmlns="urn:hl7-org:v3">
+                <section>
+                    <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.179.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="处方备注信息"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.300.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="治则治法"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

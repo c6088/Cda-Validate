@@ -1,0 +1,210 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.71"/>
+    <id extension="10024322181C0051" root="2.16.156.10011.1.1"/>
+    <code code="C0051" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>死亡病例讨论记录</title>
+    <effectiveTime value="20211130091147"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10024322" root="2.16.156.10011.1.12"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="41272419830614831X" root="2.16.156.10011.1.3"/>
+                <name>张剑</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <age unit="岁" value="39"/>
+            </patient>
+            <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+                <asOrganizationPartOf classCode="PART">
+                    <effectiveTime value="20211128113300"/>
+                    <wholeOrganization>
+                        <addr>医生办公室</addr>
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </providerOrganization>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20210321190220"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="JZKLF" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>李凤</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <authenticator>
+        <time value="20211128233810"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="JZKLF" root="2.16.156.10011.1.4"/>
+            <code displayName="住院医师"/>
+            <assignedPerson>
+                <name>李凤</name>
+                <professionalTechnicalPosition>
+                    <professionaltechnicalpositionCode code="233" codeSystem="2.16.156.10011.2.3.1.209" codeSystemName="专业技术职务类别代码表" displayName="主治医师"/>
+                </professionalTechnicalPosition>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211128233810"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="JZKLF" root="2.16.156.10011.1.4"/>
+            <code displayName="主治医师"/>
+            <assignedPerson>
+                <name>李凤</name>
+                <professionalTechnicalPosition>
+                    <professionaltechnicalpositionCode code="233" codeSystem="2.16.156.10011.2.3.1.209" codeSystemName="专业技术职务类别代码表" displayName="主治医师"/>
+                </professionalTechnicalPosition>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211128233810"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="JZKLF" root="2.16.156.10011.1.4"/>
+            <code displayName="主任医师"/>
+            <assignedPerson>
+                <name>李凤</name>
+                <professionalTechnicalPosition>
+                    <professionaltechnicalpositionCode code="233" codeSystem="2.16.156.10011.2.3.1.209" codeSystemName="专业技术职务类别代码表" displayName="主治医师"/>
+                </professionalTechnicalPosition>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <participant typeCode="CON">
+        <associatedEntity classCode="ECON">
+            <associatedPerson>
+                <name>杨逢永</name>
+                <name>暴玉振副主任医师，刘丽丽</name>
+                <name>曹斌主治医师，杨帆主管护师，张柄涵</name>
+                <name>刘红娟等护士</name>
+            </associatedPerson>
+        </associatedEntity>
+    </participant>
+    <participant typeCode="ORG">
+        <associatedEntity classCode="ECON">
+            <id root="2.16.156.10011.1.4"/>
+            <code displayName="主持人"/>
+            <associatedPerson>
+                <name>杨逢永副主任医师</name>
+            </associatedPerson>
+        </associatedEntity>
+    </participant>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="1" root="2.16.156.10011.1.22"/>
+                                <name>1</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="1" root="2.16.156.10011.1.21"/>
+                                        <name>1</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="3205" root="2.16.156.10011.1.26"/>
+                                                <name>EICU病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="3205" root="2.16.156.10011.1.27"/>
+                                                        <name>EICU病区</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code displayName="死亡原因"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="直接死亡原因名称"/>
+                            <value xsi:type="ST">脑干出血</value>
+                            <entryRelationship typeCode="CAUS">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.01.021.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="直接死亡原因编码"/>
+                                    <value code="I61.300x002" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="脑干出血" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="死亡诊断名称"/>
+                            <value xsi:type="ST">脑干出血</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.01.021.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="死亡诊断编码"/>
+                                    <value code="I61.300x002" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="脑干出血" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="DE06.00.181.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="死亡讨论记录"/>
+                    <text>    李凤主治医师：患者张剑，男，38岁，因左眼视物不清随即呼之不应2小时于2021-10-26 11:33入院。体征：T36.4℃  P78次/分  R18次/分  BP136/88mmHg 深昏迷，GCS:E1VTM1，双侧瞳孔等大等圆，直径约2mm，对光反射消失，颈部无抵抗，双肺呼吸音粗，未闻及明显干湿性啰音，心率约78次/分，心律齐，心音低，各瓣膜区未及杂音，腹软，肝脾肋下未及，双下肢无水肿。双下肢肌张力低，肌力无法测出，双侧巴氏征未引出。NIHSS评分40 分。颅脑CT（中医院）:脑干出血。    梁志勇副主任医师：据患者病史、查体、造影检查结果，诊断脑干出血明确，入我科时中枢性呼吸衰竭，入我科的目的为机械通气呼吸支持，急诊行机器人辅助下脑干出血钻孔引流术；术后给予脱水降颅压、控制血压，改善脑功能等治疗；对症支持治疗，维持水电解质平衡，防止褥疮、坠积性肺炎、深静脉血栓等并发症；完善各项检查如血常规、生化全项、凝血常规等，定期复查颅脑CT了解病情变化。患者于2021-11-28 18：32血压下降，降至78/62mmhg左右，立即给予间羟胺持续泵入，血压无明显上升。并急查血常规。于18：41给予多巴胺持续泵入维持血压，并给予补液治疗。于18：50给予去甲肾上腺素持续泵入，血压升至90/50mmhg左右。化验结果血红蛋白较上午明显下降，考虑消化道出血。给予奥曲肽持续泵入，并联系输血治疗。于18：57时开始出现心率逐渐下降至30次/分，给予肾上腺素静推后心率升至120次/分左右。于19：13心跳再次下降至30次/分以下，立即给予静脉推注肾上腺素1mg，并持续胸外按压，心率仍进行性下降，再次静脉推注肾上腺素1mg，心率仍进行性下降，2021-11-28 22:43:49心跳停止，再次静脉推注肾上腺素、阿托品，无自主心跳恢复，并向患者家属讲明病情，表示理解，并要求继续积极抢救治疗，于19：50给予萨勃心肺复苏机继续抢救治疗。抢救至2021-11-28 22:09:50时仍无自主心跳恢复，家属要求停止抢救，宣布临床死亡。    杨帆主管护师：患者诊断脑干出血明确，为呼吸支持转入我科，予以机械通气、脱水降颅压等治疗，护理予以气道管理、翻身拍背吸痰、记录出入量等，护理方案得当。</text>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="DE06.00.018.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="主持人总结意见"/>
+                    <text>    杨逢永副主任医师：该患者诊断脑干出血出血明确，入我科时已中枢性呼吸衰竭，深昏迷状态，给予机械通气呼吸支持，急诊行机器人辅助下脑干出血钻孔引流术；术后予以积极脱水降颅压、护脑、促醒、抗感染、维持水电解质平衡等抢救治疗，患者于2021-11-28 18：32血压下降，降至78/62mmhg左右，立即给予间羟胺持续泵入，血压无明显上升。并急查血常规。于18：41给予多巴胺持续泵入维持血压，并给予补液治疗。于18：50给予去甲肾上腺素持续泵入，血压升至90/50mmhg左右。化验结果血红蛋白较上午明显下降，考虑消化道出血。给予奥曲肽持续泵入，并联系输血治疗。于18：57时开始出现心率逐渐下降至30次/分，给予肾上腺素静推后心率升至120次/分左右。于19：13心跳再次下降至30次/分以下，立即给予静脉推注肾上腺素1mg，并持续胸外按压，心率仍进行性下降，再次静脉推注肾上腺素1mg，心率仍进行性下降，2021-11-28 22:43:49心跳停止，再次静脉推注肾上腺素、阿托品，无自主心跳恢复，并向患者家属讲明病情，表示理解，并要求继续积极抢救治疗，于19：50给予萨勃心肺复苏机继续抢救治疗。抢救至2021-11-28 22:09:50时仍无自主心跳恢复，家属要求停止抢救，宣布临床死亡。符合抢救无效死亡流程，患者死亡原因考虑中枢性呼吸、循环衰竭。我们治疗方案得当，死亡诊断：脑干出血，呼吸衰竭，肺炎，消化道出血中枢性呼吸循环衰竭</text>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

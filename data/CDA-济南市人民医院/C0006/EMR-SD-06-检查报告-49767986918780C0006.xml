@@ -1,0 +1,316 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasCDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.26"/>
+    <id extension="49767986918780C0006" root="2.16.156.10011.1.1"/>
+    <code code="C0006" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>检查报告</title>
+    <effectiveTime value="20211109093434"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="497679_8" root="2.16.156.10011.1.11"/>
+            <id extension="497679_8" root="2.16.156.10011.1.12"/>
+            <id extension="6918780" root="2.16.156.10011.1.32"/>
+            <id extension="6918780" root="2.16.156.10011.1.24"/>
+            <id extension="6918780" root="2.16.156.10011.1.14"/>
+            <patientType>
+                <patienttypeCode code="3" codeSystem="2.16.156.10011.2.3.1.271" codeSystemName="患者类型代码表" displayName="住院"/>
+            </patientType>
+            <telecom value="13561710796"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="37091919580319006X" root="2.16.156.10011.1.3"/>
+                <name>高秀芹</name>
+                <administrativeGenderCode code="2" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="女性"/>
+                <age unit="岁" value="64"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211109093434"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="00942" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>赵浩</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211109093434"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="00942" root="2.16.156.10011.1.4"/>
+            <code displayName="审核医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>赵浩</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211109093434"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="00942" root="2.16.156.10011.1.4"/>
+            <code displayName="检查技师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>赵浩</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211109093434"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="00942" root="2.16.156.10011.1.4"/>
+            <code displayName="检查医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>赵浩</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <participant typeCode="PRF">
+        <time/>
+        <associatedEntity classCode="ASSIGNED">
+            <scopingOrganization>
+                <id root="2.16.156.10011.1.26"/>
+                <name>泌尿外科二组</name>
+                <asOrganizationPartOf>
+                    <wholeOrganization>
+                        <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                        <name>济南市人民医院</name>
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </scopingOrganization>
+        </associatedEntity>
+    </participant>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="22" root="2.16.156.10011.1.22"/>
+                                <name>0</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="22" root="2.16.156.10011.1.21"/>
+                                        <name>泌尿外科二组</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="31010202" root="2.16.156.10011.1.26"/>
+                                                <name>泌尿外科二组</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="31010202" root="2.16.156.10011.1.27"/>
+                                                        <name>泌尿外科二组</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="诊断代码"/>
+                            <effectiveTime value="20211109"/>
+                            <value code="Q85.903" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="肾错构瘤" xsi:type="CD"/>
+                            <performer>
+                                <assignedEntity>
+                                    <id/>
+                                    <representedOrganization>
+                                        <name>济南市人民医院</name>
+                                    </representedOrganization>
+                                </assignedEntity>
+                            </performer>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10154-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="CHIEF COMPLAINT"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.119.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="主诉"/>
+                            <value xsi:type="ST">查体发现左肾占位8月余。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.117.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="症状描述"/>
+                            <effectiveTime>
+                                <low value="20211109082901"/>
+                            </effectiveTime>
+                            <value xsi:type="ST">患者于8月前因乳腺癌于我院甲乳外科住院治疗，期间查体彩超发现左肾占位，考虑错构瘤，因无明显不适及乳腺手术及术后化疗等原因，左肾占位未做特殊治疗。今为求进一步诊治入我院。询问患者病史，患者自诉平时无不明原因发热，无明显左侧腰腹部疼痛不适，无尿频、尿急、尿痛，无肉眼血尿，无头痛头晕，无心慌胸闷，无恶心呕吐，无咳嗽咳痰，门诊以“左肾肿瘤”收入我科。自发病以来，患者神志清，精神可，饮食睡眠好，大便正常，体重无显著变化。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="29545-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PHYSICAL EXAMINATION"/>
+                    <text/>
+                    <entry>
+                        <organizer classCode="CLUSTER" moodCode="EVN">
+                            <statusCode/>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.30.019.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查项目代码"/>
+                                    <effectiveTime value="20211109"/>
+                                    <value xsi:type="ST">JCCC0117</value>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE04.50.134.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="标本类别"/>
+                                            <effectiveTime>
+                                                <low value="20211109093434"/>
+                                                <high value="20211109093434"/>
+                                            </effectiveTime>
+                                            <value xsi:type="ST"/>
+                                        </observation>
+                                    </entryRelationship>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE04.50.135.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="标本状态"/>
+                                            <value xsi:type="ST">确认报告</value>
+                                        </observation>
+                                    </entryRelationship>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE08.50.027.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="标本固定液名称"/>
+                                            <value xsi:type="ST">10%甲醛</value>
+                                        </observation>
+                                    </entryRelationship>
+                                </observation>
+                            </component>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.30.017.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查结果代码"/>
+                                    <value code="2" codeSystem="2.16.156.10011.2.3.2.38" codeSystemName="检查/检验结果代码表" displayName="异常" xsi:type="CD"/>
+                                </observation>
+                            </component>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.30.015.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查定量结果"/>
+                                    <value value="0.0000" xsi:type="REAL"/>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE04.30.016.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查定量结果计量单位"/>
+                                            <value xsi:type="ST">cm</value>
+                                        </observation>
+                                    </entryRelationship>
+                                </observation>
+                            </component>
+                        </organizer>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.01.079.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="特殊检查标志"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.027.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查方法名称"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.30.018.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查类别"/>
+                            <value xsi:type="ST">彩超</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="检查报告"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.50.131.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查报告结果-客观所见"/>
+                            <value xsi:type="ST">肝脏大小、形态正常，右叶实质内见一约0.8×0.6cm的囊性回声，内透声可；余实质回声细密增强，后方伴轻度衰减；肝内血管显示欠清，门静脉主干不宽；肝内外胆管不扩张。   
+    胆囊大小、形态正常，壁不厚，内透声可。    
+    胰腺大小、形态正常，实质回声均匀，主胰管无扩张。 
+    脾脏大小、形态正常，实质回声均匀。
+    左肾体积增大，形态欠规则，结构清晰，中份实质内见大小约5.4</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.50.132.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查报告结果-主观提示"/>
+                            <value xsi:type="ST">脂肪肝（中度）
+肝囊肿
+左肾团块，考虑错构瘤
+右肾囊肿</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.10.026.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查报告科室"/>
+                            <value xsi:type="ST">4701</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.10.013.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查报告机构名称"/>
+                            <value xsi:type="ST">济南市人民医院</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.179.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="检查报告备注"/>
+                            <value xsi:type="ST">无</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

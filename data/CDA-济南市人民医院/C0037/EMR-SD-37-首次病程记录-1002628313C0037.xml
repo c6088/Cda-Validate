@@ -1,0 +1,222 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../sdschemas/SDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.57"/>
+    <id extension="1002628313C0037" root="2.16.156.10011.1.1"/>
+    <code code="C0037" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>首次病程记录</title>
+    <effectiveTime value="20211123144624"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10026283" root="2.16.156.10011.1.12"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="370919194605210838" root="2.16.156.10011.1.3"/>
+                <name>李圣合</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <birthTime value="19460521"/>
+                <age unit="岁" value="76"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211123144624"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="GYKQYG" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>亓英国</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211123144624"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="GYKXXS" root="2.16.156.10011.1.4"/>
+            <code displayName="上级医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>谢学升</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211123144624"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="GYKQYG" root="2.16.156.10011.1.4"/>
+            <code displayName="住院医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>亓英国</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="9" root="2.16.156.10011.1.22"/>
+                                <name>9</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="9" root="2.16.156.10011.1.21"/>
+                                        <name>9</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="7201" root="2.16.156.10011.1.26"/>
+                                                <name>脊柱组</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id root="2.16.156.10011.1.27"/>
+                                                        <name>脊柱组</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="10154-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="CHIEF COMPLAINT"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.119.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="主诉"/>
+                            <value xsi:type="ST">腰部疼痛1年，加重伴活动受限5天。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.10.133.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="病例特点"/>
+                            <value xsi:type="ST">    1.患者老年男性，既往糖尿病史。    2.患者约1年前无明显诱因出现腰部疼痛不适，活动时加重，休息时可缓解，疼痛时口服止痛药物、外敷膏药治疗，效果可，于5天前腰痛加重并伴活动受限，患者于家中自行卧床休息，口服药物、外敷膏药治疗，效果差，遂来我院就诊，门诊以“骨质疏松性椎体压缩骨折”收入院，患者自发病以来，一般情况可，神志清，精神可，体温不高，大小便正常，体重无明显变化。    3.体征：体温脉搏呼吸收缩舒张胸8、11、12棘突旁压疼，腰1、腰2棘突叩击痛明显，腰部活动受限，双侧髋关节活动度可，双下肢皮肤感觉及肌力无异常，双侧“4”字试验阴性，双下肢直腿抬高试验阴性，双下肢足背动脉搏动好，病理征未引出。    4.辅助检查：2021-11-19 腰椎CT：胸8、11、12椎体压缩性骨折并胸11椎体椎管狭窄。 胸椎退行性变。 右侧陈旧性肋骨骨折；双肺炎症，肺气肿。 多发腰椎体楔形变，压缩性骨折？腰1椎体水平椎管狭窄。 腰椎退行性变，L3/4、L4/5椎间盘膨出，L4/5椎间盘层面椎管狭窄。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.070.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="诊断依据"/>
+                            <value xsi:type="ST">    1.腰部疼痛1年，加重伴活动受限5天。    2.查体：神志清楚，精神可，查体合作，胸8、11、12棘突旁压疼，腰1、腰2棘突叩击痛明显，腰部活动受限，双侧髋关节活动度可，双下肢皮肤感觉及肌力无异常，双侧“4”字试验阴性，双下肢直腿抬高试验阴性，双下肢足背动脉搏动好，病理征未引出。    3.辅助检查：2021-11-19 腰椎CT：胸8、11、12椎体压缩性骨折并胸11椎体椎管狭窄。 胸椎退行性变。 右侧陈旧性肋骨骨折；双肺炎症，肺气肿。 多发腰椎体楔形变，压缩性骨折？腰1椎体水平椎管狭窄。 腰椎退行性变，L3/4、L4/5椎间盘膨出，L4/5椎间盘层面椎管狭窄。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="初步诊断-西医诊断编码"/>
+                            <value code="T08.x00" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="脊柱骨折" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="鉴别诊断-西医诊断名称"/>
+                            <value xsi:type="ST">脊柱骨折</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="初步诊断-中医病名代码">
+                                <qualifier>
+                                    <name displayName="中医病名代码"/>
+                                </qualifier>
+                            </code>
+                            <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="初步诊断-中医证候代码">
+                                <qualifier>
+                                    <name displayName="中医证候代码"/>
+                                </qualifier>
+                            </code>
+                            <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.10.172.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="鉴别诊断-中医病名名称">
+                                <qualifier>
+                                    <name displayName="中医病名名称"/>
+                                </qualifier>
+                            </code>
+                            <value xsi:type="ST">其他证</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE04.10.188.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="鉴别诊断-中医证候名称">
+                                <qualifier>
+                                    <name displayName="中医证候名称"/>
+                                </qualifier>
+                            </code>
+                            <value xsi:type="ST">其他证</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.028.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中医“四诊”观察结果"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="诊疗计划"/>
+                            <value xsi:type="ST">    1.入院骨科护理常规，医护同时查看病人，指导患者入院时进行踝泵功能训练，600次/天，股四头肌肌力训练，200次/天，预防肌肉萎缩及下肢血栓。    2.完善相关检查，对症及支持治疗，必要时请相关科室会诊，协助治疗。    3.向患者及家属说明相关情况，患者及家属积极配合。    4.嘱病人卧床休息为主，给予药物对症治疗，密切注意病情变化。    5.向谢学升主任医师汇报病情，指导下一步诊疗方案。                                                    医生签名：</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.300.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="治则治法"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

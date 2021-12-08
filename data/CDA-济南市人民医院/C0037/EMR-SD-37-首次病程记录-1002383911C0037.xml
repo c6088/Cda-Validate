@@ -1,0 +1,222 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../sdschemas/SDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.57"/>
+    <id extension="1002383911C0037" root="2.16.156.10011.1.1"/>
+    <code code="C0037" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>首次病程记录</title>
+    <effectiveTime value="20211021083525"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10023839" root="2.16.156.10011.1.12"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="370919195909181815" root="2.16.156.10011.1.3"/>
+                <name>李增祥</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <birthTime value="19590918"/>
+                <age unit="岁" value="63"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211021083525"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="Y15LYH" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>刘烨辉</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211021083525"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="SJN2SFY" root="2.16.156.10011.1.4"/>
+            <code displayName="上级医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>宋方禹</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211021083525"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y15LYH" root="2.16.156.10011.1.4"/>
+            <code displayName="住院医师"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>刘烨辉</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="1" root="2.16.156.10011.1.22"/>
+                                <name>1</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="1" root="2.16.156.10011.1.21"/>
+                                        <name>1</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="210404" root="2.16.156.10011.1.26"/>
+                                                <name>康复医学二科病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id root="2.16.156.10011.1.27"/>
+                                                        <name>康复医学二科病区</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="10154-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="CHIEF COMPLAINT"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.119.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="主诉"/>
+                            <value xsi:type="ST">头晕、言语不清5天，左侧肢体活动无力1天。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.10.133.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="病例特点"/>
+                            <value xsi:type="ST">   1.患者老年男性，既往“高血压病”7-8年，血压最高160/100mmHg,近期服用“吲达帕胺”药物治疗，未规律监测及控制血压；“前列腺肥大”史；“脑供血不足”病史，近年来间断服用“氟桂利嗪”治疗。“左上肢不自主抖动10余年，近1-2年来运动迟缓”，未治疗；   2.急性起病。因头晕、言语不清4-5天，肢体活动不灵1天入院，左侧明显；   3.查体：BP116/84mmHg，神志清楚，言语不清（1分），查体合作，双侧瞳孔等大等圆，直径3mm，光反应灵敏，双眼球活动自如，双侧额纹对称，双侧鼻唇沟对称，伸舌居中，颈软，心肺听诊未见明显异常，左侧肢体肌力4级（左下肢1分），右侧肢体肌力5级，肌张力双侧增高，双侧腱反射正常，双侧病理征阴性，克氏征及布氏征阴性；感觉系统大致正常；共济运动：指鼻试验稳准，闭目难立征：卧床未查。NIHSS评分2分；洼田饮水试验1级；住院患者VTE风险评估(Padua评分) 1分。   4.辅助检查：颅脑CT（2021-10-20，本院）脑内多发梗死灶。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.070.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="诊断依据"/>
+                            <value xsi:type="ST"> 1.患者老年男性，既往“高血压病”“前列腺肥大”“脑供血不足”病史。“左上肢不自主抖动10余年，近1-2年来运动迟缓”，未治疗；   2.急性起病。因头晕、言语不清4-5天，肢体活动不灵1天入院，左侧明显；   3.查体：BP116/84mmHg，神志清楚，言语不清（1分），查体合作，左侧肢体肌力4级（左下肢1分），肌张力双侧增高。NIHSS评分2分。   4.辅助检查：颅脑CT：脑内多发梗死灶。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="初步诊断-西医诊断编码"/>
+                            <value code="I63.900" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="脑梗死" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="鉴别诊断-西医诊断名称"/>
+                            <value xsi:type="ST">脑梗死</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="初步诊断-中医病名代码">
+                                <qualifier>
+                                    <name displayName="中医病名代码"/>
+                                </qualifier>
+                            </code>
+                            <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="初步诊断-中医证候代码">
+                                <qualifier>
+                                    <name displayName="中医证候代码"/>
+                                </qualifier>
+                            </code>
+                            <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.10.172.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="鉴别诊断-中医病名名称">
+                                <qualifier>
+                                    <name displayName="中医病名名称"/>
+                                </qualifier>
+                            </code>
+                            <value xsi:type="ST">其他证</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE04.10.188.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="鉴别诊断-中医证候名称">
+                                <qualifier>
+                                    <name displayName="中医证候名称"/>
+                                </qualifier>
+                            </code>
+                            <value xsi:type="ST">其他证</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.028.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中医“四诊”观察结果"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="GOL">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="诊疗计划"/>
+                            <value xsi:type="ST">1.卧床休息，低盐低脂饮食，避免情绪激动，戒烟限酒，注意监测控制血压；   2.抗血小板聚集、调脂、营养神经、改善运动症状及对症支持等治疗；   3.依据脑梗死临床路径管理完善相关辅助检查：血常规、尿常规、凝血常规、生化全项、  脑血管评估、心电图等；   4.患者住院期间有心脑卒中复发及病情进展加重可能，向患者家属讲明，取得理解；   5.请示宋方禹主任医师，指导并同意目前诊疗计划。                                                    医生签名：</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.300.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="治则治法"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

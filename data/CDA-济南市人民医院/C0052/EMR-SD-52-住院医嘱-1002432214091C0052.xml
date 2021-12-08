@@ -1,0 +1,219 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.72"/>
+    <id extension="1002432214091C0052" root="2.16.156.10011.1.1"/>
+    <code code="C0052" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>住院医嘱</title>
+    <effectiveTime value="20211111095134"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="100243221" root="2.16.156.10011.1.12"/>
+            <telecom value="18363490708"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="41272419830614831X" root="2.16.156.10011.1.3"/>
+                <name>张剑</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <age unit="岁" value="39"/>
+            </patient>
+            <providerOrganization>
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </providerOrganization>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211111094330"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="FYJZLZY" root="2.16.156.10011.1.7"/>
+            <code displayName="医嘱开立者"/>
+            <assignedPerson>
+                <name>梁志勇</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf typeCode="COMP">
+        <encompassingEncounter classCode="ENC" moodCode="EVN">
+            <code/>
+            <effectiveTime/>
+            <location typeCode="LOC">
+                <healthCareFacility classCode="SDLOC">
+                    <serviceProviderOrganization classCode="ORG" determinerCode="INSTANCE">
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="1" root="2.16.156.10011.1.22"/>
+                                <name>1</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="1" root="2.16.156.10011.1.21"/>
+                                        <name>1</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="3205" root="2.16.156.10011.1.27"/>
+                                                <name>EICU病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="3205" root="2.16.156.10011.1.26"/>
+                                                        <name>EICU病区</name>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="VITAL SIGNS"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.188.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="体重"/>
+                            <value unit="kg" value="70" xsi:type="PQ"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="46209-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Provider Orders"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.286.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医嘱类别"/>
+                            <value code="2" codeSystem="2.16.156.10011.2.3.2.58" codeSystemName="医嘱类别代码表" displayName="临时医嘱" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <organizer classCode="CLUSTER" moodCode="EVN">
+                            <statusCode/>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.289.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医嘱项目类型"/>
+                                    <value code="02" codeSystem="2.16.156.10011.2.3.1.268" codeSystemName="医嘱项目类型代码表" displayName="检查类医嘱" xsi:type="CD"/>
+                                </observation>
+                            </component>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE06.00.288.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医嘱项目内容"/>
+                                    <effectiveTime>
+                                        <low value="20211111094330"/>
+                                        <high value="20211111094330"/>
+                                    </effectiveTime>
+                                    <value xsi:type="ST">电解质作废</value>
+                                    <author>
+                                        <time value="20211111095122"/>
+                                        <assignedAuthor>
+                                            <id extension="FYJZLZY" root="2.16.156.10011.1.4"/>
+                                            <code displayName="医嘱开立者"/>
+                                            <assignedPerson>
+                                                <name>梁志勇</name>
+                                            </assignedPerson>
+                                            <representedOrganization>
+                                                <name>EICU病区</name>
+                                            </representedOrganization>
+                                        </assignedAuthor>
+                                    </author>
+                                    <participant typeCode="ATND">
+                                        <time value="20211111095122"/>
+                                        <participantRole classCode="ASSIGNED">
+                                            <id extension="刘洪娟" root="2.16.156.10011.1.4"/>
+                                            <code displayName="医嘱审核人"/>
+                                            <playingEntity classCode="PSN" determinerCode="INSTANCE">
+                                                <name>梁志勇</name>
+                                            </playingEntity>
+                                        </participantRole>
+                                    </participant>
+                                    <participant typeCode="ATND">
+                                        <time value="20211111095122"/>
+                                        <participantRole classCode="ASSIGNED">
+                                            <id extension="20367" root="2.16.156.10011.1.4"/>
+                                            <code displayName="医嘱核对人"/>
+                                            <playingEntity classCode="PSN" determinerCode="INSTANCE">
+                                                <name>刘洪娟</name>
+                                            </playingEntity>
+                                        </participantRole>
+                                    </participant>
+                                    <participant typeCode="ATND">
+                                        <time value="20211111155201"/>
+                                        <participantRole classCode="ASSIGNED">
+                                            <id extension="FYJZLZY" root="2.16.156.10011.1.4"/>
+                                            <code displayName="医嘱取消人"/>
+                                            <playingEntity classCode="PSN" determinerCode="INSTANCE">
+                                                <name>梁志勇</name>
+                                            </playingEntity>
+                                        </participantRole>
+                                    </participant>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE06.00.179.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="-"/>
+                                            <value xsi:type="ST">-</value>
+                                        </observation>
+                                    </entryRelationship>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE06.00.290.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医嘱执行状态"/>
+                                            <value xsi:type="ST">4</value>
+                                            <performer>
+                                                <time value=""/>
+                                                <assignedEntity>
+                                                    <id extension="20367" root="2.16.156.10011.1.4"/>
+                                                    <code displayName="医嘱执行者"/>
+                                                    <assignedPerson>
+                                                        <name>刘洪娟</name>
+                                                    </assignedPerson>
+                                                    <representedOrganization>
+                                                        <name/>
+                                                    </representedOrganization>
+                                                </assignedEntity>
+                                            </performer>
+                                        </observation>
+                                    </entryRelationship>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE01.00.008.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="电子申请单编号"/>
+                                            <value xsi:type="ST">4091</value>
+                                        </observation>
+                                    </entryRelationship>
+                                    <entryRelationship typeCode="COMP">
+                                        <observation classCode="OBS" moodCode="EVN">
+                                            <code code="DE08.50.056.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="处方药品组号"/>
+                                            <value xsi:type="ST">409</value>
+                                        </observation>
+                                    </entryRelationship>
+                                </observation>
+                            </component>
+                        </organizer>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

@@ -1,0 +1,315 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.55"/>
+    <id extension="1002605215C0035" root="2.16.156.10011.1.1"/>
+    <code code="C0035" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>24h内入出院记录</title>
+    <effectiveTime value=""/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10026052_1" root="2.16.156.10011.1.12"/>
+            <addr use="H">
+                <houseNumber>-</houseNumber>
+                <streetName>-</streetName>
+                <township>博山镇下瓦泉村</township>
+                <county>莱芜区</county>
+                <city>济南市</city>
+                <state>山东省</state>
+            </addr>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="370304198904212228" root="2.16.156.10011.1.3"/>
+                <name>李珍</name>
+                <administrativeGenderCode code="2" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="女性"/>
+                <maritalStatusCode code="20" codeSystem="2.16.156.10011.2.3.3.5" codeSystemName="婚姻状况代码表(GB/T 2261.2)" displayName="已婚"/>
+                <ethnicGroupCode code="01" codeSystem="2.16.156.10011.2.3.3.3" codeSystemName="民族类别代码表(GB 3304)" displayName="汉族"/>
+                <age unit="岁" value="33"/>
+                <occupation>
+                    <occupationCode code="24" codeSystem="2.16.156.10011.2.3.3.13" codeSystemName="从业状况(个人身体)代码表(GB/T 2261.4)" displayName="工人"/>
+                </occupation>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211118200038"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="Y18HN" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>何宁</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211118200038"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y16WMQ" root="2.16.156.10011.1.4"/>
+            <code displayName="主任医师"/>
+            <assignedPerson>
+                <name>吴茂勤</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211118200038"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+            <code displayName="主治医师"/>
+            <assignedPerson>
+                <name>何宁</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211118200038"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+            <code displayName="出院医嘱开立人"/>
+            <assignedPerson>
+                <name>何宁</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211118200038"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+            <code displayName="住院医师"/>
+            <assignedPerson>
+                <name>何宁</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211118200038"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y18HN" root="2.16.156.10011.1.4"/>
+            <code displayName="接诊医师"/>
+            <assignedPerson>
+                <name>何宁</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime>
+                <low value="20211116100130"/>
+                <high value="20211116111208"/>
+            </effectiveTime>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="10164-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PRESENT ILLNESS"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.071.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="现病史"/>
+                            <value xsi:type="ST">孕妇平素月经规律，周期28天，经期5天。末次月经：2021-2-2，预产期：2021-11-09。孕期经过顺利，早孕反应不明显，孕4月余自感胎动至今。孕期唐筛、胎儿系统彩超及心脏彩超、OGTT均自述无明显异常（以上检查结果均未携带），患者今晨4点出现阵发性下腹痛，5点出现自然破膜，6:40于120平车入产房，阴道检查宫口近开全，胎心可，7:23顺娩一男婴，拒绝办理住院手续，上报医务科后，再次充分沟通后于10:08办理住院，产妇目前一般情况好，宫缩良好，阴道流血不多。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10154-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="CHIEF COMPLAINT"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.119.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="主诉"/>
+                            <value xsi:type="ST">足月顺产产后2+小时。 </value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROBLEM LIST"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.143.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="陈述内容可靠标志"/>
+                            <value value="true" xsi:type="BL"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.118.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="症状名称"/>
+                            <value xsi:type="ST">分娩时Ⅰ度会阴裂伤</value>
+                            <entryRelationship inversionInd="false" typeCode="SUBJ">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.01.117.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="症状描述"/>
+                                    <value xsi:type="ST">患者目前已经顺娩，宫缩良好，阴道流血不多。新生儿一般状态可。</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.028.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="中医“四诊”观察结果"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="46241-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HOSPITAL ADMISSION DX"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院诊断-西医诊断名称"/>
+                            <value xsi:type="ST">分娩时Ⅰ度会阴裂伤</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院诊断-西医诊断编码"/>
+                                    <value code="O70.000" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="分娩时Ⅰ度会阴裂伤" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.172.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院诊断-中医病名名称"/>
+                            <value xsi:type="ST">其他证</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院诊断-中医病名代码"/>
+                                    <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.172.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院诊断-中医证候名称"/>
+                                    <value xsi:type="ST">其他证</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院诊断-中医证候代码"/>
+                                    <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="INT">
+                            <code code="DE06.00.300.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="治则治法"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="8648-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HOSPITAL COURSE"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.296.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="诊疗过程描述"/>
+                            <value xsi:type="ST">6:40于120平车入产房，阴道检查宫口近开全，胎心可，7:23顺娩一男婴，1分钟、5分钟评分10分，体重4200g，产妇拒绝办理住院手续，上报医务科后，再次进行充分沟通后于10:08办理住院，拒绝抽血检查，拒绝新生儿听力筛查、新生儿疫苗接种等，产妇目前一般情况好，宫缩良好，阴道流血不多。坚决要求出院，自愿承担相应后果，签字离院。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.193.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院情况"/>
+                            <value xsi:type="ST">孕妇一般情况好，阴道少量出血，宫缩良好，余无不适。新生儿一般状态良好。</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.148.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="入院情况"/>
+                            <value xsi:type="ST">孕妇平素月经规律，周期28天，经期5天。末次月经：2021-2-2，预产期：2021-11-09。孕期经过顺利，早孕反应不明显，孕4月余自感胎动至今。孕期唐筛、胎儿系统彩超及心脏彩超、OGTT均自述无明显异常（以上检查结果均未携带），患者今晨4点出现阵发性下腹痛，5点出现自然破膜，6:40于120平车入产房，阴道检查宫口近开全，胎心可，7:23顺娩一男婴，拒绝办理住院手续，上报医务科后，于10:08办理住院，产妇目前一般情况好，宫缩良好，阴道流血不多。既往史：一般健康状况（良好） 无高血压、糖尿病，无肝炎、结核等传染病史，否认药物及食物过敏史，无输血史，无手术史，预防接种史不详，2020年顺娩一男婴，体重3700g，否认流产引产史，丈夫健康情况良好。 </value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11535-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Discharge Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院诊断-西医诊断名称"/>
+                            <value xsi:type="ST">妊娠合并巨大儿</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院诊断-西医诊断编码"/>
+                                    <value code="O36.601" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="妊娠合并巨大儿" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.172.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院诊断-中医病名名称"/>
+                            <value xsi:type="ST">其他证</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院诊断-中医病名代码"/>
+                                    <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.172.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院诊断-中医证候名称"/>
+                                    <value xsi:type="ST">其他证</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.130.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院诊断-中医证候代码"/>
+                                    <value code="ZVV000" codeSystem="2.16.156.10011.2.3.3.14" codeSystemName="中医病证分类与代码表( GB/T 15657)" displayName="其他证" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="46209-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="PROVIDER ORDERS"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="RQO">
+                            <code code="DE06.00.287.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="出院医嘱"/>
+                            <effectiveTime value="20211118200038"/>
+                            <value xsi:type="ST">注意宫缩情况及阴道流血情况。                                                    医生签名：</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

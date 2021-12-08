@@ -1,0 +1,169 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.59"/>
+    <id extension="10021762210C0039" root="2.16.156.10011.1.1"/>
+    <code code="C0039" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>上级医师查房记录</title>
+    <effectiveTime value="20211101111134"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10021762" root="2.16.156.10011.1.12"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="370919195405130811" root="2.16.156.10011.1.3"/>
+                <name>张正军</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <birthTime value="19540513"/>
+                <age unit="岁" value="68"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211101111134"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="ZLKGCH" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>谷翠华</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211101111134"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="SSWWSC" root="2.16.156.10011.1.4"/>
+            <code displayName="主任医师签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>魏胜超</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211101111134" xsi:type="TS"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="ZLKGCH" root="2.16.156.10011.1.4"/>
+            <code displayName="记录人签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>谷翠华</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211101111134"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="ZLKGCH" root="2.16.156.10011.1.4"/>
+            <code displayName="主治医师签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>谷翠华</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime value="20211101111134" xsi:type="IVL_TS"/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="0" root="2.16.156.10011.1.22"/>
+                                <name>0</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="0" root="2.16.156.10011.1.21"/>
+                                        <name>0</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="" root="2.16.156.10011.1.26"/>
+                                                <name>-</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="" root="2.16.156.10011.1.27"/>
+                                                        <name>-</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="51848-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Assessment note"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.181.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="查房记录"/>
+                            <value xsi:type="ST">今日查房，患者行肠镜检查，目前口服药物清洁灌肠中，诉近几日无恶心、呕吐，腹痛减轻，无明显腹胀，仍偶有腹部起包块，气体通过感，无咳嗽，偶有咳痰，咳少许白痰，无黄痰、咯血、发热，无明显胸闷、喘憋，无胸痛，无头痛、头晕，无明显乏力、纳差，睡眠可，大小便无异常，肛门排气可。查体基本同前。复查血常规、生化：2021-11-01无明显异常。亓久德主任医师查房后组织科室讨论：患者目前诊断考虑结肠癌并左肺转移，合并原发性肺癌不除外，上次住院时诊断为肺腺癌并肺转移，给予化疗。目前就诊治是否合理进行讨论。罗丽芳住院医师：患者右肺门占位，考虑原发性肺癌可能性大，一般肺门占位中央型肺癌一般不为腺癌，建议右肺门占位穿刺活检，进一步明确有无原发性肺癌的情况。郭晓青主治医师：回顾患者上次住院，大便潜血阴性，CT示右肺门及纵隔淋巴结、肺转移。左肺占位穿刺活检示腺癌。当时腹部CT未见肠道占位，因此诊断为肺腺癌并肺转移诊断成立，当时家属愿意积极治疗，基因检查示EGFR等无突变，给予AC方案化疗，整个过程符合诊疗规范。目前免疫组化结果回示：左肺占位：腺癌，结合免疫组化考虑肠道来源。建议继续完善肠镜检查明确病理诊断。施明亮主治医师：患者CT示右肺门并双肺多发转移，纵隔淋巴结转移。上周期左肺占位穿刺病理：结合免疫组化，考虑为转移性腺癌，考虑来源肠道。当时我们遵肺腺癌并肺转移，IV期肺癌治疗，给予培美曲塞+卡铂化疗。给予我们的提醒：病人首次诊断是否需行PET-CT检查，多处活检应能检则检，进行MDT前是否需出来免疫组化。我们应该根据病人情况，做到最好。亓久德主任医师：根据患者症状、体征、辅助检查，患者当时诊断肺腺癌并肺转移诊断无异议。目前诊断不除外结肠癌并肺原发肿瘤。目前确诊的是结肠腺癌并肺转移，为初始不可切除转移性结肠癌，无法手术治疗，以全身系统治疗为主，对病人未造成损害。下一步继续完善胃肠镜，右肺门病灶尽可能再行穿刺活检，明确病理诊断，指导治疗。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="INT ">
+                            <code code="DE05.01.025.00" displayName="诊疗计划"/>
+                            <value xsi:type="ST">诊疗计划</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="INT">
+                            <code code="DE05.10.131.00" displayName="辩证论治"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="46209-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Provider Orders"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.287.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医嘱内容"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

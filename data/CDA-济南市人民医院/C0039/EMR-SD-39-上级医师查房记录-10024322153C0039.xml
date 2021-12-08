@@ -1,0 +1,169 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.59"/>
+    <id extension="10024322153C0039" root="2.16.156.10011.1.1"/>
+    <code code="C0039" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>上级医师查房记录</title>
+    <effectiveTime value="20211115151829"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="10024322" root="2.16.156.10011.1.12"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="41272419830614831X" root="2.16.156.10011.1.3"/>
+                <name>张剑</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <birthTime value="19830614"/>
+                <age unit="岁" value="39"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211115151829"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="Y17LL" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>刘亮</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="20211115151829"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="JZKLF" root="2.16.156.10011.1.4"/>
+            <code displayName="主任医师签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>李凤</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <authenticator>
+        <time value="20211115151829" xsi:type="TS"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="Y17LL" root="2.16.156.10011.1.4"/>
+            <code displayName="记录人签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>刘亮</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <authenticator>
+        <time value="20211115151829"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="JZKLF" root="2.16.156.10011.1.4"/>
+            <code displayName="主治医师签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>李凤</name>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <effectiveTime value="20211115151829" xsi:type="IVL_TS"/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="1" root="2.16.156.10011.1.22"/>
+                                <name>1</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="1" root="2.16.156.10011.1.21"/>
+                                        <name>1</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="3205" root="2.16.156.10011.1.26"/>
+                                                <name>EICU病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="3205" root="2.16.156.10011.1.27"/>
+                                                        <name>EICU病区</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="51848-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Assessment note"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.181.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="查房记录"/>
+                            <value xsi:type="ST">患者神志昏迷，气管切开套管接呼吸机辅助呼吸（A/C模式），血氧饱和度98%以上，无发热，今日体温最高36.3℃（冰毯冰帽物理降温），偶有肢体抽搐，24小时入出量5186/3724ml，查体：BP：141/71mHg，昏迷状态，GCS:E1VTM1，双侧瞳孔不等大，右侧直径约3mm，左侧直径约2mm，对光反射消失，双肺呼吸音粗，可闻及湿性啰音，心音可，心率129次/分，律规整，未及明显杂音，腹软，肝脾肋下未及，双下肢无水肿。肢体强直状态，肌无法测出，双侧巴氏征未引出。凝血五项( 2021-11-15) 结果：D-二聚体测定：3.55ug/ml；肾功(干化学法)+血糖(干化学法)+电解质(干化学法)+心肌酶谱(干化学法)( 2021-11-15) 结果：谷草转氨酶：1481U/L；谷丙转氨酶：255U/L；总蛋白：41g/L；白蛋白（溴甲酚绿）：24g/L；球蛋白：17；尿素：8.6mmol/L；钙：1.82mmol/L；乳酸脱氢酶：3568u/l；肌酸激酶同功酶：671U/L；肌酸激酶：39334U/L；渗透压：288mosm/kg；阴离子间隙：7；钠：133mmol/L；梁志勇副主任医师查房分析：患者复查肌酸激酶明显升高,考虑与患者全身抽搐及感染因素有关,今日继续给予血液滤过治疗。患者未再发热，炎性指标较前下降，提示抗感染治疗有效，继续当前抗感染方案、化痰祛痰、营养脑神经促醒、保肝、控制癫痫、稳定内环境及营养等治疗，加强气道管理，患者目前存在多脏器功能损伤，病情危重，预后极差。生存希望渺茫，密切监测各项生命体征变化，及时与家属沟通，积极抢救。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="INT ">
+                            <code code="DE05.01.025.00" displayName="诊疗计划"/>
+                            <value xsi:type="ST">诊疗计划</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="INT">
+                            <code code="DE05.10.131.00" displayName="辩证论治"/>
+                            <value xsi:type="ST">-</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="46209-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Provider Orders"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.287.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="医嘱内容"/>
+                            <value xsi:type="ST"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

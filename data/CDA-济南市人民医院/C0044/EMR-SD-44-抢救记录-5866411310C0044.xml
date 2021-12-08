@@ -1,0 +1,213 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..sdschemasSDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.64"/>
+    <id extension="5866411310C0044" root="2.16.156.10011.1.1"/>
+    <code code="C0044" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>抢救记录</title>
+    <effectiveTime value="20211102191219"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id extension="586641_13" root="2.16.156.10011.1.12"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id extension="37091919700510711X" root="2.16.156.10011.1.3"/>
+                <name>燕文峰</name>
+                <administrativeGenderCode code="1" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)" displayName="男性"/>
+                <birthTime value="19700510"/>
+                <age unit="岁" value="52"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author contextControlCode="OP" typeCode="AUT">
+        <time value="20211102191219"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id extension="HXNLS" root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>刘爽</name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                <name>济南市人民医院</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <authenticator>
+        <time value="20211102191219"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id extension="HXNLS" root="2.16.156.10011.1.4"/>
+            <code displayName="医师签名"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <name>刘爽</name>
+                <professionalTechnicalPosition>
+                    <professionaltechnicalpositionCode code="233" codeSystem="2.16.156.10011.2.3.1.209" codeSystemName="专业技术职务类别代码表" displayName="主治医师"/>
+                </professionalTechnicalPosition>
+            </assignedPerson>
+        </assignedEntity>
+    </authenticator>
+    <participant typeCode="CON">
+        <associatedEntity classCode="ECON">
+            <associatedPerson>
+                <name>参加抢救人员名单</name>
+            </associatedPerson>
+        </associatedEntity>
+    </participant>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument>
+            <id/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <componentOf>
+        <encompassingEncounter>
+            <code displayName="入院日期时间"/>
+            <effectiveTime value="20211102090432" xsi:type="IVL_TS"/>
+            <location>
+                <healthCareFacility>
+                    <serviceProviderOrganization>
+                        <asOrganizationPartOf classCode="PART">
+                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                <id extension="13" root="2.16.156.10011.1.22"/>
+                                <name>13</name>
+                                <asOrganizationPartOf classCode="PART">
+                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                        <id extension="13" root="2.16.156.10011.1.21"/>
+                                        <name>13</name>
+                                        <asOrganizationPartOf classCode="PART">
+                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                <id extension="210101" root="2.16.156.10011.1.26"/>
+                                                <name>呼吸内二科病区</name>
+                                                <asOrganizationPartOf classCode="PART">
+                                                    <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                        <id extension="210101" root="2.16.156.10011.1.27"/>
+                                                        <name>呼吸内二科病区</name>
+                                                        <asOrganizationPartOf classCode="PART">
+                                                            <wholeOrganization classCode="ORG" determinerCode="INSTANCE">
+                                                                <id extension="49438123-6" root="2.16.156.10011.1.5"/>
+                                                                <name>济南市人民医院</name>
+                                                            </wholeOrganization>
+                                                        </asOrganizationPartOf>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </wholeOrganization>
+                                        </asOrganizationPartOf>
+                                    </wholeOrganization>
+                                </asOrganizationPartOf>
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </serviceProviderOrganization>
+                </healthCareFacility>
+            </location>
+        </encompassingEncounter>
+    </componentOf>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="29548-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE05.01.025.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="疾病诊断名称"/>
+                            <value xsi:type="ST">肺占位性病变</value>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.01.024.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="疾病诊断编码"/>
+                                    <value code="R91.x03" codeSystem="2.16.156.10011.2.3.3.11" codeSystemName="ICD-10" displayName="肺占位性病变" xsi:type="CD"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.134.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="病情变化情况"/>
+                            <value xsi:type="ST"> 患者于11：30左右出现呼之不应，瞳孔散大固定，呼吸浅慢，与患者家属沟通,患者生命即将终结,家属表示对病情理解,拒绝心肺复苏,气管插管等抢救措施,嘱持续静滴多巴胺，于11：45出现呼吸停止，心率下降，11：48行心电图检查呈直线，宣布临床死亡。患者妻子及其姐弟在场,对此无异议,拒绝尸检。</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="TREATMENT PLAN"/>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN ">
+                            <code code="DE09.00.119.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="注意事项"/>
+                            <value xsi:type="ST">                                                    医生签名：</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PROCEDURES"/>
+                    <text/>
+                    <entry>
+                        <procedure classCode="PROC" moodCode="EVN">
+                            <code code="99.9900" codeSystem="2.16.156.10011.2.3.3.12" codeSystemName="手术(操作)代码表(ICD-9-CM)" displayName="其他各类操作"/>
+                            <statusCode/>
+                            <targetSiteCode codeSystem="2.16.156.10011.2.3.1.266" codeSystemName="操作部位代码表" displayName="无"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN ">
+                                    <code code="DE06.00.094.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="手术及操作名称"/>
+                                    <value xsi:type="ST">其他各类操作</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS " moodCode="EVN ">
+                                    <code code="DE08.50.037.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="介入物名称"/>
+                                    <value xsi:type="ST"> 患者于11：30左右出现呼之不应，瞳孔散大固定，呼吸浅慢，与患者家属沟通,患者生命即将终结,家属表示对病情理解,拒绝心肺复苏,气管插管等抢救措施,嘱持续静滴多巴胺，于11：45出现呼吸停止，心率下降，11：48行心电图检查呈直线，宣布临床死亡。患者妻子及其姐弟在场,对此无异议,拒绝尸检。</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN ">
+                                    <code code="DE06.00.251.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="操作方法"/>
+                                    <value xsi:type="ST"> 患者于11：30左右出现呼之不应，瞳孔散大固定，呼吸浅慢，与患者家属沟通,患者生命即将终结,家属表示对病情理解,拒绝心肺复苏,气管插管等抢救措施,嘱持续静滴多巴胺，于11：45出现呼吸停止，心率下降，11：48行心电图检查呈直线，宣布临床死亡。患者妻子及其姐弟在场,对此无异议,拒绝尸检。</value>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP ">
+                                <observation classCode="OBS" moodCode="EVN ">
+                                    <code code="DE06.00.250.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="操作次数"/>
+                                    <value unit="次" value="1" xsi:type="PQ"/>
+                                </observation>
+                            </entryRelationship>
+                        </procedure>
+                    </entry>
+                    <entry>
+                        <procedure classCode="ACT" moodCode="EVN ">
+                            <code code="DE06.00.094.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="抢救措施"/>
+                            <text xsi:type="ST"> 患者于11：30左右出现呼之不应，瞳孔散大固定，呼吸浅慢，与患者家属沟通,患者生命即将终结,家属表示对病情理解,拒绝心肺复苏,气管插管等抢救措施,嘱持续静滴多巴胺，于11：45出现呼吸停止，心率下降，11：48行心电图检查呈直线，宣布临床死亡。患者妻子及其姐弟在场,对此无异议,拒绝尸检。</text>
+                        </procedure>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.221.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="抢救开始日期时间"/>
+                            <value value="20211102113000" xsi:type="TS"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.218.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="抢救结束日期时间"/>
+                            <value value="20211102111800" xsi:type="TS"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="STUDIES SUMMARY"/>
+                    <text/>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>
