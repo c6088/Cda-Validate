@@ -200,13 +200,13 @@ public class XsdValidateRegexApplication {
 
         HealthElementDirectory healthElementDirectory = DE_CODE_DICT.get(de_code);
         String deName = healthElementDirectory.getDeName();
-        if (
-//                "引用型".equals(healthElementDirectory.getDeDataValuetype()) ||
-                "枚举型".equals(healthElementDirectory.getDeDataValuetype())
-        ) {
-            //printLog("数据元【" + de_code + "】【" + deName + "】暂不进行字典验证!");
-            return;
-        }
+//        if (
+////                "引用型".equals(healthElementDirectory.getDeDataValuetype()) ||
+//                "枚举型".equals(healthElementDirectory.getDeDataValuetype())
+//        ) {
+//            //printLog("数据元【" + de_code + "】【" + deName + "】暂不进行字典验证!");
+//            return;
+//        }
 
         switch (healthElementDirectory.getDeDatatype()) {
             case "D":
@@ -236,7 +236,7 @@ public class XsdValidateRegexApplication {
                     }
                 } else {
                     try {
-                        Date date = format_date_dt14.parse(value);
+                        Date date = format_str_dt15.parse(value);
                     } catch (ParseException e) {
                         printLog("数据元【" + de_code + "】【" + deName + "】格式【" + healthElementDirectory.getDeDatatypeDescription() + "】不是标准的日期!【" + value + "】");
                         return;
@@ -332,13 +332,15 @@ public class XsdValidateRegexApplication {
                 }
                 break;
             case "S2":
-                //枚举型数据
-                break;
             case "S3":
                 //引用型数据
                 String dictcode = healthElementDirectory.getDeDataValues();
-                if (!CDA_DICT.containsKey(dictcode)) {
-                    printLog("数据元【" + de_code + "】【" + deName + "】无对应字典信息【" + dictcode + "】");
+                if (CDA_DICT.containsKey(dictcode)) {
+
+                } else if (CDA_DICT.containsKey(de_code)) {
+                    dictcode = de_code;
+                } else {
+                    printLog("数据元【" + de_code + "】【" + deName + "】无对应字典信息【" + de_code + "/" + dictcode + "】");
                     return;
                 }
 
@@ -347,13 +349,10 @@ public class XsdValidateRegexApplication {
                     return;
                 }
 
-
                 if (!CDA_DICT.get(dictcode).get(value).equals(displayName)) {
                     printLog("数据元【" + de_code + "】【" + deName + "】字典【" + dictcode + "】中编码【" + value + "】对应值应为【" + CDA_DICT.get(dictcode).get(value) + "】 实际值为【" + displayName + "】");
                     return;
                 }
-
-
                 break;
         }
 
@@ -400,10 +399,14 @@ public class XsdValidateRegexApplication {
 
         for (int i = 1; i < lastRowNum; i++) {
             row = sheet.getRow(i);
-            dict_code = row.getCell(0).getStringCellValue();
-            dict_name = row.getCell(1).getStringCellValue();
-            code = row.getCell(2).getStringCellValue();
-            value = row.getCell(3).getStringCellValue();
+            try {
+                dict_code = row.getCell(0).getStringCellValue();
+                dict_name = row.getCell(1).getStringCellValue();
+                code = row.getCell(2).getStringCellValue();
+                value = row.getCell(3).getStringCellValue();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
             if (!CDA_DICT.containsKey(dict_code)) {
                 CDA_DICT.put(dict_code, new HashMap<>());

@@ -1,0 +1,1 @@
+line:781 col:38 /ClinicalDocument/component/structuredBody/component/section/entry/organizer/ClinicalDocument 元素类型 "statusCo" 必须后跟属性规范 ">" 或 "/>"。
