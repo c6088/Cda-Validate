@@ -130,12 +130,41 @@ public class XsdValidateRegexApplication {
             for (Node node : nodes) {
                 nodeCheck(node);
             }
+
+            xPath = document.createXPath("//xmlns:code[@code][@codeSystem!='2.16.156.10011.2.2.1'][contains(@codeSystem,'2.16.156.10011')][@codeSystemName]");
+            xPath.setNamespaceURIs(map);
+            // 这样就拿到结果了
+            nodes = xPath.selectNodes(document);
+
+            for (Node node : nodes) {
+                dictNodeCheck(node);
+            }
+
         } catch (Exception ex) {
             errorMessages.add(ex.getMessage());
         }
-
     }
 
+    private static void dictNodeCheck(Node node) {
+        List<Node> nodes = node.selectNodes("@code|@displayName|@codeSystem|@codeSystemName");
+        String code = "";
+        String name = "";
+        String codeSystem = "";
+        String codeSystemName = "";
+        for (Node attrNode : nodes) {
+            if ("code".equals(attrNode.getName())) {
+                code = attrNode.getText();
+            } else if ("displayName".equals(attrNode.getName())) {
+                name = attrNode.getText();
+            } else if ("codeSystem".equals(attrNode.getName())) {
+                codeSystem = attrNode.getText();
+            } else if ("codeSystemName".equals(attrNode.getName())) {
+                codeSystemName = attrNode.getText();
+            }
+        }
+
+
+    }
 
     private static void nodeCheck(Node node) {
         Document document = node.getDocument();
@@ -200,13 +229,6 @@ public class XsdValidateRegexApplication {
 
         HealthElementDirectory healthElementDirectory = DE_CODE_DICT.get(de_code);
         String deName = healthElementDirectory.getDeName();
-//        if (
-////                "引用型".equals(healthElementDirectory.getDeDataValuetype()) ||
-//                "枚举型".equals(healthElementDirectory.getDeDataValuetype())
-//        ) {
-//            //printLog("数据元【" + de_code + "】【" + deName + "】暂不进行字典验证!");
-//            return;
-//        }
 
         switch (healthElementDirectory.getDeDatatype()) {
             case "D":
@@ -486,7 +508,8 @@ public class XsdValidateRegexApplication {
         File xmlFile = new File(xmlPath);
         String xmlName = xmlFile.getName().substring(0, xmlFile.getName().lastIndexOf("."));
         if (errorMessages.size() == 0) {
-            FileUtils.writeLines(new File(logPath + File.separator + xmlName + "_success.txt"), errorMessages, false);
+            System.out.println(xmlPath + "   验证成功！");
+            //FileUtils.writeLines(new File(logPath + File.separator + xmlName + "_success.txt"), errorMessages, false);
         } else {
             FileUtils.writeLines(new File(logPath + File.separator + xmlName + "_error.txt"), errorMessages, false);
         }
