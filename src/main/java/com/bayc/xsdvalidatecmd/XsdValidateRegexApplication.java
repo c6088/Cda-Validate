@@ -43,6 +43,7 @@ public class XsdValidateRegexApplication {
     private static HashMap<String, HealthElementDirectory> DE_CODE_DICT = new HashMap<>();
     private static HashMap<String, HashMap<String, String>> CDA_DICT = new HashMap<>();
     public static HashMap<String, String> OID_DICT = new HashMap<>();
+    public static Set<String> IGNOREOIDCODE = new HashSet<>();
 
     private static SimpleDateFormat format_str_dt15 = new SimpleDateFormat("yyyyMMddHHmmss");
     private static SimpleDateFormat format_str_dt8 = new SimpleDateFormat("yyyyMMdd");
@@ -50,6 +51,7 @@ public class XsdValidateRegexApplication {
     private static SimpleDateFormat format_date_dt8 = new SimpleDateFormat("yyyy-MM-dd");
     private static Pattern patternNumber;
     private static List<String> errorMessages = new ArrayList<>();
+    public static final Properties PROPERTIES = new Properties();
     static Validator validator = null;
     static SAXParser parser = null;
     static UserHandler userHandler = new UserHandler();
@@ -67,8 +69,12 @@ public class XsdValidateRegexApplication {
         String cdaDictPath = "config/CDA字典信息.xlsx";
         loadCDADICTExcel(cdaDictPath);
 
+        PROPERTIES.load(new FileInputStream("config/application.properties"));
+        String values = PROPERTIES.getProperty("dictcheck.ignoreoids");
+        if (values != null && values.length() > 0) {
+            IGNOREOIDCODE.addAll(Arrays.asList(values.split(",")));
+        }
         patternNumber = Pattern.compile("[0-9]*");
-
 
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         File file = new File("config/sdschemas/SDA.xsd");
@@ -132,7 +138,7 @@ public class XsdValidateRegexApplication {
                 nodeCheck(node);
             }
 
-            xPath = document.createXPath("//xmlns:code[@code][@codeSystem!='2.16.156.10011.2.4'][@codeSystem!='2.16.156.10011.2.2.1'][@codeSystem!='2.16.156.10011.2.2.4'][contains(@codeSystem,'2.16.156.10011')][@codeSystemName]");
+            xPath = document.createXPath("//xmlns:code[@code][contains(@codeSystem,'2.16.156.10011')][@codeSystemName]");
             xPath.setNamespaceURIs(map);
             // 这样就拿到结果了
             nodes = xPath.selectNodes(document);
@@ -163,6 +169,11 @@ public class XsdValidateRegexApplication {
                 codeSystemName = attrNode.getText();
             }
         }
+
+        if (IGNOREOIDCODE.contains(codeSystem)) {
+            return;
+        }
+
 
         if (!OID_DICT.containsKey(codeSystem)) {
             printLog("字典系统【" + codeSystem + "】【" + codeSystemName + "】无对应字典验证信息！ 原始XML【" + node.asXML() + "】");
