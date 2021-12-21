@@ -42,6 +42,7 @@ public class XsdValidateRegexApplication {
 
     private static HashMap<String, HealthElementDirectory> DE_CODE_DICT = new HashMap<>();
     private static HashMap<String, HashMap<String, String>> CDA_DICT = new HashMap<>();
+    public static HashMap<String, String> OID_DICT = new HashMap<>();
 
     private static SimpleDateFormat format_str_dt15 = new SimpleDateFormat("yyyyMMddHHmmss");
     private static SimpleDateFormat format_str_dt8 = new SimpleDateFormat("yyyyMMdd");
@@ -131,7 +132,7 @@ public class XsdValidateRegexApplication {
                 nodeCheck(node);
             }
 
-            xPath = document.createXPath("//xmlns:code[@code][@codeSystem!='2.16.156.10011.2.2.1'][contains(@codeSystem,'2.16.156.10011')][@codeSystemName]");
+            xPath = document.createXPath("//xmlns:code[@code][@codeSystem!='2.16.156.10011.2.4'][@codeSystem!='2.16.156.10011.2.2.1'][@codeSystem!='2.16.156.10011.2.2.4'][contains(@codeSystem,'2.16.156.10011')][@codeSystemName]");
             xPath.setNamespaceURIs(map);
             // 这样就拿到结果了
             nodes = xPath.selectNodes(document);
@@ -148,7 +149,7 @@ public class XsdValidateRegexApplication {
     private static void dictNodeCheck(Node node) {
         List<Node> nodes = node.selectNodes("@code|@displayName|@codeSystem|@codeSystemName");
         String code = "";
-        String name = "";
+        String name = null;
         String codeSystem = "";
         String codeSystemName = "";
         for (Node attrNode : nodes) {
@@ -163,6 +164,28 @@ public class XsdValidateRegexApplication {
             }
         }
 
+        if (!OID_DICT.containsKey(codeSystem)) {
+            printLog("字典系统【" + codeSystem + "】【" + codeSystemName + "】无对应字典验证信息！ 原始XML【" + node.asXML() + "】");
+            return;
+        }
+
+        String dictCode = OID_DICT.get(codeSystem);
+        if (CDA_DICT.containsKey(dictCode)) {
+
+        } else {
+            printLog("字典系统【" + codeSystem + "】【" + codeSystemName + "】无对应字典【" + dictCode + "】验证信息！ 原始XML【" + node.asXML() + "】");
+            return;
+        }
+
+        if (!CDA_DICT.get(dictCode).containsKey(code)) {
+            printLog("字典系统【" + codeSystem + "】【" + codeSystemName + "】对应字典【" + dictCode + "】中无此编码【" + code + "】！ 原始XML【" + node.asXML() + "】");
+            return;
+        }
+
+        if (null != name && !CDA_DICT.get(dictCode).get(code).equals(name)) {
+            printLog("字典系统【" + codeSystem + "】【" + codeSystemName + "】对应字典【" + dictCode + "】中编码【" + code + "】对应值应为【" + CDA_DICT.get(dictCode).get(code) + "】！ 原始XML【" + node.asXML() + "】");
+            return;
+        }
 
     }
 
@@ -411,6 +434,7 @@ public class XsdValidateRegexApplication {
         FileInputStream fileInputStream = new FileInputStream(cdaDictPath);
         XSSFWorkbook sheets = new XSSFWorkbook(fileInputStream);
         XSSFSheet sheet = sheets.getSheet("CDA字典");
+        XSSFSheet oidSheet = sheets.getSheet("字典与OID对照");
         int lastRowNum = sheet.getLastRowNum();
         XSSFRow row;
         XSSFCell cell;
@@ -436,6 +460,18 @@ public class XsdValidateRegexApplication {
 
             if (!CDA_DICT.get(dict_code).containsKey(code)) {
                 CDA_DICT.get(dict_code).put(code, value);
+            }
+        }
+        lastRowNum = oidSheet.getLastRowNum();
+        String dictCode = "";
+        String oidCode = "";
+        for (int i = 1; i < lastRowNum; i++) {
+            row = oidSheet.getRow(i);
+            oidCode = row.getCell(0).getStringCellValue();
+            dictCode = row.getCell(1).getStringCellValue();
+
+            if (!OID_DICT.containsKey(oidCode)) {
+                OID_DICT.put(oidCode, dictCode);
             }
         }
         sheets.close();
