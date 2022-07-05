@@ -16,20 +16,36 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * DataExcel类， 处理Excel设置数据
+ * DataExcel类， 处理Excel设置数据， Excel设置数据以静态对象保存，作为缓存。
  */
 public class DataExcel {
 
     private Log log = LogFactory.getLog(DataExcel.class);
     private List<String> errorMessage = new ArrayList<>();
-    private boolean isNodeLoaded = false;
-    private boolean isDeLoaded = false;
-    private boolean isDictLoaded = false;
-    private List<CdaNode> listCdaDefine = new ArrayList<>();
-    private HashMap<String, String> mapDeDomain = new HashMap<String, String>();
-    ;
+
+    /**
+     * 执行时的错误信息列表
+     */
+    public List<String> getErrorMessage() {
+        return errorMessage;
+    }
+
+    private static boolean isNodeLoaded = false;
+    private static boolean isDeLoaded = false;
+    private static boolean isDictLoaded = false;
+    /**
+     * 节点数据定义
+     */
+    public static List<CdaNode> listCdaDefine = new ArrayList<>();
+    /**
+     * 数据元的值域定义
+     */
+    public static HashMap<String, String> mapDeDomain = new HashMap<String, String>();
     private XSSFWorkbook sheets = null;
-    private HashMap<String, HashMap<String, String>> mapDicts = new HashMap<>();
+    /**
+     * 字典数据定义
+     */
+    public static HashMap<String, HashMap<String, String>> mapDicts = new HashMap<>();
 
     /**
      * 构造函数
@@ -47,18 +63,11 @@ public class DataExcel {
             errorMessage.clear();
             errorMessage = null;
         }
-        if (listCdaDefine != null) {
-            listCdaDefine.clear();
-            listCdaDefine = null;
-        }
-        if (mapDeDomain != null) {
-            mapDeDomain.clear();
-            mapDeDomain = null;
-        }
-        if (mapDicts != null) {
-            mapDicts.clear();
-            mapDicts = null;
-        }
+    }
+
+    private void SetErrorInfo(String errorInfo) {
+        errorMessage.add(errorInfo);
+        log.info(errorInfo);
     }
 
     /**
@@ -98,7 +107,7 @@ public class DataExcel {
     }
 
     /**
-     * 获取CDA操作定义list。
+     * 获取全部的CDA操作定义list。
      *
      * @return List<CdaNode>
      */
@@ -115,6 +124,28 @@ public class DataExcel {
             }
         }
         return listCdaDefine;
+    }
+
+    /**
+     * 获取某个CDA代码的操作定义list。请不要每次都调这个函数，多次用时，应将中间结果保存下来使用。
+     *
+     * @param cdaCode CDA代码
+     * @return List<CdaNode>, 如果代码为空，则返回null
+     */
+    public List<CdaNode> getListCdaDefine(String cdaCode) {
+        if (cdaCode == null || cdaCode.isEmpty()) {
+            SetErrorInfo("cdaCode不能为空");
+            return null;
+        }
+        getListCdaDefine();
+
+        List<CdaNode> list = new ArrayList<>();
+        for (CdaNode node : listCdaDefine) {
+            if (node.getCdaCode().compareTo(cdaCode) == 0) {
+                list.add(node);
+            }
+        }
+        return list;
     }
 
     /**
@@ -138,11 +169,11 @@ public class DataExcel {
     }
 
     /**
-     * 获取字典数据mapDicts。
+     * 获取字典数据mapDicts
      *
      * @return HashMap<String, String>
      */
-    public HashMap<String, HashMap<String, String>> getMapDicts() {
+    public HashMap<String, HashMap<String, String>> getMapDict() {
         if (!isDictLoaded) {
             errorMessage.clear();
             String excelPath = "config/CDA字典信息.xlsx";
@@ -168,6 +199,21 @@ public class DataExcel {
         return mapDicts;
     }
 
+    /**
+     * 根据字典名称单个字典数据
+     *
+     * @param dictName 字典名称
+     * @return HashMap<String, String>, 没有对应名称的字典时，返回null
+     */
+    public HashMap<String, String> getMapDict(String dictName) {
+        getMapDict();
+        if (!mapDicts.containsKey(dictName)) {
+            String errorInfo = String.format("没有名称为%s的字典。", dictName);
+            SetErrorInfo(errorInfo);
+            return null;
+        }
+        return mapDicts.get(dictName);
+    }
 
     /**
      * 读Excel单元格中的字符串
@@ -247,7 +293,7 @@ public class DataExcel {
                 col++;
                 str = GetCellText(row.getCell(12));
                 int v = GCLib.CInt(str);
-                node.setNeedVerify(v);
+                node.setIsVerified(v);
                 listCdaDefine.add(node);
             } catch (Exception ex) {
                 str = String.format("Excel第%d行%d列错误：%s", i, col, ex.getMessage());

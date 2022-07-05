@@ -184,21 +184,6 @@ public class CdaNode implements Serializable {
         this._codomain = codomain;
     }
 
-
-    /**
-     * 代码系统根码
-     */
-    private String _codeSystemRoot;
-
-    public String getCodeSystemRoot() {
-        if (_codeSystemRoot == null) _codeSystemRoot = "";
-        return _codeSystemRoot;
-    }
-
-    public void setCodeSystemRoot(String codeSystemRoot) {
-        this._codeSystemRoot = codeSystemRoot;
-    }
-
     /**
      * CDA字典名称
      */
@@ -227,7 +212,7 @@ public class CdaNode implements Serializable {
     }
 
     /**
-     * 代码对应的名称字段
+     * 字典代码对应的名称字段
      */
     private String _nameCodeField = "";
 
@@ -237,6 +222,20 @@ public class CdaNode implements Serializable {
 
     public void setNameCodeField(String nameCodeField) {
         this._nameCodeField = nameCodeField;
+    }
+
+    /**
+     * 字典代码对应名称字段的值
+     */
+    private String _nameCodeValue;
+
+    public String getNameCodeValue() {
+        if (_nameCodeValue == null) _nameCodeValue = "";
+        return _nameCodeValue;
+    }
+
+    public void setNameCodeValue(String nameCodeValue) {
+        this._nameCodeValue = nameCodeValue;
     }
 
     /**
@@ -255,13 +254,13 @@ public class CdaNode implements Serializable {
     /**
      * 是否校验过 1是, 0没有
      */
-    private int _needVerify = 0;
+    private int _isVerified = 0;
 
-    public int getNeedVerify() {
-        return _needVerify;
+    public int getIsVerified() {
+        return _isVerified;
     }
 
-    public void setNeedVerify(int needVerify) {
-        this._needVerify = needVerify;
+    public void setIsVerified(int isVerified) {
+        this._isVerified = isVerified;
     }
 }

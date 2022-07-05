@@ -1,3 +1,0 @@
-line:350 col:144 /ClinicalDocument/component/structuredBody/component/section/entry/observation/entryRelationship/observation/value cvc-pattern-valid: 对于类型为 'cs' 的模式 '[^\s]+', 值 '' 不具有面有效性。
-line:350 col:144 /ClinicalDocument/component/structuredBody/component/section/entry/observation/entryRelationship/observation/value cvc-attribute.3: 在元素 'value' 中, 属性 'code' 的值 '' 与其类型 'cs' 不匹配。
-元素类型 "statusCo" 必须后跟属性规范 ">" 或 "/>"。

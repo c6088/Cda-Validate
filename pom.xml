@@ -62,7 +62,7 @@
         <dependency>
             <groupId>com.oracle.database.nls</groupId>
             <artifactId>orai18n</artifactId>
-            <version>19.3.0.0</version>
+            <version>19.7.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>

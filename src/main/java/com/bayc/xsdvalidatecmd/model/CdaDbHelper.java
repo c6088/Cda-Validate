@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import java.sql.*;
@@ -16,17 +17,29 @@ import java.util.List;
  */
 public class CdaDbHelper {
     /**
+     * 驱动
+     */
+    private String driver = "";
+    /**
      * 数据库数据源
      */
-    private String dataSource;
+    private String dataSource = "";
     /**
      * 数据库用户名
      */
-    private String userID;
+    private String userID = "";
     /**
      * 数据库用户密码
      */
-    private String password;
+    private String password = "";
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
 
     public String getDataSource() {
         return dataSource;
@@ -90,20 +103,18 @@ public class CdaDbHelper {
         java.io.File file = new java.io.File("config/Config.xml");
         if (!file.exists()) {
             errorInfo = configFile + "文件不存在。";
-            errorMessage.add(errorInfo);
-            log.info(errorInfo);
+            SetErrorInfo(errorInfo);
             return false;
         }
 
         log.info("开始读取配置文件" + configFile);
-        Document doc = null;
+        Document doc;
         SAXReader reader = new SAXReader();
         try {
             doc = reader.read(new java.io.File(configFile));
         } catch (DocumentException e) {
             errorInfo = String.format("SAXReader读文件%s错误：%s", configFile, e.getMessage());
-            errorMessage.add(errorInfo);
-            log.info(errorInfo);
+            SetErrorInfo(errorInfo);
             e.printStackTrace();
             return false;
         }
@@ -112,7 +123,6 @@ public class CdaDbHelper {
         int count = 0;
         Element ele;
         String[] infos = new String[]{"DataSource", "UserID", "Password"};
-        errorMessage.clear();
         for (String info :
                 infos) {
             String nodePath;
@@ -148,6 +158,73 @@ public class CdaDbHelper {
         return true;
     }
 
+    private void SetErrorInfo(String errorInfo) {
+        errorMessage.add(errorInfo);
+        log.info(errorInfo);
+    }
+
+    /**
+     * 检查MyBatisConfig配置文件，读取配置文件文件中的数据库连接信息，
+     *
+     * @return true 成功 false 失败
+     */
+    public boolean ReadMyBatisConfigFile() {
+        String errorInfo;
+        errorMessage.clear();
+        String configFile = "src/main/resources/mybatis-config.xml";
+        java.io.File file = new java.io.File(configFile);
+        if (!file.exists()) {
+            errorInfo = configFile + "文件不存在。";
+            SetErrorInfo(errorInfo);
+            return false;
+        }
+
+        log.info("开始读取配置文件" + configFile);
+        Document doc;
+        SAXReader reader = new SAXReader();
+        try {
+            doc = reader.read(new java.io.File(configFile));
+        } catch (DocumentException e) {
+            errorInfo = String.format("SAXReader读文件%s错误：%s", configFile, e.getMessage());
+            SetErrorInfo(errorInfo);
+            e.printStackTrace();
+            return false;
+        }
+
+        log.info("判断配置是否正确。");
+        String nodePath = "/configuration/environments/dataSource/property";
+        List<Node> listNode = doc.selectNodes(nodePath);
+        if (listNode == null || listNode.size() == 0) {
+            errorInfo = String.format("%s不存在节点：%s", configFile, nodePath);
+            SetErrorInfo(errorInfo);
+            return false;
+        }
+        for (Node node : listNode) {
+            Element ele = (Element) node;
+            String name = ele.attributeValue("name");
+            String value = ele.attributeValue("value");
+            if (value.isEmpty()) {
+                SetErrorInfo(String.format("没有设置%s", name));
+                continue;
+            }
+            switch (name) {
+                case "driver":
+                    this.driver = value;
+                    break;
+                case "url":
+                    this.dataSource = "jdbc:oracle:thin:@" + value;
+                    break;
+                case "username":
+                    this.userID = value;
+                    break;
+                case "password":
+                    this.password = value;
+                    break;
+            }
+        }
+        return errorMessage.size() == 0;
+    }
+
     /**
      * 取配置文件文件中的数据库连接信息，能否连接到数据库
      *
@@ -161,8 +238,8 @@ public class CdaDbHelper {
         try {
             isOk = Execute("select 1 rc from dual");
         } catch (Exception e) {
-            errorMessage.add(e.getMessage());
-            log.info(String.format("不能连接到数据库，请检查配置文件%s。", configFile));
+            String errorInfo = String.format("请检查配置文件%s, 不能连接到数据库:%s", configFile, e.getMessage());
+            SetErrorInfo(errorInfo);
         }
         return isOk;
     }
@@ -188,8 +265,8 @@ public class CdaDbHelper {
             conn = null;
             isOk = true;
         } catch (Exception e) {
-            errorMessage.add(e.getMessage());
-            log.info(String.format("执行语句错误：%s。\nsql=%s", e.getMessage(), sql));
+            String errorInfo = String.format("执行语句错误：%s。\nsql=%s", e.getMessage(), sql);
+            SetErrorInfo(errorInfo);
         } finally {
             if (statement != null) {
                 statement.close();
@@ -222,8 +299,9 @@ public class CdaDbHelper {
             conn.close();
             conn = null;
         } catch (Exception e) {
-            errorMessage.add(e.getMessage());
-            log.info(String.format("不能连接到数据库，请检查配置文件%s。", configFile));
+            String errorInfo = String.format("请检查配置文件%s, 不能连接到数据库: %s", configFile, e.getMessage());
+            SetErrorInfo(errorInfo);
+
         } finally {
             if (statement != null) {
                 statement.close();
