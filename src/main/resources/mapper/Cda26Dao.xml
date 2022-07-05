@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bayc.xsdvalidatecmd.dao.Cda26Dao">
+
+    <resultMap type="com.bayc.xsdvalidatecmd.entity.Cda26" id="Cda26Map">
+        <result property="patientType" column="PATIENT_TYPE" jdbcType="VARCHAR"/>
+        <result property="patientId" column="PATIENT_ID" jdbcType="VARCHAR"/>
+        <result property="visitId" column="VISIT_ID" jdbcType="INTEGER"/>
+        <result property="fileNo" column="FILE_NO" jdbcType="INTEGER"/>
+        <result property="docStatus" column="DOC_STATUS" jdbcType="VARCHAR"/>
+        <result property="informedConsentNo" column="INFORMED_CONSENT_NO" jdbcType="VARCHAR"/>
+        <result property="patIdNumber" column="PAT_ID_NUMBER" jdbcType="VARCHAR"/>
+        <result property="patName" column="PAT_NAME" jdbcType="VARCHAR"/>
+        <result property="dateBirth" column="DATE_BIRTH" jdbcType="VARCHAR"/>
+        <result property="ageYear" column="AGE_YEAR" jdbcType="INTEGER"/>
+        <result property="age" column="AGE" jdbcType="VARCHAR"/>
+        <result property="organizationView" column="ORGANIZATION_VIEW" jdbcType="VARCHAR"/>
+        <result property="patLegalRepView" column="PAT_LEGAL_REP_VIEW" jdbcType="VARCHAR"/>
+        <result property="cdaCode" column="CDA_CODE" jdbcType="VARCHAR"/>
+        <result property="sexCode" column="SEX_CODE" jdbcType="VARCHAR"/>
+        <result property="sexName" column="SEX_NAME" jdbcType="VARCHAR"/>
+        <result property="attendingDoctorId" column="ATTENDING_DOCTOR_ID" jdbcType="VARCHAR"/>
+        <result property="attendingDoctorName" column="ATTENDING_DOCTOR_NAME" jdbcType="VARCHAR"/>
+        <result property="attendingDoctorTime" column="ATTENDING_DOCTOR_TIME" jdbcType="VARCHAR"/>
+        <result property="surgeryDrId" column="SURGERY_DR_ID" jdbcType="VARCHAR"/>
+        <result property="surgeryDrName" column="SURGERY_DR_NAME" jdbcType="VARCHAR"/>
+        <result property="surgeryDrTime" column="SURGERY_DR_TIME" jdbcType="VARCHAR"/>
+        <result property="patSignId" column="PAT_SIGN_ID" jdbcType="VARCHAR"/>
+        <result property="patSignName" column="PAT_SIGN_NAME" jdbcType="VARCHAR"/>
+        <result property="patSignTime" column="PAT_SIGN_TIME" jdbcType="VARCHAR"/>
+        <result property="legalRepName" column="LEGAL_REP_NAME" jdbcType="VARCHAR"/>
+        <result property="legalRepSignTime" column="LEGAL_REP_SIGN_TIME" jdbcType="VARCHAR"/>
+        <result property="legalRepRelationCode" column="LEGAL_REP_RELATION_CODE" jdbcType="VARCHAR"/>
+        <result property="legalRepRelationName" column="LEGAL_REP_RELATION_NAME" jdbcType="VARCHAR"/>
+        <result property="bedId" column="BED_ID" jdbcType="VARCHAR"/>
+        <result property="bedName" column="BED_NAME" jdbcType="VARCHAR"/>
+        <result property="roomId" column="ROOM_ID" jdbcType="VARCHAR"/>
+        <result property="roomName" column="ROOM_NAME" jdbcType="VARCHAR"/>
+        <result property="deptId" column="DEPT_ID" jdbcType="VARCHAR"/>
+        <result property="deptName" column="DEPT_NAME" jdbcType="VARCHAR"/>
+        <result property="wardId" column="WARD_ID" jdbcType="VARCHAR"/>
+        <result property="wardName" column="WARD_NAME" jdbcType="VARCHAR"/>
+        <result property="hospitalId" column="HOSPITAL_ID" jdbcType="VARCHAR"/>
+        <result property="hospitalName" column="HOSPITAL_NAME" jdbcType="VARCHAR"/>
+        <result property="diagnosisCode" column="DIAGNOSIS_CODE" jdbcType="VARCHAR"/>
+        <result property="diagnosisName" column="DIAGNOSIS_NAME" jdbcType="VARCHAR"/>
+        <result property="surgeryCode" column="SURGERY_CODE" jdbcType="VARCHAR"/>
+        <result property="surgeryName" column="SURGERY_NAME" jdbcType="VARCHAR"/>
+        <result property="surgeryTime" column="SURGERY_TIME" jdbcType="VARCHAR"/>
+        <result property="surgeryMethod" column="SURGERY_METHOD" jdbcType="VARCHAR"/>
+        <result property="surgeryReady" column="SURGERY_READY" jdbcType="VARCHAR"/>
+        <result property="surgeryTaboo" column="SURGERY_TABOO" jdbcType="VARCHAR"/>
+        <result property="surgeryIndication" column="SURGERY_INDICATION" jdbcType="VARCHAR"/>
+        <result property="anaesMethodCode" column="ANAES_METHOD_CODE" jdbcType="VARCHAR"/>
+        <result property="anaesMethodName" column="ANAES_METHOD_NAME" jdbcType="VARCHAR"/>
+        <result property="replaceOptions" column="REPLACE_OPTIONS" jdbcType="VARCHAR"/>
+        <result property="surgeryRisk" column="SURGERY_RISK" jdbcType="VARCHAR"/>
+        <result property="poc" column="POC" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="Cda26Map">
+        select PATIENT_TYPE,
+               PATIENT_ID,
+               VISIT_ID,
+               FILE_NO,
+               DOC_STATUS,
+               INFORMED_CONSENT_NO,
+               PAT_ID_NUMBER,
+               PAT_NAME,
+               DATE_BIRTH,
+               AGE_YEAR,
+               AGE,
+               ORGANIZATION_VIEW,
+               PAT_LEGAL_REP_VIEW,
+               CDA_CODE,
+               SEX_CODE,
+               SEX_NAME,
+               ATTENDING_DOCTOR_ID,
+               ATTENDING_DOCTOR_NAME,
+               ATTENDING_DOCTOR_TIME,
+               SURGERY_DR_ID,
+               SURGERY_DR_NAME,
+               SURGERY_DR_TIME,
+               PAT_SIGN_ID,
+               PAT_SIGN_NAME,
+               PAT_SIGN_TIME,
+               LEGAL_REP_NAME,
+               LEGAL_REP_SIGN_TIME,
+               LEGAL_REP_RELATION_CODE,
+               LEGAL_REP_RELATION_NAME,
+               BED_ID,
+               BED_NAME,
+               ROOM_ID,
+               ROOM_NAME,
+               DEPT_ID,
+               DEPT_NAME,
+               WARD_ID,
+               WARD_NAME,
+               HOSPITAL_ID,
+               HOSPITAL_NAME,
+               DIAGNOSIS_CODE,
+               DIAGNOSIS_NAME,
+               SURGERY_CODE,
+               SURGERY_NAME,
+               SURGERY_TIME,
+               SURGERY_METHOD,
+               SURGERY_READY,
+               SURGERY_TABOO,
+               SURGERY_INDICATION,
+               ANAES_METHOD_CODE,
+               ANAES_METHOD_NAME,
+               REPLACE_OPTIONS,
+               SURGERY_RISK,
+               POC
+        from CDA.CDA_26
+        where INFORMED_CONSENT_NO = #{informedConsentNo}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="Cda26Map">
+        select
+        PATIENT_TYPE, PATIENT_ID, VISIT_ID, FILE_NO, DOC_STATUS, INFORMED_CONSENT_NO, PAT_ID_NUMBER, PAT_NAME,
+        DATE_BIRTH, AGE_YEAR, AGE, ORGANIZATION_VIEW, PAT_LEGAL_REP_VIEW, CDA_CODE, SEX_CODE, SEX_NAME,
+        ATTENDING_DOCTOR_ID, ATTENDING_DOCTOR_NAME, ATTENDING_DOCTOR_TIME, SURGERY_DR_ID, SURGERY_DR_NAME,
+        SURGERY_DR_TIME, PAT_SIGN_ID, PAT_SIGN_NAME, PAT_SIGN_TIME, LEGAL_REP_NAME, LEGAL_REP_SIGN_TIME,
+        LEGAL_REP_RELATION_CODE, LEGAL_REP_RELATION_NAME, BED_ID, BED_NAME, ROOM_ID, ROOM_NAME, DEPT_ID, DEPT_NAME,
+        WARD_ID, WARD_NAME, HOSPITAL_ID, HOSPITAL_NAME, DIAGNOSIS_CODE, DIAGNOSIS_NAME, SURGERY_CODE, SURGERY_NAME,
+        SURGERY_TIME, SURGERY_METHOD, SURGERY_READY, SURGERY_TABOO, SURGERY_INDICATION, ANAES_METHOD_CODE,
+        ANAES_METHOD_NAME, REPLACE_OPTIONS, SURGERY_RISK, POC
+        from CDA.CDA_26
+        <where>
+            <if test="patientType != null and patientType != ''">
+                and PATIENT_TYPE = #{patientType}
+            </if>
+            <if test="patientId != null and patientId != ''">
+                and PATIENT_ID = #{patientId}
+            </if>
+            <if test="visitId != null">
+                and VISIT_ID = #{visitId}
+            </if>
+            <if test="fileNo != null">
+                and FILE_NO = #{fileNo}
+            </if>
+            <if test="docStatus != null and docStatus != ''">
+                and DOC_STATUS = #{docStatus}
+            </if>
+            <if test="informedConsentNo != null and informedConsentNo != ''">
+                and INFORMED_CONSENT_NO = #{informedConsentNo}
+            </if>
+            <if test="patIdNumber != null and patIdNumber != ''">
+                and PAT_ID_NUMBER = #{patIdNumber}
+            </if>
+            <if test="patName != null and patName != ''">
+                and PAT_NAME = #{patName}
+            </if>
+            <if test="dateBirth != null and dateBirth != ''">
+                and DATE_BIRTH = #{dateBirth}
+            </if>
+            <if test="ageYear != null">
+                and AGE_YEAR = #{ageYear}
+            </if>
+            <if test="age != null and age != ''">
+                and AGE = #{age}
+            </if>
+            <if test="organizationView != null and organizationView != ''">
+                and ORGANIZATION_VIEW = #{organizationView}
+            </if>
+            <if test="patLegalRepView != null and patLegalRepView != ''">
+                and PAT_LEGAL_REP_VIEW = #{patLegalRepView}
+            </if>
+            <if test="cdaCode != null and cdaCode != ''">
+                and CDA_CODE = #{cdaCode}
+            </if>
+            <if test="sexCode != null and sexCode != ''">
+                and SEX_CODE = #{sexCode}
+            </if>
+            <if test="sexName != null and sexName != ''">
+                and SEX_NAME = #{sexName}
+            </if>
+            <if test="attendingDoctorId != null and attendingDoctorId != ''">
+                and ATTENDING_DOCTOR_ID = #{attendingDoctorId}
+            </if>
+            <if test="attendingDoctorName != null and attendingDoctorName != ''">
+                and ATTENDING_DOCTOR_NAME = #{attendingDoctorName}
+            </if>
+            <if test="attendingDoctorTime != null and attendingDoctorTime != ''">
+                and ATTENDING_DOCTOR_TIME = #{attendingDoctorTime}
+            </if>
+            <if test="surgeryDrId != null and surgeryDrId != ''">
+                and SURGERY_DR_ID = #{surgeryDrId}
+            </if>
+            <if test="surgeryDrName != null and surgeryDrName != ''">
+                and SURGERY_DR_NAME = #{surgeryDrName}
+            </if>
+            <if test="surgeryDrTime != null and surgeryDrTime != ''">
+                and SURGERY_DR_TIME = #{surgeryDrTime}
+            </if>
+            <if test="patSignId != null and patSignId != ''">
+                and PAT_SIGN_ID = #{patSignId}
+            </if>
+            <if test="patSignName != null and patSignName != ''">
+                and PAT_SIGN_NAME = #{patSignName}
+            </if>
+            <if test="patSignTime != null and patSignTime != ''">
+                and PAT_SIGN_TIME = #{patSignTime}
+            </if>
+            <if test="legalRepName != null and legalRepName != ''">
+                and LEGAL_REP_NAME = #{legalRepName}
+            </if>
+            <if test="legalRepSignTime != null and legalRepSignTime != ''">
+                and LEGAL_REP_SIGN_TIME = #{legalRepSignTime}
+            </if>
+            <if test="legalRepRelationCode != null and legalRepRelationCode != ''">
+                and LEGAL_REP_RELATION_CODE = #{legalRepRelationCode}
+            </if>
+            <if test="legalRepRelationName != null and legalRepRelationName != ''">
+                and LEGAL_REP_RELATION_NAME = #{legalRepRelationName}
+            </if>
+            <if test="bedId != null and bedId != ''">
+                and BED_ID = #{bedId}
+            </if>
+            <if test="bedName != null and bedName != ''">
+                and BED_NAME = #{bedName}
+            </if>
+            <if test="roomId != null and roomId != ''">
+                and ROOM_ID = #{roomId}
+            </if>
+            <if test="roomName != null and roomName != ''">
+                and ROOM_NAME = #{roomName}
+            </if>
+            <if test="deptId != null and deptId != ''">
+                and DEPT_ID = #{deptId}
+            </if>
+            <if test="deptName != null and deptName != ''">
+                and DEPT_NAME = #{deptName}
+            </if>
+            <if test="wardId != null and wardId != ''">
+                and WARD_ID = #{wardId}
+            </if>
+            <if test="wardName != null and wardName != ''">
+                and WARD_NAME = #{wardName}
+            </if>
+            <if test="hospitalId != null and hospitalId != ''">
+                and HOSPITAL_ID = #{hospitalId}
+            </if>
+            <if test="hospitalName != null and hospitalName != ''">
+                and HOSPITAL_NAME = #{hospitalName}
+            </if>
+            <if test="diagnosisCode != null and diagnosisCode != ''">
+                and DIAGNOSIS_CODE = #{diagnosisCode}
+            </if>
+            <if test="diagnosisName != null and diagnosisName != ''">
+                and DIAGNOSIS_NAME = #{diagnosisName}
+            </if>
+            <if test="surgeryCode != null and surgeryCode != ''">
+                and SURGERY_CODE = #{surgeryCode}
+            </if>
+            <if test="surgeryName != null and surgeryName != ''">
+                and SURGERY_NAME = #{surgeryName}
+            </if>
+            <if test="surgeryTime != null and surgeryTime != ''">
+                and SURGERY_TIME = #{surgeryTime}
+            </if>
+            <if test="surgeryMethod != null and surgeryMethod != ''">
+                and SURGERY_METHOD = #{surgeryMethod}
+            </if>
+            <if test="surgeryReady != null and surgeryReady != ''">
+                and SURGERY_READY = #{surgeryReady}
+            </if>
+            <if test="surgeryTaboo != null and surgeryTaboo != ''">
+                and SURGERY_TABOO = #{surgeryTaboo}
+            </if>
+            <if test="surgeryIndication != null and surgeryIndication != ''">
+                and SURGERY_INDICATION = #{surgeryIndication}
+            </if>
+            <if test="anaesMethodCode != null and anaesMethodCode != ''">
+                and ANAES_METHOD_CODE = #{anaesMethodCode}
+            </if>
+            <if test="anaesMethodName != null and anaesMethodName != ''">
+                and ANAES_METHOD_NAME = #{anaesMethodName}
+            </if>
+            <if test="replaceOptions != null and replaceOptions != ''">
+                and REPLACE_OPTIONS = #{replaceOptions}
+            </if>
+            <if test="surgeryRisk != null and surgeryRisk != ''">
+                and SURGERY_RISK = #{surgeryRisk}
+            </if>
+            <if test="poc != null and poc != ''">
+                and POC = #{poc}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from CDA.CDA_26
+        <where>
+            <if test="patientType != null and patientType != ''">
+                and PATIENT_TYPE = #{patientType}
+            </if>
+            <if test="patientId != null and patientId != ''">
+                and PATIENT_ID = #{patientId}
+            </if>
+            <if test="visitId != null">
+                and VISIT_ID = #{visitId}
+            </if>
+            <if test="fileNo != null">
+                and FILE_NO = #{fileNo}
+            </if>
+            <if test="docStatus != null and docStatus != ''">
+                and DOC_STATUS = #{docStatus}
+            </if>
+            <if test="informedConsentNo != null and informedConsentNo != ''">
+                and INFORMED_CONSENT_NO = #{informedConsentNo}
+            </if>
+            <if test="patIdNumber != null and patIdNumber != ''">
+                and PAT_ID_NUMBER = #{patIdNumber}
+            </if>
+            <if test="patName != null and patName != ''">
+                and PAT_NAME = #{patName}
+            </if>
+            <if test="dateBirth != null and dateBirth != ''">
+                and DATE_BIRTH = #{dateBirth}
+            </if>
+            <if test="ageYear != null">
+                and AGE_YEAR = #{ageYear}
+            </if>
+            <if test="age != null and age != ''">
+                and AGE = #{age}
+            </if>
+            <if test="organizationView != null and organizationView != ''">
+                and ORGANIZATION_VIEW = #{organizationView}
+            </if>
+            <if test="patLegalRepView != null and patLegalRepView != ''">
+                and PAT_LEGAL_REP_VIEW = #{patLegalRepView}
+            </if>
+            <if test="cdaCode != null and cdaCode != ''">
+                and CDA_CODE = #{cdaCode}
+            </if>
+            <if test="sexCode != null and sexCode != ''">
+                and SEX_CODE = #{sexCode}
+            </if>
+            <if test="sexName != null and sexName != ''">
+                and SEX_NAME = #{sexName}
+            </if>
+            <if test="attendingDoctorId != null and attendingDoctorId != ''">
+                and ATTENDING_DOCTOR_ID = #{attendingDoctorId}
+            </if>
+            <if test="attendingDoctorName != null and attendingDoctorName != ''">
+                and ATTENDING_DOCTOR_NAME = #{attendingDoctorName}
+            </if>
+            <if test="attendingDoctorTime != null and attendingDoctorTime != ''">
+                and ATTENDING_DOCTOR_TIME = #{attendingDoctorTime}
+            </if>
+            <if test="surgeryDrId != null and surgeryDrId != ''">
+                and SURGERY_DR_ID = #{surgeryDrId}
+            </if>
+            <if test="surgeryDrName != null and surgeryDrName != ''">
+                and SURGERY_DR_NAME = #{surgeryDrName}
+            </if>
+            <if test="surgeryDrTime != null and surgeryDrTime != ''">
+                and SURGERY_DR_TIME = #{surgeryDrTime}
+            </if>
+            <if test="patSignId != null and patSignId != ''">
+                and PAT_SIGN_ID = #{patSignId}
+            </if>
+            <if test="patSignName != null and patSignName != ''">
+                and PAT_SIGN_NAME = #{patSignName}
+            </if>
+            <if test="patSignTime != null and patSignTime != ''">
+                and PAT_SIGN_TIME = #{patSignTime}
+            </if>
+            <if test="legalRepName != null and legalRepName != ''">
+                and LEGAL_REP_NAME = #{legalRepName}
+            </if>
+            <if test="legalRepSignTime != null and legalRepSignTime != ''">
+                and LEGAL_REP_SIGN_TIME = #{legalRepSignTime}
+            </if>
+            <if test="legalRepRelationCode != null and legalRepRelationCode != ''">
+                and LEGAL_REP_RELATION_CODE = #{legalRepRelationCode}
+            </if>
+            <if test="legalRepRelationName != null and legalRepRelationName != ''">
+                and LEGAL_REP_RELATION_NAME = #{legalRepRelationName}
+            </if>
+            <if test="bedId != null and bedId != ''">
+                and BED_ID = #{bedId}
+            </if>
+            <if test="bedName != null and bedName != ''">
+                and BED_NAME = #{bedName}
+            </if>
+            <if test="roomId != null and roomId != ''">
+                and ROOM_ID = #{roomId}
+            </if>
+            <if test="roomName != null and roomName != ''">
+                and ROOM_NAME = #{roomName}
+            </if>
+            <if test="deptId != null and deptId != ''">
+                and DEPT_ID = #{deptId}
+            </if>
+            <if test="deptName != null and deptName != ''">
+                and DEPT_NAME = #{deptName}
+            </if>
+            <if test="wardId != null and wardId != ''">
+                and WARD_ID = #{wardId}
+            </if>
+            <if test="wardName != null and wardName != ''">
+                and WARD_NAME = #{wardName}
+            </if>
+            <if test="hospitalId != null and hospitalId != ''">
+                and HOSPITAL_ID = #{hospitalId}
+            </if>
+            <if test="hospitalName != null and hospitalName != ''">
+                and HOSPITAL_NAME = #{hospitalName}
+            </if>
+            <if test="diagnosisCode != null and diagnosisCode != ''">
+                and DIAGNOSIS_CODE = #{diagnosisCode}
+            </if>
+            <if test="diagnosisName != null and diagnosisName != ''">
+                and DIAGNOSIS_NAME = #{diagnosisName}
+            </if>
+            <if test="surgeryCode != null and surgeryCode != ''">
+                and SURGERY_CODE = #{surgeryCode}
+            </if>
+            <if test="surgeryName != null and surgeryName != ''">
+                and SURGERY_NAME = #{surgeryName}
+            </if>
+            <if test="surgeryTime != null and surgeryTime != ''">
+                and SURGERY_TIME = #{surgeryTime}
+            </if>
+            <if test="surgeryMethod != null and surgeryMethod != ''">
+                and SURGERY_METHOD = #{surgeryMethod}
+            </if>
+            <if test="surgeryReady != null and surgeryReady != ''">
+                and SURGERY_READY = #{surgeryReady}
+            </if>
+            <if test="surgeryTaboo != null and surgeryTaboo != ''">
+                and SURGERY_TABOO = #{surgeryTaboo}
+            </if>
+            <if test="surgeryIndication != null and surgeryIndication != ''">
+                and SURGERY_INDICATION = #{surgeryIndication}
+            </if>
+            <if test="anaesMethodCode != null and anaesMethodCode != ''">
+                and ANAES_METHOD_CODE = #{anaesMethodCode}
+            </if>
+            <if test="anaesMethodName != null and anaesMethodName != ''">
+                and ANAES_METHOD_NAME = #{anaesMethodName}
+            </if>
+            <if test="replaceOptions != null and replaceOptions != ''">
+                and REPLACE_OPTIONS = #{replaceOptions}
+            </if>
+            <if test="surgeryRisk != null and surgeryRisk != ''">
+                and SURGERY_RISK = #{surgeryRisk}
+            </if>
+            <if test="poc != null and poc != ''">
+                and POC = #{poc}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="informedConsentNo" useGeneratedKeys="true">
+        insert into CDA_26(PATIENT_TYPE, PATIENT_ID, VISIT_ID, FILE_NO, DOC_STATUS, PAT_ID_NUMBER, PAT_NAME, DATE_BIRTH,
+                           AGE_YEAR, AGE, ORGANIZATION_VIEW, PAT_LEGAL_REP_VIEW, CDA_CODE, SEX_CODE, SEX_NAME,
+                           ATTENDING_DOCTOR_ID, ATTENDING_DOCTOR_NAME, ATTENDING_DOCTOR_TIME, SURGERY_DR_ID,
+                           SURGERY_DR_NAME, SURGERY_DR_TIME, PAT_SIGN_ID, PAT_SIGN_NAME, PAT_SIGN_TIME, LEGAL_REP_NAME,
+                           LEGAL_REP_SIGN_TIME, LEGAL_REP_RELATION_CODE, LEGAL_REP_RELATION_NAME, BED_ID, BED_NAME,
+                           ROOM_ID, ROOM_NAME, DEPT_ID, DEPT_NAME, WARD_ID, WARD_NAME, HOSPITAL_ID, HOSPITAL_NAME,
+                           DIAGNOSIS_CODE, DIAGNOSIS_NAME, SURGERY_CODE, SURGERY_NAME, SURGERY_TIME, SURGERY_METHOD,
+                           SURGERY_READY, SURGERY_TABOO, SURGERY_INDICATION, ANAES_METHOD_CODE, ANAES_METHOD_NAME,
+                           REPLACE_OPTIONS, SURGERY_RISK, POC)
+        values (#{patientType}, #{patientId}, #{visitId}, #{fileNo}, #{docStatus}, #{patIdNumber}, #{patName},
+                #{dateBirth}, #{ageYear}, #{age}, #{organizationView}, #{patLegalRepView}, #{cdaCode}, #{sexCode},
+                #{sexName}, #{attendingDoctorId}, #{attendingDoctorName}, #{attendingDoctorTime}, #{surgeryDrId},
+                #{surgeryDrName}, #{surgeryDrTime}, #{patSignId}, #{patSignName}, #{patSignTime}, #{legalRepName},
+                #{legalRepSignTime}, #{legalRepRelationCode}, #{legalRepRelationName}, #{bedId}, #{bedName}, #{roomId},
+                #{roomName}, #{deptId}, #{deptName}, #{wardId}, #{wardName}, #{hospitalId}, #{hospitalName},
+                #{diagnosisCode}, #{diagnosisName}, #{surgeryCode}, #{surgeryName}, #{surgeryTime}, #{surgeryMethod},
+                #{surgeryReady}, #{surgeryTaboo}, #{surgeryIndication}, #{anaesMethodCode}, #{anaesMethodName},
+                #{replaceOptions}, #{surgeryRisk}, #{poc})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="informedConsentNo" useGeneratedKeys="true">
+        insert into CDA_26(PATIENT_TYPE, PATIENT_ID, VISIT_ID, FILE_NO, DOC_STATUS, PAT_ID_NUMBER, PAT_NAME, DATE_BIRTH,
+        AGE_YEAR, AGE, ORGANIZATION_VIEW, PAT_LEGAL_REP_VIEW, CDA_CODE, SEX_CODE, SEX_NAME, ATTENDING_DOCTOR_ID,
+        ATTENDING_DOCTOR_NAME, ATTENDING_DOCTOR_TIME, SURGERY_DR_ID, SURGERY_DR_NAME, SURGERY_DR_TIME, PAT_SIGN_ID,
+        PAT_SIGN_NAME, PAT_SIGN_TIME, LEGAL_REP_NAME, LEGAL_REP_SIGN_TIME, LEGAL_REP_RELATION_CODE,
+        LEGAL_REP_RELATION_NAME, BED_ID, BED_NAME, ROOM_ID, ROOM_NAME, DEPT_ID, DEPT_NAME, WARD_ID, WARD_NAME,
+        HOSPITAL_ID, HOSPITAL_NAME, DIAGNOSIS_CODE, DIAGNOSIS_NAME, SURGERY_CODE, SURGERY_NAME, SURGERY_TIME,
+        SURGERY_METHOD, SURGERY_READY, SURGERY_TABOO, SURGERY_INDICATION, ANAES_METHOD_CODE, ANAES_METHOD_NAME,
+        REPLACE_OPTIONS, SURGERY_RISK, POC)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.patientType}, #{entity.patientId}, #{entity.visitId}, #{entity.fileNo}, #{entity.docStatus},
+            #{entity.patIdNumber}, #{entity.patName}, #{entity.dateBirth}, #{entity.ageYear}, #{entity.age},
+            #{entity.organizationView}, #{entity.patLegalRepView}, #{entity.cdaCode}, #{entity.sexCode},
+            #{entity.sexName}, #{entity.attendingDoctorId}, #{entity.attendingDoctorName},
+            #{entity.attendingDoctorTime}, #{entity.surgeryDrId}, #{entity.surgeryDrName}, #{entity.surgeryDrTime},
+            #{entity.patSignId}, #{entity.patSignName}, #{entity.patSignTime}, #{entity.legalRepName},
+            #{entity.legalRepSignTime}, #{entity.legalRepRelationCode}, #{entity.legalRepRelationName}, #{entity.bedId},
+            #{entity.bedName}, #{entity.roomId}, #{entity.roomName}, #{entity.deptId}, #{entity.deptName},
+            #{entity.wardId}, #{entity.wardName}, #{entity.hospitalId}, #{entity.hospitalName}, #{entity.diagnosisCode},
+            #{entity.diagnosisName}, #{entity.surgeryCode}, #{entity.surgeryName}, #{entity.surgeryTime},
+            #{entity.surgeryMethod}, #{entity.surgeryReady}, #{entity.surgeryTaboo}, #{entity.surgeryIndication},
+            #{entity.anaesMethodCode}, #{entity.anaesMethodName}, #{entity.replaceOptions}, #{entity.surgeryRisk},
+            #{entity.poc})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="informedConsentNo" useGeneratedKeys="true">
+        insert into CDA_26(PATIENT_TYPE, PATIENT_ID, VISIT_ID, FILE_NO, DOC_STATUS, PAT_ID_NUMBER, PAT_NAME, DATE_BIRTH,
+        AGE_YEAR, AGE, ORGANIZATION_VIEW, PAT_LEGAL_REP_VIEW, CDA_CODE, SEX_CODE, SEX_NAME, ATTENDING_DOCTOR_ID,
+        ATTENDING_DOCTOR_NAME, ATTENDING_DOCTOR_TIME, SURGERY_DR_ID, SURGERY_DR_NAME, SURGERY_DR_TIME, PAT_SIGN_ID,
+        PAT_SIGN_NAME, PAT_SIGN_TIME, LEGAL_REP_NAME, LEGAL_REP_SIGN_TIME, LEGAL_REP_RELATION_CODE,
+        LEGAL_REP_RELATION_NAME, BED_ID, BED_NAME, ROOM_ID, ROOM_NAME, DEPT_ID, DEPT_NAME, WARD_ID, WARD_NAME,
+        HOSPITAL_ID, HOSPITAL_NAME, DIAGNOSIS_CODE, DIAGNOSIS_NAME, SURGERY_CODE, SURGERY_NAME, SURGERY_TIME,
+        SURGERY_METHOD, SURGERY_READY, SURGERY_TABOO, SURGERY_INDICATION, ANAES_METHOD_CODE, ANAES_METHOD_NAME,
+        REPLACE_OPTIONS, SURGERY_RISK, POC)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.patientType}, #{entity.patientId}, #{entity.visitId}, #{entity.fileNo}, #{entity.docStatus},
+            #{entity.patIdNumber}, #{entity.patName}, #{entity.dateBirth}, #{entity.ageYear}, #{entity.age},
+            #{entity.organizationView}, #{entity.patLegalRepView}, #{entity.cdaCode}, #{entity.sexCode},
+            #{entity.sexName}, #{entity.attendingDoctorId}, #{entity.attendingDoctorName},
+            #{entity.attendingDoctorTime}, #{entity.surgeryDrId}, #{entity.surgeryDrName}, #{entity.surgeryDrTime},
+            #{entity.patSignId}, #{entity.patSignName}, #{entity.patSignTime}, #{entity.legalRepName},
+            #{entity.legalRepSignTime}, #{entity.legalRepRelationCode}, #{entity.legalRepRelationName}, #{entity.bedId},
+            #{entity.bedName}, #{entity.roomId}, #{entity.roomName}, #{entity.deptId}, #{entity.deptName},
+            #{entity.wardId}, #{entity.wardName}, #{entity.hospitalId}, #{entity.hospitalName}, #{entity.diagnosisCode},
+            #{entity.diagnosisName}, #{entity.surgeryCode}, #{entity.surgeryName}, #{entity.surgeryTime},
+            #{entity.surgeryMethod}, #{entity.surgeryReady}, #{entity.surgeryTaboo}, #{entity.surgeryIndication},
+            #{entity.anaesMethodCode}, #{entity.anaesMethodName}, #{entity.replaceOptions}, #{entity.surgeryRisk},
+            #{entity.poc})
+        </foreach>
+        on duplicate key update
+        PATIENT_TYPE = values(PATIENT_TYPE),
+        PATIENT_ID = values(PATIENT_ID),
+        VISIT_ID = values(VISIT_ID),
+        FILE_NO = values(FILE_NO),
+        DOC_STATUS = values(DOC_STATUS),
+        PAT_ID_NUMBER = values(PAT_ID_NUMBER),
+        PAT_NAME = values(PAT_NAME),
+        DATE_BIRTH = values(DATE_BIRTH),
+        AGE_YEAR = values(AGE_YEAR),
+        AGE = values(AGE),
+        ORGANIZATION_VIEW = values(ORGANIZATION_VIEW),
+        PAT_LEGAL_REP_VIEW = values(PAT_LEGAL_REP_VIEW),
+        CDA_CODE = values(CDA_CODE),
+        SEX_CODE = values(SEX_CODE),
+        SEX_NAME = values(SEX_NAME),
+        ATTENDING_DOCTOR_ID = values(ATTENDING_DOCTOR_ID),
+        ATTENDING_DOCTOR_NAME = values(ATTENDING_DOCTOR_NAME),
+        ATTENDING_DOCTOR_TIME = values(ATTENDING_DOCTOR_TIME),
+        SURGERY_DR_ID = values(SURGERY_DR_ID),
+        SURGERY_DR_NAME = values(SURGERY_DR_NAME),
+        SURGERY_DR_TIME = values(SURGERY_DR_TIME),
+        PAT_SIGN_ID = values(PAT_SIGN_ID),
+        PAT_SIGN_NAME = values(PAT_SIGN_NAME),
+        PAT_SIGN_TIME = values(PAT_SIGN_TIME),
+        LEGAL_REP_NAME = values(LEGAL_REP_NAME),
+        LEGAL_REP_SIGN_TIME = values(LEGAL_REP_SIGN_TIME),
+        LEGAL_REP_RELATION_CODE = values(LEGAL_REP_RELATION_CODE),
+        LEGAL_REP_RELATION_NAME = values(LEGAL_REP_RELATION_NAME),
+        BED_ID = values(BED_ID),
+        BED_NAME = values(BED_NAME),
+        ROOM_ID = values(ROOM_ID),
+        ROOM_NAME = values(ROOM_NAME),
+        DEPT_ID = values(DEPT_ID),
+        DEPT_NAME = values(DEPT_NAME),
+        WARD_ID = values(WARD_ID),
+        WARD_NAME = values(WARD_NAME),
+        HOSPITAL_ID = values(HOSPITAL_ID),
+        HOSPITAL_NAME = values(HOSPITAL_NAME),
+        DIAGNOSIS_CODE = values(DIAGNOSIS_CODE),
+        DIAGNOSIS_NAME = values(DIAGNOSIS_NAME),
+        SURGERY_CODE = values(SURGERY_CODE),
+        SURGERY_NAME = values(SURGERY_NAME),
+        SURGERY_TIME = values(SURGERY_TIME),
+        SURGERY_METHOD = values(SURGERY_METHOD),
+        SURGERY_READY = values(SURGERY_READY),
+        SURGERY_TABOO = values(SURGERY_TABOO),
+        SURGERY_INDICATION = values(SURGERY_INDICATION),
+        ANAES_METHOD_CODE = values(ANAES_METHOD_CODE),
+        ANAES_METHOD_NAME = values(ANAES_METHOD_NAME),
+        REPLACE_OPTIONS = values(REPLACE_OPTIONS),
+        SURGERY_RISK = values(SURGERY_RISK),
+        POC = values(POC)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update CDA_26
+        <set>
+            <if test="patientType != null and patientType != ''">
+                PATIENT_TYPE = #{patientType},
+            </if>
+            <if test="patientId != null and patientId != ''">
+                PATIENT_ID = #{patientId},
+            </if>
+            <if test="visitId != null">
+                VISIT_ID = #{visitId},
+            </if>
+            <if test="fileNo != null">
+                FILE_NO = #{fileNo},
+            </if>
+            <if test="docStatus != null and docStatus != ''">
+                DOC_STATUS = #{docStatus},
+            </if>
+            <if test="patIdNumber != null and patIdNumber != ''">
+                PAT_ID_NUMBER = #{patIdNumber},
+            </if>
+            <if test="patName != null and patName != ''">
+                PAT_NAME = #{patName},
+            </if>
+            <if test="dateBirth != null and dateBirth != ''">
+                DATE_BIRTH = #{dateBirth},
+            </if>
+            <if test="ageYear != null">
+                AGE_YEAR = #{ageYear},
+            </if>
+            <if test="age != null and age != ''">
+                AGE = #{age},
+            </if>
+            <if test="organizationView != null and organizationView != ''">
+                ORGANIZATION_VIEW = #{organizationView},
+            </if>
+            <if test="patLegalRepView != null and patLegalRepView != ''">
+                PAT_LEGAL_REP_VIEW = #{patLegalRepView},
+            </if>
+            <if test="cdaCode != null and cdaCode != ''">
+                CDA_CODE = #{cdaCode},
+            </if>
+            <if test="sexCode != null and sexCode != ''">
+                SEX_CODE = #{sexCode},
+            </if>
+            <if test="sexName != null and sexName != ''">
+                SEX_NAME = #{sexName},
+            </if>
+            <if test="attendingDoctorId != null and attendingDoctorId != ''">
+                ATTENDING_DOCTOR_ID = #{attendingDoctorId},
+            </if>
+            <if test="attendingDoctorName != null and attendingDoctorName != ''">
+                ATTENDING_DOCTOR_NAME = #{attendingDoctorName},
+            </if>
+            <if test="attendingDoctorTime != null and attendingDoctorTime != ''">
+                ATTENDING_DOCTOR_TIME = #{attendingDoctorTime},
+            </if>
+            <if test="surgeryDrId != null and surgeryDrId != ''">
+                SURGERY_DR_ID = #{surgeryDrId},
+            </if>
+            <if test="surgeryDrName != null and surgeryDrName != ''">
+                SURGERY_DR_NAME = #{surgeryDrName},
+            </if>
+            <if test="surgeryDrTime != null and surgeryDrTime != ''">
+                SURGERY_DR_TIME = #{surgeryDrTime},
+            </if>
+            <if test="patSignId != null and patSignId != ''">
+                PAT_SIGN_ID = #{patSignId},
+            </if>
+            <if test="patSignName != null and patSignName != ''">
+                PAT_SIGN_NAME = #{patSignName},
+            </if>
+            <if test="patSignTime != null and patSignTime != ''">
+                PAT_SIGN_TIME = #{patSignTime},
+            </if>
+            <if test="legalRepName != null and legalRepName != ''">
+                LEGAL_REP_NAME = #{legalRepName},
+            </if>
+            <if test="legalRepSignTime != null and legalRepSignTime != ''">
+                LEGAL_REP_SIGN_TIME = #{legalRepSignTime},
+            </if>
+            <if test="legalRepRelationCode != null and legalRepRelationCode != ''">
+                LEGAL_REP_RELATION_CODE = #{legalRepRelationCode},
+            </if>
+            <if test="legalRepRelationName != null and legalRepRelationName != ''">
+                LEGAL_REP_RELATION_NAME = #{legalRepRelationName},
+            </if>
+            <if test="bedId != null and bedId != ''">
+                BED_ID = #{bedId},
+            </if>
+            <if test="bedName != null and bedName != ''">
+                BED_NAME = #{bedName},
+            </if>
+            <if test="roomId != null and roomId != ''">
+                ROOM_ID = #{roomId},
+            </if>
+            <if test="roomName != null and roomName != ''">
+                ROOM_NAME = #{roomName},
+            </if>
+            <if test="deptId != null and deptId != ''">
+                DEPT_ID = #{deptId},
+            </if>
+            <if test="deptName != null and deptName != ''">
+                DEPT_NAME = #{deptName},
+            </if>
+            <if test="wardId != null and wardId != ''">
+                WARD_ID = #{wardId},
+            </if>
+            <if test="wardName != null and wardName != ''">
+                WARD_NAME = #{wardName},
+            </if>
+            <if test="hospitalId != null and hospitalId != ''">
+                HOSPITAL_ID = #{hospitalId},
+            </if>
+            <if test="hospitalName != null and hospitalName != ''">
+                HOSPITAL_NAME = #{hospitalName},
+            </if>
+            <if test="diagnosisCode != null and diagnosisCode != ''">
+                DIAGNOSIS_CODE = #{diagnosisCode},
+            </if>
+            <if test="diagnosisName != null and diagnosisName != ''">
+                DIAGNOSIS_NAME = #{diagnosisName},
+            </if>
+            <if test="surgeryCode != null and surgeryCode != ''">
+                SURGERY_CODE = #{surgeryCode},
+            </if>
+            <if test="surgeryName != null and surgeryName != ''">
+                SURGERY_NAME = #{surgeryName},
+            </if>
+            <if test="surgeryTime != null and surgeryTime != ''">
+                SURGERY_TIME = #{surgeryTime},
+            </if>
+            <if test="surgeryMethod != null and surgeryMethod != ''">
+                SURGERY_METHOD = #{surgeryMethod},
+            </if>
+            <if test="surgeryReady != null and surgeryReady != ''">
+                SURGERY_READY = #{surgeryReady},
+            </if>
+            <if test="surgeryTaboo != null and surgeryTaboo != ''">
+                SURGERY_TABOO = #{surgeryTaboo},
+            </if>
+            <if test="surgeryIndication != null and surgeryIndication != ''">
+                SURGERY_INDICATION = #{surgeryIndication},
+            </if>
+            <if test="anaesMethodCode != null and anaesMethodCode != ''">
+                ANAES_METHOD_CODE = #{anaesMethodCode},
+            </if>
+            <if test="anaesMethodName != null and anaesMethodName != ''">
+                ANAES_METHOD_NAME = #{anaesMethodName},
+            </if>
+            <if test="replaceOptions != null and replaceOptions != ''">
+                REPLACE_OPTIONS = #{replaceOptions},
+            </if>
+            <if test="surgeryRisk != null and surgeryRisk != ''">
+                SURGERY_RISK = #{surgeryRisk},
+            </if>
+            <if test="poc != null and poc != ''">
+                POC = #{poc},
+            </if>
+        </set>
+        where INFORMED_CONSENT_NO = #{informedConsentNo}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from CDA.CDA_26
+        where INFORMED_CONSENT_NO = #{informedConsentNo}
+    </delete>
+
+</mapper>
+
