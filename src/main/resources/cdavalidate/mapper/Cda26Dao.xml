@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bayc.xsdvalidatecmd.dao.Cda26Dao">
-
     <resultMap type="com.bayc.xsdvalidatecmd.entity.Cda26" id="Cda26Map">
         <result property="patientType" column="PATIENT_TYPE" jdbcType="VARCHAR"/>
         <result property="patientId" column="PATIENT_ID" jdbcType="VARCHAR"/>
@@ -57,7 +56,6 @@
         <result property="surgeryRisk" column="SURGERY_RISK" jdbcType="VARCHAR"/>
         <result property="poc" column="POC" jdbcType="VARCHAR"/>
     </resultMap>
-
     <!--查询单个-->
     <select id="queryById" resultMap="Cda26Map">
         select PATIENT_TYPE,

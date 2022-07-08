@@ -1,9 +1,6 @@
 package com.bayc.xsdvalidatecmd.control;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -36,7 +33,7 @@ public class GCLib {
      * @return true是 false否
      */
     public static boolean IsDoubleStr(String str) {
-        String v2 = GCLib.CTrim(str);
+        String v2 = CTrim(str);
         if (v2.isEmpty()) return false;
 
         char c = v2.charAt(0);
@@ -73,7 +70,7 @@ public class GCLib {
      * @return true是 false否
      */
     public static boolean IsNumberStr(String str) {
-        String v2 = GCLib.CTrim(str);
+        String v2 = CTrim(str);
         if (v2.isEmpty()) return false;
 
         char c = v2.charAt(0);
@@ -101,7 +98,7 @@ public class GCLib {
      * @return int
      */
     public static int parserInt(String str) {
-        String v2 = GCLib.CTrim(str);
+        String v2 = CTrim(str);
         if (v2.isEmpty()) return 0;
         int charLen = v2.length();
         char c = v2.charAt(0);
@@ -193,11 +190,12 @@ public class GCLib {
         if (str == null || str.isEmpty()) {
             return 0;
         }
+        int v = 0;
         try {
-            return Integer.parseInt(str.trim());
+            v = Integer.parseInt(str.trim());
         } catch (Exception ex) {
         }
-        return 0;
+        return v;
     }
 
     /**
@@ -210,11 +208,12 @@ public class GCLib {
         if (str == null || str.isEmpty()) {
             return 0.0;
         }
+        double v = 0.0;
         try {
-            return Double.parseDouble(str.trim());
+            v = Double.parseDouble(str.trim());
         } catch (Exception ex) {
         }
-        return 0.0;
+        return v;
     }
 
     /**
@@ -225,11 +224,30 @@ public class GCLib {
      */
     public static BigDecimal CDecimal(String str) {
         Double dbl = CDouble(str);
+        BigDecimal v = BigDecimal.valueOf(0);
         try {
-            return BigDecimal.valueOf(dbl);
+            v = BigDecimal.valueOf(dbl);
         } catch (Exception ex) {
         }
-        return BigDecimal.valueOf(0);
+        return v;
+    }
+
+    /**
+     * 字符串转换为整数，不成功则为0
+     *
+     * @param str 字符串
+     * @return 整数
+     */
+    public static boolean CBool(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        boolean isOk = false;
+        try {
+            isOk = Boolean.parseBoolean(str);
+        } catch (Exception ex) {
+        }
+        return isOk;
     }
 
     /**
@@ -317,6 +335,7 @@ public class GCLib {
      * @param text
      */
     public static void appendFileText(String filePath, String text) {
+        if (text == null || text.isEmpty()) return;
         FileWriter writer;
         try {
             FileOutputStream fos = new FileOutputStream(filePath, true);
@@ -353,4 +372,59 @@ public class GCLib {
         if (file.exists()) file.delete();
     }
 
+    /**
+     * 读Mapper文件中的ResultMap段
+     *
+     * @param xmlFile MapperXML文件
+     * @return StringBuilder， 为空时没有读到
+     */
+    public static StringBuilder ReadFileResultMapStr(File xmlFile) {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = null;
+        try {
+            FileInputStream fis = new FileInputStream(xmlFile);
+            br = new BufferedReader(new InputStreamReader(fis));
+            String line = null;
+            String startStr = "<resultMap type=\"com.";
+            boolean isOk = false;
+            while ((line = br.readLine()) != null) {
+                int p = line.indexOf(startStr);
+                if (p >= 0) {
+                    line = line.substring(p);
+                    sb.append(line);
+                    sb.append("\r\n");
+                    isOk = true;
+                    break;
+                }
+            }
+            if (!isOk) return sb;
+            isOk = false;
+            String endStr = "</resultMap>";
+            while ((line = br.readLine()) != null) {
+                int p = line.indexOf(endStr);
+                if (p >= 0) {
+                    if (p == 0) sb.append(endStr);
+                    else {
+                        line = line.substring(0, p).trim();
+                        sb.append(line + endStr);
+                    }
+                    break;
+                } else {
+                    sb.append("    ");
+                    sb.append(line.trim());
+                    sb.append("\r\n");
+                }
+            }
+            br.close();
+
+        } catch (Exception ex) {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+        return sb;
+    }
 }

@@ -107,10 +107,10 @@ public class DataExcel {
         File fileDict, fileNode, fileDomain, fileDictVer;
         String filePathDict, filePathVer, filePathNode, filePathDomain, jsonStr;
         String path = CdaConfig.configFilePath;
-        filePathDict = path + "config/CdaDict.json";
-        filePathVer = path + "config/CdaDictVersion.json";
-        filePathNode = path + "config/CdaNodeDefine.json";
-        filePathDomain = path + "config/CdaDomain.json";
+        filePathDict = path + "CdaDict.json";
+        filePathVer = path + "CdaDictVersion.json";
+        filePathNode = path + "CdaNodeDefine.json";
+        filePathDomain = path + "CdaDomain.json";
 
         fileDict = new File(filePathDict);
         fileDictVer = new File(filePathVer);

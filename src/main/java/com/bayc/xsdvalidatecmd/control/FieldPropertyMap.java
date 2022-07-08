@@ -8,6 +8,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
+import java.io.ByteArrayInputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,11 +99,17 @@ public class FieldPropertyMap {
             return null;
         }
 
+        StringBuilder sb = GCLib.ReadFileResultMapStr(file);
+        if (sb.length() == 0) {
+            setErrorInfo(String.format("文件%s中没有找到<resultMap>节点。", xmlFile));
+            return null;
+        }
+
         log.info("开始读取resultMap文件" + xmlFile);
         Document doc;
         SAXReader reader = new SAXReader();
         try {
-            doc = reader.read(new java.io.File(xmlFile));
+            doc = reader.read(new ByteArrayInputStream(sb.toString().getBytes()));
         } catch (DocumentException e) {
             errorInfo = String.format("SAXReader读文件%s错误：%s", xmlFile, e.getMessage());
             setErrorInfo(errorInfo);
@@ -112,7 +119,7 @@ public class FieldPropertyMap {
 
         log.info("读取resultMap节点。");
         int count = 0;
-        String nodePath = "mapper/resultMap/result";
+        String nodePath = "/resultMap/result";
         List<Node> listNode = doc.selectNodes(nodePath);
         if (listNode == null || listNode.size() == 0) {
             return null;
@@ -139,11 +146,29 @@ public class FieldPropertyMap {
      * @param entity 实体对象
      * @return 没有读到则返回空，否则返加HashMap<数据表字段, 实体字段>
      */
-    public <T> boolean setEntityValue(String fName, Object fValue, T entity) {
+    public <T> boolean setEntityValue(String fName, String fValue, T entity) {
         try {
             Field field = entity.getClass().getDeclaredField(fName);
+            String type = field.getType().toString().toLowerCase();
+            Object oval;
+            if (type.endsWith(".string")) {
+                oval = GCLib.CStr(fValue);
+            } else if (type.contains("integer") || type.contains("long")) {
+                oval = GCLib.CInt(fValue);
+            } else if (type.contains("decimal")) {
+                oval = GCLib.CDecimal(fValue);
+            } else if (type.contains("double") || type.contains("float")) {
+                oval = GCLib.CDouble(fValue);
+            } else if (type.contains("boolean")) {
+                oval = GCLib.CBool(fValue);
+            } else if (type.contains("date")) {
+                oval = GCLib.CDateTime(fValue);
+            } else {
+                oval = GCLib.CStr(fValue);
+            }
+
             field.setAccessible(true);
-            field.set(entity, fValue);
+            field.set(entity, oval);
         } catch (Exception ex) {
             String errorInfo = String.format("%s, %s错误:%s", fName, ex.getClass().toString(), ex.getMessage());
             setErrorInfo(errorInfo);

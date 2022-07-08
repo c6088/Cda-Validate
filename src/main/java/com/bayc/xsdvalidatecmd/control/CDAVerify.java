@@ -158,7 +158,8 @@ public class CDAVerify {
         this.cdaCode = "";
         errorMessage.clear();
         try {
-            Reader reader = Resources.getResourceAsReader(CdaConfig.mybatisConfigFile);
+            String filePath = CdaConfig.mybatisConfigFile;
+            Reader reader = Resources.getResourceAsReader(filePath);
             ssf = new SqlSessionFactoryBuilder().build(reader);
             reader.close();
         } catch (IOException ex) {
@@ -255,16 +256,17 @@ public class CDAVerify {
      * @return Mapper文件
      */
     public String getCdaMapperFile(String cdaCode) {
+        String path = "src/main/resources/cdavalidate/mapper/";
         String fileName;
         switch (cdaCode) {
             case "C0026":
-                fileName = "src/main/resources/mapper/Cda26Dao.xml";
+                fileName = "Cda26Dao.xml";
                 break;
             default:
                 fileName = "";
                 break;
         }
-        return fileName;
+        return path + fileName;
     }
 
     /**
@@ -314,11 +316,7 @@ public class CDAVerify {
             if (node.getNodePath().isEmpty()) continue; //没有节点路径的点不是客户端传输的数据
 
             fieldName = node.getFieldName();
-//            if (node.getFieldName().compareTo("DIAGNOSIS_CODE") == 0)
-//                i = i;
-
             if (dataVerify.isNodeOK(node)) {
-
                 node.setIsVerified(1);
                 entityPropertyName = fieldPropertyMap.getCdaCodeField(cdaCode, fieldName);
                 this.fieldPropertyMap.<Cda26>setEntityValue(entityPropertyName, node.getFieldValue(), data);
