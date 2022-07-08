@@ -115,7 +115,7 @@ public class CdaNode implements Serializable {
     }
 
     /**
-     * 节点基数 例1..1, 0..*, 0..1
+     * 节点基数 例1..5 / 0..* / 0..1 / 1..5,2 / 8
      */
     private String _baseNumber;
 
@@ -124,8 +124,8 @@ public class CdaNode implements Serializable {
         return _baseNumber;
     }
 
-    public void setBaseNumber(String fieldName) {
-        this._baseNumber = _baseNumber;
+    public void setBaseNumber(String baseNumber) {
+        this._baseNumber = baseNumber;
     }
 
     /**

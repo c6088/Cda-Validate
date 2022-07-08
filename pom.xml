@@ -69,7 +69,17 @@
             <artifactId>mybatis</artifactId>
             <version>3.4.6</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>2.0.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.11</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -85,15 +95,16 @@
     </dependencyManagement>
 
     <build>
-        <!--        <resources>-->
-        <!--            <resource>-->
-        <!--                <directory>src/main/resources</directory>-->
-        <!--                <includes>-->
-        <!--                    <include>**/*.*</include>-->
-        <!--                </includes>-->
-        <!--                <filtering>false</filtering>-->
-        <!--            </resource>-->
-        <!--        </resources>-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+                <targetPath>${project.build.directory}/config</targetPath>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -136,8 +147,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.bayc.xsdvalidatecmd.XsdValidateRegexApplication</mainClass>
+                    <layout>ZIP</layout>
+                    <mainClass>com.bayc.xsdvalidatecmd.CdaValidateApplication</mainClass>
                     <addResources>false</addResources>
+
                 </configuration>
                 <executions>
                     <execution>

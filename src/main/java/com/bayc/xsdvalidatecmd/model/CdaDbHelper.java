@@ -192,7 +192,7 @@ public class CdaDbHelper {
         }
 
         log.info("判断配置是否正确。");
-        String nodePath = "/configuration/environments/dataSource/property";
+        String nodePath = "/configuration/environments/environment/dataSource/property";
         List<Node> listNode = doc.selectNodes(nodePath);
         if (listNode == null || listNode.size() == 0) {
             errorInfo = String.format("%s不存在节点：%s", configFile, nodePath);
@@ -204,7 +204,7 @@ public class CdaDbHelper {
             String name = ele.attributeValue("name");
             String value = ele.attributeValue("value");
             if (value.isEmpty()) {
-                SetErrorInfo(String.format("没有设置%s", name));
+                SetErrorInfo(String.format("%s中没有设置%s", configFile, name));
                 continue;
             }
             switch (name) {
@@ -212,7 +212,7 @@ public class CdaDbHelper {
                     this.driver = value;
                     break;
                 case "url":
-                    this.dataSource = "jdbc:oracle:thin:@" + value;
+                    this.dataSource = value;
                     break;
                 case "username":
                     this.userID = value;
@@ -231,17 +231,7 @@ public class CdaDbHelper {
      * @return true 能 false 不能
      */
     public boolean CanConnectToDb() {
-        boolean isOk = false;
-        errorMessage.clear();
-        Statement statement = null;
-        Connection conn = null;
-        try {
-            isOk = Execute("select 1 rc from dual");
-        } catch (Exception e) {
-            String errorInfo = String.format("请检查配置文件%s, 不能连接到数据库:%s", configFile, e.getMessage());
-            SetErrorInfo(errorInfo);
-        }
-        return isOk;
+        return Execute("select 1 rc from dual");
     }
 
     /**
@@ -250,12 +240,13 @@ public class CdaDbHelper {
      * @param sql 需要执行的SQL语句
      * @return true 成功执行 false 没有执行
      */
-    public boolean Execute(String sql) throws SQLException {
+    public boolean Execute(String sql) {
         boolean isOk = false;
         errorMessage.clear();
         Statement statement = null;
         Connection conn = null;
         try {
+            Class.forName(this.driver);
             conn = DriverManager.getConnection(dataSource, userID, password);
             statement = conn.createStatement();
             statement.execute(sql);
@@ -269,10 +260,16 @@ public class CdaDbHelper {
             SetErrorInfo(errorInfo);
         } finally {
             if (statement != null) {
-                statement.close();
+                try {
+                    statement.close();
+                } catch (Exception e) {
+                }
             }
             if (conn != null) {
-                conn.close();
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                }
             }
         }
         return isOk;

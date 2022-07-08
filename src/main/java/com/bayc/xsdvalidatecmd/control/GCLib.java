@@ -1,6 +1,12 @@
 package com.bayc.xsdvalidatecmd.control;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -30,11 +36,20 @@ public class GCLib {
      * @return true是 false否
      */
     public static boolean IsDoubleStr(String str) {
-        Boolean isOk = true;
-        int charLen = str.length();
+        String v2 = GCLib.CTrim(str);
+        if (v2.isEmpty()) return false;
+
+        char c = v2.charAt(0);
+        int charLen = v2.length();
+        if (c == '-') {
+            if (charLen == 1) return false;
+            v2 = v2.substring(1);
+            charLen--;
+        }
         int dotCount = 0;
+        boolean isOk = true;
         for (int i = 0; i < charLen; i++) {
-            char c = str.charAt(i);
+            c = v2.charAt(i);
             if (!Character.isDigit(c)) {
                 if (c == '.') {
                     dotCount++;
@@ -58,16 +73,57 @@ public class GCLib {
      * @return true是 false否
      */
     public static boolean IsNumberStr(String str) {
-        Boolean isOk = true;
-        int charLen = str.length();
+        String v2 = GCLib.CTrim(str);
+        if (v2.isEmpty()) return false;
+
+        char c = v2.charAt(0);
+        int charLen = v2.length();
+        if (c == '-') {
+            if (charLen == 1) return false;
+            v2 = v2.substring(1);
+            charLen--;
+        }
+        boolean isOk = true;
         for (int i = 0; i < charLen; i++) {
-            char c = str.charAt(i);
+            c = v2.charAt(i);
             if (!Character.isDigit(c)) {
                 isOk = false;
                 break;
             }
         }
         return isOk;
+    }
+
+    /**
+     * 解析字符串中前面的数字整数值， 不是数字时为0
+     *
+     * @param str 字符串
+     * @return int
+     */
+    public static int parserInt(String str) {
+        String v2 = GCLib.CTrim(str);
+        if (v2.isEmpty()) return 0;
+        int charLen = v2.length();
+        char c = v2.charAt(0);
+        boolean isfs = false; //是否负数
+        if (c == '-') {
+            if (charLen == 1) return 0;
+            v2 = v2.substring(1);
+            charLen--;
+            isfs = true;
+        }
+        int p = -1;
+        for (int i = 0; i < charLen; i++) {
+            c = v2.charAt(i);
+            if (Character.isDigit(c)) {
+                p = i;
+            } else break;
+        }
+        if (p == -1) return 0;
+        String s2 = v2.substring(0, p + 1);
+        int v = CInt(s2);
+        if (isfs) v = 0 - v;
+        return v;
     }
 
     /**
@@ -235,4 +291,66 @@ public class GCLib {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd yyyy-MM-dd hh:mm:ss");
         return dateFormat.format(date);
     }
+
+    /**
+     * 将文本写入文件，原来存在，就覆盖
+     *
+     * @param filePath
+     * @param text
+     */
+    public static void writeFileAllText(String filePath, String text) {
+        FileWriter writer;
+        try {
+            writer = new FileWriter(filePath);
+            writer.write(text);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 将文本添加到文件中，如果文件不存在，就创建
+     *
+     * @param filePath
+     * @param text
+     */
+    public static void appendFileText(String filePath, String text) {
+        FileWriter writer;
+        try {
+            FileOutputStream fos = new FileOutputStream(filePath, true);
+            fos.write(text.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 读取文件中的文本字符串
+     *
+     * @param filePath
+     * @return String
+     */
+    public static String readFileALLText(String filePath) {
+        String text = "";
+        try {
+            text = new String(Files.readAllBytes(Paths.get(filePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return text;
+    }
+
+    /**
+     * 删除文件
+     *
+     * @param filePath
+     */
+    public static void deleteFile(String filePath) {
+        File file = new File(filePath);
+        if (file.exists()) file.delete();
+    }
+
 }

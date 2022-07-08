@@ -19,7 +19,11 @@ import java.util.List;
 public class FieldPropertyMap {
     private Log log = LogFactory.getLog(DataExcel.class);
     private List<String> errorMessage = new ArrayList<>();
-    private HashMap<String, HashMap<String, String>> mapFieldProperty = new HashMap<>();
+    private static HashMap<String, HashMap<String, String>> mapFieldProperty = new HashMap<>();
+
+    public List<String> getErrorMessage() {
+        return errorMessage;
+    }
 
     /**
      * HashMap<字典名称, HashMap<数据表字段, 实体字段>>
@@ -28,6 +32,23 @@ public class FieldPropertyMap {
      */
     public HashMap<String, HashMap<String, String>> getMapFieldProperty() {
         return mapFieldProperty;
+    }
+
+    /**
+     * 构造函数
+     */
+    public FieldPropertyMap() {
+    }
+
+    /**
+     * 析构函数
+     */
+    public void finalize() {
+        log = null;
+        if (errorMessage != null) {
+            errorMessage.clear();
+            errorMessage = null;
+        }
     }
 
     /**
@@ -40,7 +61,7 @@ public class FieldPropertyMap {
         return null;
     }
 
-    private void SetErrorInfo(String errorInfo) {
+    private void setErrorInfo(String errorInfo) {
         errorMessage.add(errorInfo);
         log.info(errorInfo);
     }
@@ -48,33 +69,32 @@ public class FieldPropertyMap {
     /**
      * 设置字典映射：HashMap<字典名称, HashMap<数据表字段, 实体字段>>
      *
-     * @param cdaCode CDA代码
-     * @param xmlFile xml文件
+     * @param cdaCode     CDA代码
+     * @param dbFieldName 数据表字段名称
      */
-    public String GetCdaCodeField(String cdaCode, String xmlFile, String dbFieldName) {
-        HashMap<String, String> resultMap;
+    public String getCdaCodeField(String cdaCode, String dbFieldName) {
+
         if (mapFieldProperty.containsKey(cdaCode)) {
-            resultMap = mapFieldProperty.get(cdaCode);
-        } else {
-            resultMap = ReadResultMap(xmlFile);
+            HashMap<String, String> resultMap = mapFieldProperty.get(cdaCode);
+            if (resultMap.containsKey(dbFieldName)) return resultMap.get(dbFieldName);
         }
-        if (resultMap.containsKey(dbFieldName)) return resultMap.get(dbFieldName);
         return null;
     }
 
     /**
      * 读取字段与实体属性映射关系
      *
+     * @param cdaCode CDA代码
      * @param xmlFile XML定义文件
      * @return 没有读到则返回空，否则返加HashMap<数据表字段, 实体字段>
      */
-    public HashMap<String, String> ReadResultMap(String xmlFile) {
+    public HashMap<String, String> readResultMap(String cdaCode, String xmlFile) {
         String errorInfo;
         errorMessage.clear();
         java.io.File file = new java.io.File(xmlFile);
         if (!file.exists()) {
             errorInfo = xmlFile + "文件不存在。";
-            SetErrorInfo(errorInfo);
+            setErrorInfo(errorInfo);
             return null;
         }
 
@@ -85,7 +105,7 @@ public class FieldPropertyMap {
             doc = reader.read(new java.io.File(xmlFile));
         } catch (DocumentException e) {
             errorInfo = String.format("SAXReader读文件%s错误：%s", xmlFile, e.getMessage());
-            SetErrorInfo(errorInfo);
+            setErrorInfo(errorInfo);
             e.printStackTrace();
             return null;
         }
@@ -107,6 +127,7 @@ public class FieldPropertyMap {
                 map.put(column, name);
             }
         }
+        mapFieldProperty.put(cdaCode, map);
         return map;
     }
 
@@ -118,16 +139,29 @@ public class FieldPropertyMap {
      * @param entity 实体对象
      * @return 没有读到则返回空，否则返加HashMap<数据表字段, 实体字段>
      */
-    public <T> boolean SetEntityValue(String fName, Object fValue, T entity) {
+    public <T> boolean setEntityValue(String fName, Object fValue, T entity) {
         try {
             Field field = entity.getClass().getDeclaredField(fName);
             field.setAccessible(true);
             field.set(entity, fValue);
         } catch (Exception ex) {
             String errorInfo = String.format("%s, %s错误:%s", fName, ex.getClass().toString(), ex.getMessage());
-            SetErrorInfo(errorInfo);
+            setErrorInfo(errorInfo);
             return false;
         }
         return true;
+    }
+
+    public <T> String getEntityValue(String fName, T entity) {
+        String val = "";
+        try {
+            Field field = entity.getClass().getDeclaredField(fName);
+            field.setAccessible(true);
+            val = GCLib.CStr(field.get(entity));
+        } catch (Exception ex) {
+            String errorInfo = String.format("%s, %s错误:%s", fName, ex.getClass().toString(), ex.getMessage());
+            setErrorInfo(errorInfo);
+        }
+        return val;
     }
 }

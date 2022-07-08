@@ -1,5 +1,8 @@
 package com.bayc.xsdvalidatecmd.control;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.bayc.xsdvalidatecmd.enums.EnumCodeName;
 import com.bayc.xsdvalidatecmd.model.CdaNode;
 import org.apache.commons.logging.Log;
@@ -9,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,19 +37,25 @@ public class DataExcel {
     private static boolean isNodeLoaded = false;
     private static boolean isDeLoaded = false;
     private static boolean isDictLoaded = false;
+    private static boolean isDictVersionLoaded = false;
     /**
-     * 节点数据定义
+     * 节点数据定义, 节点代码对应节点定义列表
      */
-    public static List<CdaNode> listCdaDefine = new ArrayList<>();
+    public static HashMap<String, List<CdaNode>> mapListCdaDefine = new HashMap<>();
     /**
      * 数据元的值域定义
      */
     public static HashMap<String, String> mapDeDomain = new HashMap<String, String>();
-    private XSSFWorkbook sheets = null;
+    private XSSFWorkbook sheetsDefine = null;
+    private XSSFWorkbook sheetsDict = null;
     /**
      * 字典数据定义
      */
     public static HashMap<String, HashMap<String, String>> mapDicts = new HashMap<>();
+    /**
+     * 标准字典所用的版本
+     */
+    public static HashMap<String, String> mapDictVersion = new HashMap<String, String>();
 
     /**
      * 构造函数
@@ -65,44 +75,184 @@ public class DataExcel {
         }
     }
 
-    private void SetErrorInfo(String errorInfo) {
+    private void setErrorInfo(String errorInfo) {
         errorMessage.add(errorInfo);
         log.info(errorInfo);
     }
 
+    public boolean dataWriteToJsonFile() {
+        String filePathDict, filePathVer, filePathNode, filePathDomain, jsonStr;
+        String path = CdaConfig.configFilePath;
+        filePathDict = path + "CdaDict.json";
+        filePathVer = path + "CdaDictVersion.json";
+        filePathNode = path + "CdaNodeDefine.json";
+        filePathDomain = path + "CdaDomain.json";
+        jsonStr = this.objectToJsonStr(mapDicts);
+        GCLib.writeFileAllText(filePathDict, jsonStr);
+        jsonStr = this.objectToJsonStr(mapDictVersion);
+        GCLib.writeFileAllText(filePathVer, jsonStr);
+        jsonStr = this.objectToJsonStr(mapListCdaDefine);
+        GCLib.writeFileAllText(filePathNode, jsonStr);
+        jsonStr = this.objectToJsonStr(mapDeDomain);
+        GCLib.writeFileAllText(filePathDomain, jsonStr);
+        return true;
+    }
+
     /**
-     * 传入excelPath，为空默认为config/数据集-2016版.xlsx。打开Excel慢，不能多次打开。
+     * 从JSON文件中读设置数据
+     *
+     * @return true成功，false失败
      */
-    public boolean open(String excelPath) {
+    public boolean dataLoadFromJsonFile() {
+        File fileDict, fileNode, fileDomain, fileDictVer;
+        String filePathDict, filePathVer, filePathNode, filePathDomain, jsonStr;
+        String path = CdaConfig.configFilePath;
+        filePathDict = path + "config/CdaDict.json";
+        filePathVer = path + "config/CdaDictVersion.json";
+        filePathNode = path + "config/CdaNodeDefine.json";
+        filePathDomain = path + "config/CdaDomain.json";
+
+        fileDict = new File(filePathDict);
+        fileDictVer = new File(filePathVer);
+        fileNode = new File(filePathNode);
+        fileDomain = new File(filePathDomain);
         boolean isOk = false;
-        if (excelPath.isEmpty()) excelPath = "config/数据集-2016版.xlsx";
-        try {
-            errorMessage.clear();
-            FileInputStream inputStream = new FileInputStream(excelPath);
-            sheets = new XSSFWorkbook(inputStream);//String excelPath
-            isDeLoaded = false;
-            isNodeLoaded = false;
-            isDictLoaded = false;
+        if (fileDict.exists() && fileDictVer.exists() && fileNode.exists() && fileDomain.exists()) {
+            jsonStr = GCLib.readFileALLText(filePathDict);
+            mapDicts = this.jsonStrToHashMap2(jsonStr);
+            jsonStr = GCLib.readFileALLText(filePathVer);
+            mapDictVersion = this.jsonStrToHashMap(jsonStr);
+            jsonStr = GCLib.readFileALLText(filePathNode);
+            mapListCdaDefine = this.<CdaNode>jsonStrToHashMapList(jsonStr);
+            jsonStr = GCLib.readFileALLText(filePathDomain);
+            mapDeDomain = this.jsonStrToHashMap(jsonStr);
+            isDictLoaded = true;
+            isDictVersionLoaded = true;
+            isNodeLoaded = true;
+            isDeLoaded = true;
             isOk = true;
-        } catch (Exception ex) {
-            String str = "读" + excelPath + "错误:" + ex.getMessage();
-            errorMessage.add(str);
-            log.info(str);
+        } else {
+            String errorInfo = String.format("以下四个文件，至少有一个不存在。\n%s\n%s\n%s\n%s", filePathDict, fileDictVer, filePathNode, filePathDomain);
+            setErrorInfo(errorInfo);
         }
         return isOk;
     }
 
+    /**
+     * 将JSON字符串解析为List
+     *
+     * @param jsonStr jsonStr
+     * @param obj     Class<T>
+     * @param <T>     T
+     * @return List<T>
+     */
+    public <T> List<T> jsonStrToList(String jsonStr, Class<T> obj) {
+        return JSONArray.parseArray(jsonStr, obj);
+    }
+
+    /**
+     * 将 JsonStr解析为HashMap<String,HashMap<String,String>>
+     *
+     * @param jsonStr jsonStr
+     * @return HashMap<String, HashMap < String, String>>
+     */
+    public HashMap<String, HashMap<String, String>> jsonStrToHashMap2(String jsonStr) {
+        return (HashMap<String, HashMap<String, String>>)
+                JSONObject.parseObject(jsonStr, new TypeReference<HashMap<String, HashMap<String, String>>>() {
+                });
+    }
+
+    /**
+     * 将 JsonStr解析为HashMap<String,HashMap<String,String>>
+     *
+     * @param jsonStr jsonStr
+     * @return HashMap<String, HashMap < String, String>>
+     */
+    public <T> HashMap<String, List<CdaNode>> jsonStrToHashMapList(String jsonStr) {
+        return (HashMap<String, List<CdaNode>>) JSONObject.parseObject(jsonStr, new TypeReference<HashMap<String, List<CdaNode>>>() {
+        });
+    }
+
+    public HashMap<String, String> jsonStrToHashMap(String jsonStr) {
+        return (HashMap<String, String>) JSONObject.parseObject(jsonStr, new TypeReference<HashMap<String, String>>() {
+        });
+    }
+
+    /**
+     * 将对象JSON序列化
+     *
+     * @param obj Object
+     * @return String
+     */
+    public String objectToJsonStr(Object obj) {
+        return JSONObject.toJSONString(obj);
+    }
+
+    /**
+     * 将JSON字符串解析为对象T
+     *
+     * @param jsonStr jsonStr
+     * @param obj     Class<T>
+     * @param <T>     T
+     * @return T
+     */
+    public <T> T jsonStrToObject(String jsonStr, Class<T> obj) {
+        return JSONObject.parseObject(jsonStr, obj);
+    }
+
+    /**
+     * 传入excelPath，为空默认为config/数据集-2016版.xlsx。打开Excel慢，不能多次打开。
+     *
+     * @return true打开成功，false打开失败
+     */
+    public boolean open() {
+        boolean isOk = false;
+        String excelPath = "";
+        errorMessage.clear();
+        try {
+            excelPath = CdaConfig.cdaDatasetExcel;
+            sheetsDefine = openSheets(excelPath);
+            excelPath = CdaConfig.cdaDictionaryExcel;
+            sheetsDict = openSheets(excelPath);
+            isDeLoaded = false;
+            isNodeLoaded = false;
+            isDictLoaded = false;
+            isDictVersionLoaded = false;
+            isOk = true;
+        } catch (Exception ex) {
+            String errorInfo = "读" + excelPath + "文件错误:" + ex.getMessage();
+            setErrorInfo(errorInfo);
+        }
+        return isOk;
+    }
 
     /**
      * 关闭Excel，再读Excel时，需要重新打开。
      */
     public void close() {
-        if (sheets != null) {
+        closeSheets(sheetsDefine);
+        closeSheets(sheetsDict);
+    }
+
+    private XSSFWorkbook openSheets(String excelPath) {
+        XSSFWorkbook sheets = null;
+        try {
+            FileInputStream inputStream = new FileInputStream(excelPath);
+            sheets = new XSSFWorkbook(inputStream);
+        } catch (Exception ex) {
+            String errorInfo = "读" + excelPath + "错误:" + ex.getMessage();
+            setErrorInfo(errorInfo);
+        }
+        return sheets;
+    }
+
+    private void closeSheets(XSSFWorkbook sheets) {
+        if (sheetsDefine != null) {
             try {
-                sheets.close();
+                sheetsDefine.close();
             } catch (IOException ex) {
             }
-            sheets = null;
+            sheetsDefine = null;
         }
     }
 
@@ -111,19 +261,17 @@ public class DataExcel {
      *
      * @return List<CdaNode>
      */
-    public List<CdaNode> getListCdaDefine() {
+    public HashMap<String, List<CdaNode>> getListCdaDefine() {
         if (!isNodeLoaded) {
-            errorMessage.clear();
             try {
-                loadCdaDict(sheets);
+                loadListCdaDefine(sheetsDefine);
                 isNodeLoaded = true;
             } catch (Exception ex) {
-                String str = "getListCdaDefine错误:" + ex.getMessage();
-                errorMessage.add(str);
-                log.info(str);
+                String errorInfo = "数据集-2016版.xlsx中的检验设置错误:" + ex.getMessage();
+                setErrorInfo(errorInfo);
             }
         }
-        return listCdaDefine;
+        return mapListCdaDefine;
     }
 
     /**
@@ -134,18 +282,16 @@ public class DataExcel {
      */
     public List<CdaNode> getListCdaDefine(String cdaCode) {
         if (cdaCode == null || cdaCode.isEmpty()) {
-            SetErrorInfo("cdaCode不能为空");
+            setErrorInfo("cdaCode不能为空");
             return null;
         }
         getListCdaDefine();
 
-        List<CdaNode> list = new ArrayList<>();
-        for (CdaNode node : listCdaDefine) {
-            if (node.getCdaCode().compareTo(cdaCode) == 0) {
-                list.add(node);
-            }
+        if (!mapListCdaDefine.containsKey(cdaCode)) {
+            setErrorInfo(String.format("没有cdaCode(%s)的节点定义。", cdaCode));
+            return null;
         }
-        return list;
+        return mapListCdaDefine.get(cdaCode);
     }
 
     /**
@@ -155,9 +301,8 @@ public class DataExcel {
      */
     public HashMap<String, String> getDeDomain() {
         if (!isDeLoaded) {
-            errorMessage.clear();
             try {
-                loadDeDomain(sheets);
+                loadDeDomain(sheetsDefine);
                 isDeLoaded = true;
             } catch (Exception ex) {
                 String str = "读getDeDomain错误:" + ex.getMessage();
@@ -175,25 +320,12 @@ public class DataExcel {
      */
     public HashMap<String, HashMap<String, String>> getMapDict() {
         if (!isDictLoaded) {
-            errorMessage.clear();
-            String excelPath = "config/CDA字典信息.xlsx";
-            XSSFWorkbook sheets = null;
             try {
-                FileInputStream inputStream = new FileInputStream(excelPath);
-                sheets = new XSSFWorkbook(inputStream);  //String excelPath
-                loadMapDicts(sheets);
+                loadMapDicts(sheetsDict);
                 isDictLoaded = true;
             } catch (Exception ex) {
-                String str = "读getMapDicts错误:" + ex.getMessage();
-                errorMessage.add(str);
-                log.info(str);
-            } finally {
-                if (sheets != null) {
-                    try {
-                        sheets.close();
-                    } catch (Exception e) {
-                    }
-                }
+                String errorInfo = "读CDA字典信息.xlsx中CDA字典数据错误:" + ex.getMessage();
+                setErrorInfo(errorInfo);
             }
         }
         return mapDicts;
@@ -209,10 +341,28 @@ public class DataExcel {
         getMapDict();
         if (!mapDicts.containsKey(dictName)) {
             String errorInfo = String.format("没有名称为%s的字典。", dictName);
-            SetErrorInfo(errorInfo);
+            setErrorInfo(errorInfo);
             return null;
         }
         return mapDicts.get(dictName);
+    }
+
+    /**
+     * 获取字典数据mapDicts
+     *
+     * @return HashMap<String, String>
+     */
+    public HashMap<String, String> getMapDictVersion() {
+        if (!isDictVersionLoaded) {
+            try {
+                loadMapDictVersion(sheetsDict);
+                isDictVersionLoaded = true;
+            } catch (Exception ex) {
+                String errorInfo = "读CDA字典信息.xlsx中CDA字典版本错误:" + ex.getMessage();
+                setErrorInfo(errorInfo);
+            }
+        }
+        return mapDictVersion;
     }
 
     /**
@@ -221,7 +371,7 @@ public class DataExcel {
      * @param cell XSSFCell
      * @return String
      */
-    private String GetCellText(XSSFCell cell) {
+    private String getCellText(XSSFCell cell) {
         if (cell == null) return "";
         return GCLib.CStr(cell.toString()).trim();
     }
@@ -231,8 +381,8 @@ public class DataExcel {
      *
      * @param sheets XSSFWorkbook
      */
-    private void loadCdaDict(XSSFWorkbook sheets) {
-        listCdaDefine.clear();
+    private void loadListCdaDefine(XSSFWorkbook sheets) {
+        mapListCdaDefine.clear();
         XSSFSheet sheet = sheets.getSheet("校验设置");
         int lastRowNum = sheet.getLastRowNum();
         XSSFRow row;
@@ -240,7 +390,7 @@ public class DataExcel {
         errorMessage.clear();
         for (int i = 1; i < lastRowNum; i++) {
             int col;
-            String str;
+            String str, errorInfo, key;
             row = sheet.getRow(i);
             if (row == null) continue;
 
@@ -248,34 +398,34 @@ public class DataExcel {
             col = 0;
             try {
                 col++;
-                str = GetCellText(row.getCell(0));
+                str = getCellText(row.getCell(0));
                 node.setTableName(str);
                 col++;
-                str = GetCellText(row.getCell(1));
+                str = getCellText(row.getCell(1));
                 node.setFieldName(str);
                 col++;
-                str = GetCellText(row.getCell(2));
+                str = getCellText(row.getCell(2));
                 node.setFieldDescription(str);
                 col++;
-                str = GetCellText(row.getCell(3));
+                str = getCellText(row.getCell(3));
                 node.setCdaCode(str);
                 col++;
-                str = GetCellText(row.getCell(4));
+                str = getCellText(row.getCell(4));
                 node.setDataType(str);
                 col++;
-                str = GetCellText(row.getCell(5));
+                str = getCellText(row.getCell(5));
                 node.setConstraint(str);
                 col++;
-                str = GetCellText(row.getCell(6));
+                str = getCellText(row.getCell(6));
                 node.setMetaCode(str);
                 col++;
-                str = GetCellText(row.getCell(7));
+                str = getCellText(row.getCell(7));
                 node.setCodomain(str);
                 col++;
-                str = GetCellText(row.getCell(8));
+                str = getCellText(row.getCell(8));
                 node.setCdaDictName(str);
                 col++;
-                str = GetCellText(row.getCell(9)).toUpperCase();
+                str = getCellText(row.getCell(9)).toUpperCase();
                 switch (str) {
                     case "CODE":
                         node.setEnumCodeName(EnumCodeName.Code);
@@ -285,20 +435,23 @@ public class DataExcel {
                         break;
                 }
                 col++;
-                str = GetCellText(row.getCell(10));
+                str = getCellText(row.getCell(10));
                 node.setNameCodeField(str);
                 col++;
-                str = GetCellText(row.getCell(11));
+                str = getCellText(row.getCell(11));
                 node.setNodePath(str);
                 col++;
-                str = GetCellText(row.getCell(12));
+                str = getCellText(row.getCell(12));
                 int v = GCLib.CInt(str);
                 node.setIsVerified(v);
-                listCdaDefine.add(node);
+                key = node.getCdaCode();
+                if (!mapListCdaDefine.containsKey(key)) {
+                    mapListCdaDefine.put(key, new ArrayList<>());
+                }
+                mapListCdaDefine.get(key).add(node);
             } catch (Exception ex) {
-                str = String.format("Excel第%d行%d列错误：%s", i, col, ex.getMessage());
-                errorMessage.add(str);
-                log.info(str);
+                errorInfo = String.format("Excel第%d行%d列错误：%s", i, col, ex.getMessage());
+                setErrorInfo(errorInfo);
                 ex.printStackTrace();
             }
         }
@@ -315,28 +468,26 @@ public class DataExcel {
         int lastRowNum = sheet.getLastRowNum();
         XSSFRow row;
         String eleCode, domainValue;
-        errorMessage.clear();
         for (int i = 1; i < lastRowNum; i++) {
             int col = 0;
-            String str;
+            String str, errorInfo;
             row = sheet.getRow(i);
             if (row == null) continue;
 
             try {
                 col = 1;
-                eleCode = GetCellText(row.getCell(col));
+                eleCode = getCellText(row.getCell(col));
                 if (eleCode.isEmpty()) continue;
                 col = 5;
-                domainValue = GetCellText(row.getCell(col));
+                domainValue = getCellText(row.getCell(col));
                 if (domainValue.isEmpty()) continue;
 
                 if (!mapDeDomain.containsKey(eleCode)) {
                     mapDeDomain.put(eleCode, domainValue);
                 }
             } catch (Exception ex) {
-                str = String.format("第%d行%d错误：%s", i, col, ex.getMessage());
-                errorMessage.add(str);
-                log.info(str);
+                errorInfo = String.format("数据集-2016版.xlsx中数据表详细字段信息中第%d行%d错误：%s", i, col, ex.getMessage());
+                setErrorInfo(errorInfo);
                 ex.printStackTrace();
             }
         }
@@ -356,19 +507,19 @@ public class DataExcel {
         errorMessage.clear();
         for (int i = 1; i < lastRowNum; i++) {
             int col = 0;
-            String str;
+            String errorInfo;
             row = sheet.getRow(i);
             if (row == null) continue;
             HashMap<String, String> hsMap;
             try {
                 col = 0;
-                dictName = GetCellText(row.getCell(col));
+                dictName = getCellText(row.getCell(col));
                 if (dictName.isEmpty()) continue;
                 col = 2;
-                key = GetCellText(row.getCell(col));
+                key = getCellText(row.getCell(col));
                 if (key.isEmpty()) continue;
                 col = 3;
-                val = GetCellText(row.getCell(col));
+                val = getCellText(row.getCell(col));
                 if (val.isEmpty()) continue;
 
                 if (!mapDicts.containsKey(dictName)) {
@@ -377,9 +528,41 @@ public class DataExcel {
                 hsMap = mapDicts.get(dictName);
                 hsMap.put(key, val);
             } catch (Exception ex) {
-                str = String.format("第%d行%d错误：%s", i, col, ex.getMessage());
-                errorMessage.add(str);
-                log.info(str);
+                errorInfo = String.format("第%d行%d错误：%s", i, col, ex.getMessage());
+                setErrorInfo(errorInfo);
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 从Excel中读取元素值域定义。
+     *
+     * @param sheets XSSFWorkbook
+     */
+    private void loadMapDictVersion(XSSFWorkbook sheets) {
+        mapDictVersion.clear();
+        XSSFSheet sheet = sheets.getSheet("CDA字典版本");
+        int lastRowNum = sheet.getLastRowNum();
+        XSSFRow row;
+
+        for (int i = 1; i < lastRowNum; i++) {
+            int col = 0;
+            String dictName, dicVersionName, errorInfo;
+            row = sheet.getRow(i);
+            if (row == null) continue;
+
+            try {
+                col = 0;
+                dictName = getCellText(row.getCell(col));
+                if (dictName.isEmpty()) continue;
+                col = 1;
+                dicVersionName = getCellText(row.getCell(col));
+                if (dicVersionName.isEmpty()) continue;
+                mapDictVersion.put(dictName, dicVersionName);
+            } catch (Exception ex) {
+                errorInfo = String.format("CDA字典信息.xlsx中CDA字典版本中第%d行%d错误：%s", i, col, ex.getMessage());
+                setErrorInfo(errorInfo);
                 ex.printStackTrace();
             }
         }

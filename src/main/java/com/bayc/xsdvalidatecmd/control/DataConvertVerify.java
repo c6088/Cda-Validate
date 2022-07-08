@@ -5,7 +5,6 @@ import com.bayc.xsdvalidatecmd.model.CdaNode;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,8 +25,27 @@ public class DataConvertVerify {
      * 不是返回布尔型时，根据是否返回null，确定是否成功执行。
      */
     public List<String> getErrorMessage() {
-        if (errorMessage.size() == 0) return null;
         return errorMessage;
+    }
+
+    /**
+     * 构造函数
+     */
+    public DataConvertVerify() {
+    }
+
+    /**
+     * 析构函数
+     */
+    public void finalize() {
+        log = null;
+        if (errorMessage != null) {
+            errorMessage.clear();
+            errorMessage = null;
+        }
+        if (dicCheck != null) {
+            dicCheck = null;
+        }
     }
 
     private void setErrorInfo(String errorInfo) {
@@ -84,37 +102,50 @@ public class DataConvertVerify {
      * @param node CdaNode
      */
     public void setNodeDomainInfo(CdaNode node) {
-        String str = node.getCodomain();
+        String str, val;
+        str = node.getCodomain();
         if (str == null || str.isEmpty()) {
             return;
         }
         str = str.trim();
-        int p = 0;
+        int p = -1;
         int charLen = str.length();
         for (int i = 0; i < charLen; i++) {
             char c = str.charAt(i);
-            if (c != '.' && (!Character.isDigit(c))) {
-                p = i - 1;
+            if (c == '.' || Character.isDigit(c)) {
                 break;
+            } else {
+                p = i;
             }
         }
         if (p >= 0) {
-            node.setDataType(str.substring(0, p));
-            if (p < charLen - 1) {
-                node.setBaseNumber(str.substring(p + 1));
-            }
+            val = str.substring(0, p + 1);
+            node.setDataType(val);
         }
+        if (p < charLen - 1) {
+            val = str.substring(p + 1);
+            node.setBaseNumber(val);
+        }
+        val = node.getBaseNumber();
+        p = GCLib.parserInt(val);
+        if (p > 0) {
+            node.setConstraint("R"); //1..N是必填
+        }
+    }
+
+    public void Init() {
+        dicCheck.setDictData(DataExcel.mapDicts, DataExcel.mapDictVersion);
     }
 
     /**
      * 根据节点类型，验证节点是否正确
      *
-     * @param node     CdaNode
-     * @param dataType EnumDateType
+     * @param node CdaNode
      * @return true正确 false不正确
      */
-    public boolean isNodeOK(CdaNode node, EnumDateType dataType) {
+    public boolean isNodeOK(CdaNode node) {
         boolean isOk;
+        EnumDateType dataType = this.getNodeDateType(node);
         switch (dataType) {
             case N:
                 isOk = isN(node);
@@ -139,15 +170,6 @@ public class DataConvertVerify {
     }
 
     /**
-     * 验证节点是否正确
-     */
-    public boolean isNodeOK(CdaNode node) {
-        errorMessage.clear();
-        EnumDateType dateType = getNodeDateType(node);
-        return isNodeOK(node, dateType);
-    }
-
-    /**
      * 空值检查和值域未院时的检查，返回值1允许空并且是空， -1不允许空，是空值， 0不允许空，有值，需要进一步判断。
      *
      * @param node CdaNode
@@ -158,24 +180,13 @@ public class DataConvertVerify {
         boolean allowEmpty = !node.getConstraint().startsWith("R");
         if (text.isEmpty()) {
             if (!allowEmpty) {
-                String errorInfo = String.format("节点%s(%s)不能为空, 日期格式应当为yyyyMMdd", node.getNodePath(), node.getFieldName());
+                String errorInfo = String.format("节点%s, 字段(%s)不能为空， 值域：%s。", node.getNodePath(), node.getFieldName(), node.getCodomain());
                 setErrorInfo(errorInfo);
                 return -1;
             } else {
                 node.setFieldValue("");
                 return 1;
             }
-        }
-
-        String range; //值域
-        String codomain = node.getCodomain();
-        if (codomain.length() > 1) range = codomain.substring(1);
-        else range = "";
-        if (range.isEmpty()) {
-            node.setFieldValue(text);
-            boolean isOk = dictKeyCheck(node);
-            if (isOk) return 1;
-            return -1;
         }
         return 0;
     }
@@ -216,7 +227,29 @@ public class DataConvertVerify {
         int rev = emptyCheck(node);
         if (rev == 1) return true;
         if (rev == -1) return false;
-        return dictKeyCheck(node);
+        boolean isOk = true;
+        String dicName = node.getCdaDictName();
+        if (!GCLib.IsNullAndEmpty(dicName)) {
+            String errorInfo, key, val;
+            key = node.getNodeValue();
+            isOk = dicCheck.CheckKey(dicName, key);
+            if (!isOk) {
+                errorInfo = dicCheck.getInfoMessage();
+                if (errorInfo.isEmpty()) {
+                    errorInfo = String.format("不是字典中的值。节点%s: %s, 数据类型：%s, 字典：%s", node.getNodePath(), node.getNodeValue(), node.getDataType(), dicName);
+                }
+                setErrorInfo(errorInfo);
+                isOk = false;
+            }
+            val = dicCheck.getKeyValue(dicName, key);
+            if (val == null || val.isEmpty()) {
+                errorInfo = String.format("字典(%s)中的键(%s)没有设置对应的值，请检查。 ", dicName, key);
+                setErrorInfo(errorInfo);
+            }
+            node.setFieldValue(key);
+            node.setNameCodeValue(val);
+        }
+        return isOk;
     }
 
     /**
@@ -226,112 +259,98 @@ public class DataConvertVerify {
      * @return true是, false不是
      */
     public boolean isN(CdaNode node) {
+        //判断允许空值
         int rev = emptyCheck(node);
         if (rev == 1) return true;
         if (rev == -1) return false;
+        Boolean isOk;
         String errorInfo;
-        String text = node.getNodeValue();
-        Boolean isOk = GCLib.IsNumberStr(text);
-        if (!isOk) {
-            errorInfo = String.format("节点%s: %s, 应当是数值。", node.getNodePath(), node.getNodeValue());
-            setErrorInfo(errorInfo);
-            return false;
-        }
-
-        try {
-            double dbl = Double.parseDouble(text);
-            String range = ""; //值域
-            String codomain = node.getCodomain();
-            if (codomain.length() > 1) range = codomain.substring(1);
-            if (range.isEmpty()) {
-                node.setFieldValue(text);
-                isOk = dictKeyCheck(node);
-                return isOk;
-            }
-
-            String[] arr;
-            arr = range.split(".."); //格式：例N1..5, N..5, N5, N5,2
-            int low = 0, hight = 0;
-            if (arr.length == 2) {
-                //格式：例N1..5, N..5
-                low = (arr[0].isEmpty() ? 0 : Integer.parseInt(arr[0]));
-                hight = Integer.parseInt(arr[1]);
-                int charLen = text.length();
-                if (charLen < low || charLen > hight) {
-                    errorInfo = String.format("节点%s: %s, 值域应当是%s。", node.getNodePath(), text, codomain);
+        //判断是否是数字
+        String text, val, range;
+        text = GCLib.CStr(node.getNodeValue()).trim();
+        int p;
+        int charLen = text.length();
+        range = node.getBaseNumber(); //值域
+        int[] lowHigh = getRangeLowHigh(range);
+        //小数点位置
+        int xscd = lowHigh[2]; //小数长度
+        if (xscd <= 0) {
+            isOk = GCLib.IsNumberStr(text);
+        } else {
+            isOk = GCLib.IsDoubleStr(text);
+            if (isOk) {
+                //校验小数长度
+                p = text.indexOf('.');
+                if (p < 0 || p >= text.length() - 1) {
+                    errorInfo = String.format("应当有小数。节点%s: %s, 应当是数值，值域：%s。", node.getNodePath(), node.getNodeValue(), node.getCodomain());
                     setErrorInfo(errorInfo);
                     return false;
                 }
-                node.setFieldValue(text);
-            } else {
-                //格式：例N5, N5,2
-                DecimalFormat df;
-                String val;
-                int zscd, xscd;  //整数,整数长度, 小数,小数长度
-                if (range.indexOf(",") >= 0) {
-                    //格式：例N5,2
-                    arr = range.split(",");
-                    zscd = Integer.parseInt(arr[0]);
-                    xscd = Integer.parseInt(arr[1]);
-                    String fmt = GCLib.RepeatStr("#", xscd);
-                    df = new DecimalFormat("#." + fmt);
-                    val = df.format(dbl);
-                    int p = val.indexOf('.'), len;
-                    if (p > 0) {
-                        len = val.substring(0, p).length();
-                        if (len > zscd) {
-                            errorInfo = String.format("节点%s: %s, 值域应当是%s。", node.getNodePath(), text, codomain);
-                            setErrorInfo(errorInfo);
-                            return false;
-                        }
-                    }
-                    node.setFieldValue(val);
-                } else {
-                    //格式：例N5
-                    df = new DecimalFormat("#");
-                    val = df.format(dbl);
-                    zscd = Integer.parseInt(range);
-                    if (val.length() > zscd) {
-                        errorInfo = String.format("节点%s: %s, 值域应当是%s。", node.getNodePath(), text, codomain);
-                        setErrorInfo(errorInfo);
-                        return false;
-                    }
-                    node.setFieldValue(val);
+                val = range.substring(p + 1);
+                if (val.length() != xscd) {
+                    errorInfo = String.format("小数位数长度不对。节点%s: %s, 应当是数值，值域：%s。", node.getNodePath(), node.getNodeValue(), node.getCodomain());
+                    setErrorInfo(errorInfo);
+                    return false;
                 }
             }
-        } catch (NumberFormatException ex) {
-            errorInfo = String.format("节点%s: %s, 应当是数值。", node.getNodePath(), text);
-            setErrorInfo(errorInfo);
-        } catch (Exception ex) {
-            errorInfo = String.format("节点%s: %s, 应当是数值。Error: %s", node.getNodePath(), text, ex.getMessage());
-            setErrorInfo(errorInfo);
         }
-        isOk = dictKeyCheck(node);
-        return isOk;
+        if (!isOk) {
+            errorInfo = String.format("节点%s: %s, 应当是数值，值域：%s。", node.getNodePath(), node.getNodeValue(), node.getCodomain());
+            setErrorInfo(errorInfo);
+            return false;
+        }
+        if (charLen < lowHigh[0] || charLen > lowHigh[1]) {
+            errorInfo = String.format("数值长度不正确。节点%s: %s, 值域应当是%s。", node.getNodePath(), text, node.getCodomain());
+            setErrorInfo(errorInfo);
+            return false;
+        }
+        node.setFieldValue(text);
+        return true;
     }
 
     /**
-     * 节点的值是否是字典中的键。
+     * 读取域值的范围上下限值
      *
-     * @param node CdaNode
-     * @return true是, false不是
+     * @param range
+     * @return int[3] 其中int[0]为最小数， int[2]为最大数, int[2] 为小数位数
      */
-    private boolean dictKeyCheck(CdaNode node) {
-        boolean isOk = true;
-        String dataType = node.getDataType();
-        boolean isDict = dataType.startsWith("S2") || dataType.startsWith("S3");
-        if (isDict) {
-            String dicname = node.getCdaDictName();
-            if (!GCLib.IsNullAndEmpty(dicname)) {
-                isOk = dicCheck.CheckKey(dicname, node.getNodeValue());
-                if (!isOk) {
-                    String errorInfo = String.format("节点%s: %s, 数据类型：%s, 不是标准%s中的值。Error: %s", node.getNodePath(), node.getNodeValue(), dataType, dicname);
-                    setErrorInfo(errorInfo);
-                    isOk = false;
-                }
-            }
+    private int[] getRangeLowHigh(String range) {
+        String v1, v2, v3;
+        int p, decimalPoint;
+        int[] vals = new int[3];
+        vals[0] = 0;
+        vals[1] = 0;
+        vals[2] = 0;
+        if (range == null || range.isEmpty()) return vals;
+
+        //取出小数点位数
+        decimalPoint = range.indexOf(',');
+        if (decimalPoint >= 0) {
+            v3 = range.substring(decimalPoint);
+            vals[2] = GCLib.CInt(v3);
+            if (decimalPoint == 0) return vals;
+            range = range.substring(0, decimalPoint);
         }
-        return isOk;
+
+        //取出以..分隔的上下限值
+        p = range.indexOf(".."); //格式：例1..5, ..5, ..*
+        if (p >= 0) {
+            //格式：例1..5, N..5
+            if (p == 0) {
+                v2 = range.substring(p + 2);
+            } else {
+                v1 = range.substring(0, p);
+                vals[0] = GCLib.CInt(v1);
+                if (p + 2 < range.length()) v2 = range.substring(p + 2);
+                else v2 = "";
+            }
+            if (v2.compareTo("*") == 0) vals[1] = 2 ^ 21;
+            else vals[1] = GCLib.CInt(v2);
+        } else {
+            vals[0] = GCLib.CInt(range);
+            vals[1] = vals[0];
+        }
+        return vals;
     }
 
     /**
@@ -345,44 +364,23 @@ public class DataConvertVerify {
         if (rev == 1) return true;
         if (rev == -1) return false;
 
-        boolean isOk = true;
-        String text = node.getNodeValue();
+        String text = GCLib.CStr(node.getNodeValue()).trim();
         int charLen = text.length();
-        String range; //值域
-        String codomain = node.getCodomain();
-        if (codomain.length() > 1) range = codomain.substring(1);
-        else range = "";
+        String range, codomain, errorInfo;
+        codomain = node.getCodomain();
+        range = node.getBaseNumber();
         if (range.isEmpty()) {
             node.setFieldValue(text);
-            isOk = dictKeyCheck(node);
-            return isOk;
+            return true;
         }
-
-        String[] arr;
-        String errorInfo;
-        arr = range.split(".."); //格式：例AN1..5, AN..5
-        int low = 0, hight = 0;
-        if (arr.length == 2) {
-            //格式：例N1..5, N..5
-            low = (arr[0].isEmpty() ? 0 : Integer.parseInt(arr[0]));
-            hight = Integer.parseInt(arr[1]);
-            if (charLen < low || charLen > hight) {
-                errorInfo = String.format("节点%s: %s, 值域应当是%s。", node.getNodePath(), text, codomain);
-                setErrorInfo(errorInfo);
-                return false;
-            }
-            node.setFieldValue(text);
-        } else {
-            //格式：例AN5
-            if (charLen != GCLib.CInt(range)) {
-                errorInfo = String.format("节点%s: %s, 值域应当是%s。", node.getNodePath(), text, codomain);
-                setErrorInfo(errorInfo);
-                return false;
-            }
-            node.setFieldValue(text);
+        int[] lowHigh = getRangeLowHigh(range);
+        if (charLen < lowHigh[0] || charLen > lowHigh[1]) {
+            errorInfo = String.format("数据长度不正确。节点%s: %s, 值域应当是%s。", node.getNodePath(), text, codomain);
+            setErrorInfo(errorInfo);
+            return false;
         }
-        isOk = dictKeyCheck(node);
-        return isOk;
+        node.setFieldValue(text);
+        return true;
     }
 
     /**
