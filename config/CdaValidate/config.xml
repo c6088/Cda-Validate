@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+    <Database>
+        <Driver>127.0.0.1:1521:emr6</Driver>
+        <DataSource>127.0.0.1:1521:emr6</DataSource>
+        <UserID>system</UserID>
+        <Password>manager</Password>
+    </Database>
+</Config>
