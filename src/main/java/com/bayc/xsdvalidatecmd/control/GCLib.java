@@ -313,8 +313,8 @@ public class GCLib {
     /**
      * 将文本写入文件，原来存在，就覆盖
      *
-     * @param filePath
-     * @param text
+     * @param filePath 文件路径
+     * @param text     写入内容
      */
     public static void writeFileAllText(String filePath, String text) {
         FileWriter writer;
@@ -331,8 +331,8 @@ public class GCLib {
     /**
      * 将文本添加到文件中，如果文件不存在，就创建
      *
-     * @param filePath
-     * @param text
+     * @param filePath 文件路径
+     * @param text     写入内容
      */
     public static void appendFileText(String filePath, String text) {
         if (text == null || text.isEmpty()) return;
@@ -349,8 +349,8 @@ public class GCLib {
     /**
      * 读取文件中的文本字符串
      *
-     * @param filePath
-     * @return String
+     * @param filePath 文件路径
+     * @return 文件内容
      */
     public static String readFileALLText(String filePath) {
         String text = "";
@@ -365,7 +365,7 @@ public class GCLib {
     /**
      * 删除文件
      *
-     * @param filePath
+     * @param filePath 文件路径
      */
     public static void deleteFile(String filePath) {
         File file = new File(filePath);

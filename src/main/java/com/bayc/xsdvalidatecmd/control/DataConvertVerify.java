@@ -23,6 +23,8 @@ public class DataConvertVerify {
     /**
      * 执行过程中的错误信息列表，没有错误时返回null， 方法执行返回false时，查看此列表
      * 不是返回布尔型时，根据是否返回null，确定是否成功执行。
+     *
+     * @return 错误信息列表
      */
     public List<String> getErrorMessage() {
         return errorMessage;
@@ -37,7 +39,7 @@ public class DataConvertVerify {
     /**
      * 析构函数
      */
-    public void finalize() {
+    protected void finalize() {
         log = null;
         if (errorMessage != null) {
             errorMessage.clear();
@@ -60,6 +62,9 @@ public class DataConvertVerify {
 
     /**
      * 判断节点数据类型
+     *
+     * @param node CdaNode节点
+     * @return EnumDateType枚举值
      */
     public EnumDateType getNodeDateType(CdaNode node) {
         String str, val, strDataType;

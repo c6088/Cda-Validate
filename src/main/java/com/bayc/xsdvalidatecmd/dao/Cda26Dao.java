@@ -40,7 +40,7 @@ public interface Cda26Dao {
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *
-     * @param entities List<Cda26> 实例对象列表
+     * @param entities List&lt;Cda26&gt; 实例对象列表
      * @return 影响行数
      */
     int insertBatch(@Param("entities") List<Cda26> entities);
@@ -48,7 +48,7 @@ public interface Cda26Dao {
     /**
      * 批量新增或按主键更新数据（MyBatis原生foreach方法）
      *
-     * @param entities List<Cda26> 实例对象列表
+     * @param entities List&lt;Cda2&gt; 实例对象列表
      * @return 影响行数
      */
     int insertOrUpdateBatch(@Param("entities") List<Cda26> entities);

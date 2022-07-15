@@ -6,7 +6,7 @@
     <artifactId>xsdvalidate-cmd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>xsdvalidate-cmd</name>
-    <description>Demo project for Spring Boot</description>
+    <description>CDA数据验证</description>
 
     <properties>
         <java.version>1.8</java.version>

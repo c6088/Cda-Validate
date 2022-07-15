@@ -7,6 +7,8 @@ import java.util.List;
 public class CdaValidateApplication {
     /**
      * 入口主程序
+     *
+     * @param args 命令行参数
      */
     public static void main(String[] args) {
         boolean isOk;

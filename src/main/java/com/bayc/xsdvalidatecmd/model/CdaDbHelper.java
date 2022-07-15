@@ -68,6 +68,8 @@ public class CdaDbHelper {
     /**
      * 执行过程中的错误信息列表，没有错误时返回null， 方法执行返回false时，查看此列表
      * 不是返回布尔型时，根据是否返回null，确定是否成功执行。
+     *
+     * @return 错误信息列表
      */
     public List<String> getErrorMessage() {
         if (errorMessage.size() == 0) return null;
@@ -280,6 +282,7 @@ public class CdaDbHelper {
      *
      * @param sql 需要执行的SQL语句
      * @return 返回ResultSet，没有数据时，返回null
+     * @throws SQLException SQL异常
      */
     public ResultSet getResultSet(String sql) throws SQLException {
         ResultSet rs = null;
@@ -315,6 +318,7 @@ public class CdaDbHelper {
      *
      * @param sql 只返回一行一列的SQL语句，
      * @return 没有取到值时，返回0
+     * @throws SQLException SQL异常
      */
     public int getInt(String sql) throws SQLException {
         int v = 0;
@@ -331,7 +335,8 @@ public class CdaDbHelper {
      * 读取SQL语句第1行1列的字符串值
      *
      * @param sql 只返回一行一列的SQL语句，
-     * @return 没有取到值null 取到的值对象
+     * @return 没有取到值null 取到的值对象     * @param sql
+     * @throws SQLException SQL异常
      */
     public String getString(String sql) throws SQLException {
         String v = "";

@@ -29,6 +29,8 @@ public class DataExcel {
 
     /**
      * 执行时的错误信息列表
+     *
+     * @return 错误信息列表
      */
     public List<String> getErrorMessage() {
         return errorMessage;
@@ -80,6 +82,11 @@ public class DataExcel {
         log.info(errorInfo);
     }
 
+    /**
+     * 将数据写入json文件
+     *
+     * @return true成功, false失败
+     */
     public boolean dataWriteToJsonFile() {
         String filePathDict, filePathVer, filePathNode, filePathDomain, jsonStr;
         String path = CdaConfig.configFilePath;
@@ -141,20 +148,20 @@ public class DataExcel {
     /**
      * 将JSON字符串解析为List
      *
-     * @param jsonStr jsonStr
-     * @param obj     Class<T>
-     * @param <T>     T
-     * @return List<T>
+     * @param jsonStr json字符串
+     * @param obj     Class&lt;T&gt;对象
+     * @param <T>     泛型类
+     * @return List&lt;T&gt;
      */
     public <T> List<T> jsonStrToList(String jsonStr, Class<T> obj) {
         return JSONArray.parseArray(jsonStr, obj);
     }
 
     /**
-     * 将 JsonStr解析为HashMap<String,HashMap<String,String>>
+     * 将 JsonStr解析为HashMap&lt;String,HashMap&lt;String,String&gt;&gt;
      *
      * @param jsonStr jsonStr
-     * @return HashMap<String, HashMap < String, String>>
+     * @return HashMap&lt;String, HashMap&lt;String, String&gt;&gt;
      */
     public HashMap<String, HashMap<String, String>> jsonStrToHashMap2(String jsonStr) {
         return (HashMap<String, HashMap<String, String>>)
@@ -163,16 +170,23 @@ public class DataExcel {
     }
 
     /**
-     * 将 JsonStr解析为HashMap<String,HashMap<String,String>>
+     * 将 JsonStr解析为HashMap&lt;String,HashMap&lt;String,String&gt;&gt;
      *
      * @param jsonStr jsonStr
-     * @return HashMap<String, HashMap < String, String>>
+     * @param <T>     泛型类
+     * @return HashMap&lt;String, HashMap&lt;String, String&gt;&gt;
      */
     public <T> HashMap<String, List<CdaNode>> jsonStrToHashMapList(String jsonStr) {
         return (HashMap<String, List<CdaNode>>) JSONObject.parseObject(jsonStr, new TypeReference<HashMap<String, List<CdaNode>>>() {
         });
     }
 
+    /**
+     * 将json字符串转化为HashMap字典
+     *
+     * @param jsonStr json字符串
+     * @return HashMap字典
+     */
     public HashMap<String, String> jsonStrToHashMap(String jsonStr) {
         return (HashMap<String, String>) JSONObject.parseObject(jsonStr, new TypeReference<HashMap<String, String>>() {
         });
@@ -192,9 +206,9 @@ public class DataExcel {
      * 将JSON字符串解析为对象T
      *
      * @param jsonStr jsonStr
-     * @param obj     Class<T>
-     * @param <T>     T
-     * @return T
+     * @param obj     泛型对象
+     * @param <T>     泛型类
+     * @return 泛型对象
      */
     public <T> T jsonStrToObject(String jsonStr, Class<T> obj) {
         return JSONObject.parseObject(jsonStr, obj);
@@ -259,7 +273,7 @@ public class DataExcel {
     /**
      * 获取全部的CDA操作定义list。
      *
-     * @return List<CdaNode>
+     * @return List&lt;CdaNode&gt;
      */
     public HashMap<String, List<CdaNode>> getListCdaDefine() {
         if (!isNodeLoaded) {
@@ -278,7 +292,7 @@ public class DataExcel {
      * 获取某个CDA代码的操作定义list。请不要每次都调这个函数，多次用时，应将中间结果保存下来使用。
      *
      * @param cdaCode CDA代码
-     * @return List<CdaNode>, 如果代码为空，则返回null
+     * @return List&lt;CdaNode&gt;, 如果代码为空，则返回null
      */
     public List<CdaNode> getListCdaDefine(String cdaCode) {
         if (cdaCode == null || cdaCode.isEmpty()) {
@@ -297,7 +311,7 @@ public class DataExcel {
     /**
      * 获取元素值域定义HashMap
      *
-     * @return HashMap<String, String>
+     * @return HashMap&lt;String, String&gt;
      */
     public HashMap<String, String> getDeDomain() {
         if (!isDeLoaded) {
@@ -316,7 +330,7 @@ public class DataExcel {
     /**
      * 获取字典数据mapDicts
      *
-     * @return HashMap<String, String>
+     * @return HashMap&lt;String, String&gt;
      */
     public HashMap<String, HashMap<String, String>> getMapDict() {
         if (!isDictLoaded) {
@@ -335,7 +349,7 @@ public class DataExcel {
      * 根据字典名称单个字典数据
      *
      * @param dictName 字典名称
-     * @return HashMap<String, String>, 没有对应名称的字典时，返回null
+     * @return HashMap&lt;String, String&gt;, 没有对应名称的字典时，返回null
      */
     public HashMap<String, String> getMapDict(String dictName) {
         getMapDict();
@@ -350,7 +364,7 @@ public class DataExcel {
     /**
      * 获取字典数据mapDicts
      *
-     * @return HashMap<String, String>
+     * @return HashMap&lt;String, String&gt;
      */
     public HashMap<String, String> getMapDictVersion() {
         if (!isDictVersionLoaded) {

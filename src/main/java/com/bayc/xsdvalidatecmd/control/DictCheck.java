@@ -63,6 +63,9 @@ public class DictCheck {
 
     /**
      * 根据字典名称取对应字典， 参数dictName不能为空。
+     *
+     * @param dictName 字典名称
+     * @return HashMap字典
      */
     public HashMap<String, String> getDict(String dictName) {
         if (dictData.containsKey(dictName)) {
@@ -73,6 +76,9 @@ public class DictCheck {
 
     /**
      * 设值字典名称的字典， 参数dictName和map都不能为空
+     *
+     * @param dictName 字典名称
+     * @param map      HashMap字典
      */
     public void setDict(String dictName, HashMap<String, String> map) {
         if (map == null) return;
@@ -94,6 +100,10 @@ public class DictCheck {
 
     /**
      * 字典是否包含键
+     *
+     * @param dicName 字典名称
+     * @param key     字典键
+     * @return true存在, false不存在
      */
     public boolean CheckKey(String dicName, String key) {
         infoMessage = "";
@@ -108,6 +118,10 @@ public class DictCheck {
 
     /**
      * 读取字典键对应的值
+     *
+     * @param dictName 字典名称
+     * @param key      字典键
+     * @return 字典值
      */
     public String getKeyValue(String dictName, String key) {
         infoMessage = "";
@@ -122,6 +136,10 @@ public class DictCheck {
 
     /**
      * 字典是否包含值
+     *
+     * @param dictName 字典名称
+     * @param value    字典键
+     * @return true存在, false不存在
      */
     public boolean CheckValue(String dictName, String value) {
         infoMessage = "";
@@ -136,6 +154,10 @@ public class DictCheck {
 
     /**
      * 通过值查字典的键
+     *
+     * @param dictName 字典名称
+     * @param value    字典值
+     * @return 字典键
      */
     public String ValueToKey(String dictName, String value) {
         infoMessage = "";

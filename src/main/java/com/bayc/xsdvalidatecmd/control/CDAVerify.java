@@ -232,7 +232,7 @@ public class CDAVerify {
     /**
      * 初始化表与字段的映射关系
      *
-     * @param cdaCode
+     * @param cdaCode CDA代码
      * @return true成功，false失败
      */
     public boolean getCdaMap(String cdaCode) {
@@ -252,7 +252,7 @@ public class CDAVerify {
     /**
      * CDA代码数据库对应的Mapper文件， TBC：等待完成
      *
-     * @param cdaCode
+     * @param cdaCode CDA代码
      * @return Mapper文件
      */
     public String getCdaMapperFile(String cdaCode) {
@@ -274,6 +274,7 @@ public class CDAVerify {
      *
      * @param informedConsentNo 手术知情同意书单号
      * @return true正确 false有错误
+     * @throws IOException 读写IO异常
      */
     public boolean validateC0026(String informedConsentNo) throws IOException {
         boolean isOk;

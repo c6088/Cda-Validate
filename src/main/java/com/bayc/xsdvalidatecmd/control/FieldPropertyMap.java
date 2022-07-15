@@ -27,9 +27,9 @@ public class FieldPropertyMap {
     }
 
     /**
-     * HashMap<字典名称, HashMap<数据表字段, 实体字段>>
+     * HashMap&lt;字典名称, HashMap&lt;数据表字段, 实体字段&gt;&gt;
      *
-     * @return HashMap<字典名称, HashMap < 数据表字段, 实体字段>>
+     * @return HashMap&lt;字典名称, HashMap&lt;数据表字段, 实体字段&gt;&gt;
      */
     public HashMap<String, HashMap<String, String>> getMapFieldProperty() {
         return mapFieldProperty;
@@ -53,9 +53,10 @@ public class FieldPropertyMap {
     }
 
     /**
-     * HashMap<数据表字段, 实体字段>>
+     * HashMap&lt;数据表字段, 实体字段&gt;
      *
-     * @return HashMap<数据表字段, 实体字段>>
+     * @param cdaCode CDA代码
+     * @return HashMap&lt;数据表字段, 实体字段&gt;
      */
     public HashMap<String, String> getMapFieldProperty(String cdaCode) {
         if (mapFieldProperty.containsKey(cdaCode)) return mapFieldProperty.get(cdaCode);
@@ -68,10 +69,11 @@ public class FieldPropertyMap {
     }
 
     /**
-     * 设置字典映射：HashMap<字典名称, HashMap<数据表字段, 实体字段>>
+     * 设置字典映射：HashMap&lt;字典名称, HashMap&lt;数据表字段, 实体字段&gt;&gt;
      *
      * @param cdaCode     CDA代码
      * @param dbFieldName 数据表字段名称
+     * @return cda代码与数据库字段对应的实体属性字段名称
      */
     public String getCdaCodeField(String cdaCode, String dbFieldName) {
 
@@ -87,7 +89,7 @@ public class FieldPropertyMap {
      *
      * @param cdaCode CDA代码
      * @param xmlFile XML定义文件
-     * @return 没有读到则返回空，否则返加HashMap<数据表字段, 实体字段>
+     * @return 没有读到则返回空，否则返加HashMap&lt;数据表字段, 实体字段&gt;
      */
     public HashMap<String, String> readResultMap(String cdaCode, String xmlFile) {
         String errorInfo;
@@ -144,8 +146,10 @@ public class FieldPropertyMap {
      * @param fName  字段名称
      * @param fValue 字段值
      * @param entity 实体对象
-     * @return 没有读到则返回空，否则返加HashMap<数据表字段, 实体字段>
+     * @param <T>    泛型类
+     * @return 没有读到则返回空，否则返加HashMap&lt;数据表字段, 实体字段&gt;
      */
+
     public <T> boolean setEntityValue(String fName, String fValue, T entity) {
         try {
             Field field = entity.getClass().getDeclaredField(fName);
@@ -177,6 +181,12 @@ public class FieldPropertyMap {
         return true;
     }
 
+    /**
+     * @param fName  字段名称
+     * @param entity 实体对象
+     * @param <T>    泛型类
+     * @return 实体字段的值
+     */
     public <T> String getEntityValue(String fName, T entity) {
         String val = "";
         try {
